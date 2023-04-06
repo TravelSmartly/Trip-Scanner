@@ -1,6 +1,6 @@
 ### libralies
 import gmaps
 ### classes
-import Configuration
+from classes import Configuration
 
 
