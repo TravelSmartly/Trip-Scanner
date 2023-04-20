@@ -3,7 +3,7 @@
 class Configuration_module:
 
 
-	def start_configuration_module ():
+	def start_configuration_module():
 		pass
 
 	def save_profile (current_profile):

@@ -5,7 +5,7 @@ import pytest
 def searching_module():
     return Searching_module()
 
-    def localisation_module(self):
+    def search_the_area(self):
         r=100
         listobject = localisation_module(r,(50.060683036581125, 19.935779508513296))
         assert listobject.isNotEmpty()
