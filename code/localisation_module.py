@@ -1,24 +1,38 @@
 from kivy.app import App
 from kivy.uix.label import Label
-from android.permissions import request_permissions, Permission
-from android.hardware import hardware_android
+from plyer import gps
+import pytest
 
 class Localisation_module(App):
-    def get_gps_location(on_location_update):
-        request_permissions([Permission.ACCESS_COARSE_LOCATION, Permission.ACCESS_FINE_LOCATION])
-        location_provider = hardware_android.get_location_provider()
-        location_provider.configure(on_location=self.on_location_update)
-        location_provider.start()
-        return Label(text="Getting GPS location...")
 
-    def on_stop(self):
-        location_provider.stop()
+    current_location = []
+    s_string:str
+    3234432
+    #type hints
+    def get_current_location(self)->int:
+    pass
+    def chech_proximity(self)->bool:
+    pass
 
-    #to moze byc w pliku konfiguracyjnym:
-    def on_location_update(**kwargs):
-        latitude = kwargs['lat']
-        longitude = kwargs['lon']
-        print("Latitude:", latitude)
-        print("Longitude:", longitude)
+
+    def start_location_module(*args):
+    pass
+    def on_start(self):
+    pass
+    def put_user_location_front(self):
+
+
+
+    #unittests
+
+    from unittest.mock import MagicMock
+    from my_app import Localisation_module
+
+
+
+
+
+
+
 
 
