@@ -13,11 +13,17 @@ def test_get_current_location(localisation_module):
 
 
 def test_check_proximity(localisation_module):
-    r, current_location, faktycznalokalizacji
+    r=100
+    current_location = (50.06163905474776, 19.936530642326513)
+    real_pos = (50.06182501735149, 19.933510474939244)
+    assert localisation_module.Check_proximity(r,current_location,real_pos) = True #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+
+    real_pos = (50.05301179901293, 19.914758618374478)
+    assert localisation_module.Check_proximity(r, current_location, real_pos) = False
+    #r, current_location, faktycznalokalizacji
 
     # set fixed location check whats nearbly
 
-    assert localisation_module.chech_proximity() == None
 
 
 def test_on_start(localisation_module):
