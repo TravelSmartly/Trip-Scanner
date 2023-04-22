@@ -8,8 +8,8 @@ def arranging_module():
 
 def test_categorize_obj(arranging_module):
     #arranging_module = Arranging_module()
-    map_object0 = {"id": 334234, "name": "a Grande Mamma", "category": None, "coordinates":(50.06163905474776, 19.936530642326513) } #Set fixed existing objects
-    map_object1 = {"id": 43243, "name": "Aparthotel Stare Miasto", "category": None, "coordinates": (50.06182501735149, 19.933510474939244)}
+    map_object0 = {"id": 334234, "name": "a Grande Mamma", "category": None, "coordinates":(50.06163905474776, 19.936530642326513), "description": None, "rating": None } #Set fixed existing objects
+    map_object1 = {"id": 43243, "name": "Aparthotel Stare Miasto", "category": None, "coordinates": (50.06182501735149, 19.933510474939244), "description": None, "rating": (4.2,60)}
     #arranging_module.categorize_obj(map_object)
 
     object_list=[map_object0, map_object1]
@@ -20,7 +20,7 @@ def test_categorize_obj(arranging_module):
     assert map_object0["category"] == ("hotel")
     #przypisuje category-> tuple
 
-
+#if booking.com - hotel(somethinglike that)
 def test_sort_obj():
     arranging_module = Arranging_module()
     map_object = {} #Set fixed existing objects

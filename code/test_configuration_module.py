@@ -10,10 +10,17 @@ def configuration_module():
 def test_start_configuration_module(configuration_module):
     pass
 
-def test_save_profile(current_profile):
+def test_save_profile(configuration_module,current_profile):
+    #open profile
+    #modify something
+    #save profile
+    #close
+    #open again
+    #assert modified thing is still there
     pass
 
 def test_save_config_file(configuration_module):
+    #podobnie jak wyzej
     pass
 
 def test_put_settings_front(configuration_module):
