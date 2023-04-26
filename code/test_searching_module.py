@@ -38,7 +38,13 @@ def searching_module():
         #nadpisuje stare miejsce
 
 
-    #def test_start_searching_module(searching_modulet):
-        #assert searching_module.start_searching_module((51.06182501735149, 65.933510474939244)) == 0
+    def test_start_searching_module(searching_modulet):
+        corr = ()
+
+        assert searching_module.start_searching_module(corr) == -1
+
+        corr = (23.3423343,32.324423243)
+
+        assert searching_module.start_searching_module(corr) == 0
 
 

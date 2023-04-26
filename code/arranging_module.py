@@ -2,15 +2,27 @@
 class Arranging_module(App):
     categorize_obj = None
 
-    categorize_obj(map_object):
-    pass
+    def categorize_obj(map_object):
+        pass
+    def sort_obj(criterion,m_object_list):
+        if (criterion == "rating"):
+            pass
+        elif (criterion == "distance"):
+            pass
+        elif (criterion == "name"):
+            pass
+        elif (criterion == "category"):
+            pass
+        else:
+            return -1
 
-    sort_obj(map_object):
-    pass
+    def start_arranging_module(**m_object_list):
+        # -2 for None object
+        pass
 
-    start_arranging_module(**kwargs):
-    pass
+    def provide_objects():
+        pass
 
-    provide_object(dict,list):
-    pass
 
+
+#provide_object()
