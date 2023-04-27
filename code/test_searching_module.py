@@ -5,7 +5,18 @@ import pytest
 def searching_module():
     return Searching_module()
 
-    def search_the_area(searching_module):
+    def test_put_user_location_front(searching_module):
+        test_object = searching_module.Searching_module()
+        map_object30 = {"id": 334234, "name": "a Grande Mamma", "category": None,
+                       "coordinates": (50.06163905474776, 19.936530642326513), "description": None,
+                       "rating": None}  # Set fixed existing objects
+        test_object_list30 = [(30.3333, 20.4322), map_object30]
+        test_object_list33 = [(30.3333, 20.4322)]
+        
+        assert test_object_list30.put_user_location_front() == (30.3333, 20.4322)
+        assert test_object_list33.put_user_location_front() == (30.3333, 20.4322)
+
+    def test_search_the_area(searching_module):
         r=100
         listobject = searching_module.search_the_area(r,(50.060683036581125, 19.935779508513296))
         assert listobject.isNotEmpty()
@@ -38,7 +49,7 @@ def searching_module():
         #nadpisuje stare miejsce
 
 
-    def test_start_searching_module(searching_modulet):
+    def test_start_searching_module(searching_module):
         corr = ()
 
         assert searching_module.start_searching_module(corr) == -1
