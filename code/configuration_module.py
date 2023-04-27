@@ -6,6 +6,7 @@ class Configuration_module:
 	def start_configuration_module():
 		pass
 		#Does not return any specific objects, so just make sure that it returns 0 if succeeded
+		#Returns -7 if config_file does not exist or could not have been opened
 
 	def save_profile (current_profile):
 		pass
