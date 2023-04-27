@@ -38,20 +38,27 @@ def test_save_config_file(configuration_module):
                        "coordinates": (50.06182501735149, 19.933510474939244), "description": None, "rating": (4.2, 60)}
     my_favourites = {"testing_profile": [map_object0, map_object1]}
     my_favourites2 = {"testing_profile2": []}
-    settings = {} #settings may be modified/changed in the future versions
+    settings = {"night_mode": False} #settings may be modified/changed in the future versions
     input_tuple = (settings, [my_profile, my_profile2], [my_favourites, my_favourites2])
     test_configuration.save_config_file (input_tuple)
     with open("config_file.cfg") as f:
         s_content_list = f.readlines()
-        assert "False" in s_content_list[0]
+        assert "False" in s_content_list[0] #False means it is not the "welcome" screen, so we want this to be found in config_file after saving
         assert "testing_profile" in s_content_list[1]
         assert "testing_profile2" in s_content_list[1]
+        assert "night_mode: False" in s_content_list[2]
         assert "testing_profile" in s_content_list[3]
         assert "testing_profile2" in s_content_list[3]
     
 
 def test_put_settings_front(configuration_module):
-    pass
+    test_configuration = configuration_module.Configuration_module()
+    my_profile = profile.Profile("testing_profile", ["fitness", "cars"], 5, 2)
+    my_favourites2 = {"testing_profile2": []}
+    settings = {"night_mode": False} #settings may be modified/changed in the future versions
+    input_tuple = (settings, [my_profile], [my_favourites2])
+    test_configuration.save_config_file (input_tuple)
+    assert test_configuration.put_settings_front() == settings
 
 def test_put_profile_to_front(configuration_module):
     pass
