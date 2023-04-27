@@ -60,8 +60,15 @@ def test_put_settings_front(configuration_module):
     test_configuration.save_config_file (input_tuple)
     assert test_configuration.put_settings_front() == settings
 
+### Very simple tests, just to see if this static/or outside method doesnt break on basic/void data
 def test_put_profile_to_front(configuration_module):
-    pass
+    test_configuration = configuration_module.Configuration_module()
+    my_profile = profile.Profile("testing_profile", ["fitness", "cars", "markets"], 3, 3)
+    my_profile = profile.Profile("testing_profile2", ["markets"], 1, 1)
+    my_profile = profile.Profile("testing_profile3", [], 2, 5)
+    assert test_configuration.put_profile_to_front(my_profile) == my_profile
+    assert test_configuration.put_profile_to_front(my_profile2) == my_profile2
+    assert test_configuration.put_profile_to_front(my_profile3) == my_profile3
 
 def test_read_config_file(configuration_module):
     name = "zlanazwa"
