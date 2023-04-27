@@ -8,30 +8,22 @@ def location_module():
 
 
 def test_get_current_location(location_module):
-    # check if location return is not empty thing
-    assert location_module.get_current_location() is not None
+    # checking coordinates when user on Rynek Glowny: 50.0615388,19.9398953
+    assert 50.06153 < location_module.get_current_location()[0] in range() < 50.06154 and 19.93989 < location_module.get_current_location()[1] < 19.939896
 
 
 def test_check_proximity(location_module):
     r=100
     current_location = (50.06163905474776, 19.936530642326513)
     real_pos = (50.06182501735149, 19.933510474939244)
-    assert location_module.Check_proximity(r,current_location,real_pos) = True #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+    assert location_module.Check_proximity(r,current_location,real_pos) == True #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
 
     real_pos = (50.05301179901293, 19.914758618374478)
-    assert location_module.Check_proximity(r, current_location, real_pos) = False
+    assert location_module.Check_proximity(r, current_location, real_pos) == False
     #r, current_location, faktycznalokalizacji
 
     # set fixed location check whats nearbly
-
-
-
-
-
-def test_put_user_location_front(location_module):
-    #
-    assert location_module.put_user_location_front() == None
-
+    
 
 def test_start_location_module(monkeypatch, localisation_module):
     #
