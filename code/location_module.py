@@ -10,13 +10,13 @@ class Location_module(App):
     3234432
     #type hints
     def get_current_location(self)->int:
-    pass
+        pass
     def chech_proximity(self)->bool:
-    pass
+        pass
 
 
     def start_location_module(*args):
-    pass
+        pass
 
     def put_user_location_front(self):
 
