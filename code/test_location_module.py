@@ -10,7 +10,7 @@ def location_module():
 
 def test_get_current_location(location_module):
     # checking coordinates when user on Rynek Glowny: 50.0615388,19.9398953
-    assert 50.06153 < location_module.get_current_location()[0] in range() < 50.06154 and 19.93989 < location_module.get_current_location()[1] < 19.939896
+    assert 50.06153 < location_module.get_current_location()[0] < 50.06154 and 19.93989 < location_module.get_current_location()[1] < 19.939896
 
 
 def test_check_proximity(location_module):
