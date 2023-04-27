@@ -15,7 +15,7 @@ class Location_module(App):
         pass
 
 
-    def start_location_module(*args):
+    def start_location_module():
         pass
 
     def put_user_location_front(self):
