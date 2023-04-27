@@ -1,5 +1,6 @@
 from location_module import Location_module
 import pytest
+import time
 
 
 @pytest.fixture
@@ -26,15 +27,10 @@ def test_check_proximity(location_module):
     
 
 def test_start_location_module(monkeypatch, localisation_module):
-    #
-    mock_start_location_module = MagicMock()
-
-    #
-    monkeypatch.setattr(localisation_module, 'start_location_module', mock_start_location_module)
-
-    #
-    localisation_module.start_location_module()
-    mock_start_location_module.assert_called_once()
+    seconds = 3
+    for i in range (10):
+        time.sleep(seconds)
+        assert location_module.start_location_module() == 0
 
 # def on_gps_location(self,**kwargs):
 #     print(kwargs['lat'],kwargs['lon'])
