@@ -15,7 +15,7 @@ class Searching_module(App):
     def start_searching_module(current_location):
         if (current_location == ()):
             return -2
-        elif (-90 < current_location[0] < 90 or  180 < current_location[1] < -180):
+        elif (-90 < current_location[0] < 90 or  -180 < current_location[1] < 180):
             return -1
         else:
             return 0
