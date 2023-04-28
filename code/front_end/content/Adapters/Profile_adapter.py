@@ -2,9 +2,21 @@ import time
 class Profile_provider:
     def __init__(self, conf_module):
         # DG: usunełem sub_categories, zamist tego, zrobiłem categories dict
-        self.categories = {"hi": ("hi_mini","hi_big"),
-                           "hello": ("hello_mini","hello_big")
-                           }
+        self.categories = [
+                                {
+                                    "name": "hi",
+                                    "queue": 1,
+                                    "subcats": ("hi_mini", "hi_bigi"),
+                                    "selected": 0
+                                },
+                                {
+                                    "name": "hello",
+                                    "queue": 2,
+                                    "subcats": ("hello_mini", "hello_bigi"),
+                                    "selected": 1
+                                }
+                            ]
+        self.changes = []
         self.profiles = ()
         # DG: nowa zmienna profile_refreshed
         self.profile_refreshed = 0
@@ -51,6 +63,29 @@ class Profile_adapter(Profile_provider):
 
         self.profile_refreshed = 0
         return 0
-    def send_categories(self):
-        pass
+    def send_categories(self, cat):
+        if hasattr(self.conf_module, 'put_to_profile_front') == 0:
+            return -1
+        self.conf_module.put_to_profile_front(self.changes)
+        self.changes.clear()
+        return 0
+
+    def select_cat(self, id):
+        if id is None:
+            return -1
+        if type(id) is int:
+            return -1
+
+        self.changes.append(id)
+        self.categories[id]["selected"] = 1
+        return 0
+
+    def deselect_cat(self, id):
+        if id is None:
+            return -1
+        if type(id) is int:
+            return -1
+        self.changes.append(id)
+        self.categories[id]["selected"] = 0
+        return 0
 
