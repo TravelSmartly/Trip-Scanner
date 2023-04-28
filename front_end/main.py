@@ -7,6 +7,7 @@ from kivymd.app import MDApp
 import unittest
 from content.Map_section.Map_section import *
 
+
 if __name__ != "__main__":
     exit()
 
