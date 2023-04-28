@@ -10,4 +10,5 @@ def test_download_categories():
     conf_module = None
     a = Profile_adapter(conf_module)
     a.download_categories()
+    assert dw_cat == 0
 
