@@ -1,9 +1,7 @@
 class Profile_provider():
 
-    categories= ()
-
+    categories = ()
     sub_categories = ()
-
     profiles = ()
 def download_categories(self): pass
 

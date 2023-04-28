@@ -3,12 +3,8 @@ from back_end.location_module import Location_module
 # DG - dotyczy diagramów
 
 # DG self.object swap on self.places
-class Map_place_provider(unittest.TestCase):
-    def setUp(self):
-        self.assertTrue(hasattr(Location_module, 'provide_objects'))
-        self.arranging_module = Location_module()
-
-
+class Map_place_provider:
+    def __init__(self, location_module):
         # Set fixed existing objects
         self.places = [
             {
@@ -33,6 +29,9 @@ class Map_place_provider(unittest.TestCase):
         self.date = ""
         self.data_status = 0
         self.timer = 0
+
+        self.assertTrue(hasattr(Location_module, 'provide_objects'))
+        self.arranging_module = Location_module()
 
 
     def test_download_places(self):
