@@ -26,3 +26,4 @@ def test_get_curr_location():
     assert len(data) != 0
 
 
+

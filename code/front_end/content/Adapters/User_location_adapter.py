@@ -40,9 +40,12 @@ class User_location_provider:
 class User_location_adapter(User_location_provider):
     def __init__(self, location_module):
         # historia lokacji
-        self.location_data = {}
+        # DG: type swaped from dict to list
+        self.location_data = []
         # DG: dodałem nową zmienną time, która oznacza czas pobrania w unix
         self.u_time = 1682657624
+        # DG: dodałem my_loc, to jest zmienna, która przechowuje również datę pobrania
+        self.my_loc = {}
 
         ### INITIALIZATION ###
         super().__init__(location_module)
@@ -52,8 +55,11 @@ class User_location_adapter(User_location_provider):
         if is_dl == -1:
             return -1
         loc = self.get_curr_location()
-        self.u_time = int(time.time())
-        self.location_data[self.u_time] = loc
+
+        u_time = int(time.time())
+        self.my_loc["loc"] = loc
+        self.my_loc["downlload_loc"] = u_time
+        self.location_data.append(self.my_loc)
 
     def get_location_data(self):
         if self.location_data is None:
