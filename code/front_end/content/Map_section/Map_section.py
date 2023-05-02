@@ -3,10 +3,8 @@ from kivy.garden.mapview import MapView
 
 
 class Map_section():
-    def setUp(self):
-        pass
-    def test_show_map(self):
-        pass
+    def show_map(self):
+        print("hi")
     def test_show_map_error(self): pass
     def test_show_objects(self): pass
     def test_show_help(self): pass
@@ -26,7 +24,7 @@ class Map_object():
     def setCord(self): pass
     def setStatus(self): pass
 
-# w diagramach po prostu Mapview
+# DG: w diagramach po prostu Mapview, zamieniłem na Places_Mapview, żeby nie wyglądało podobnie do MapView
 class Places_Mapview(MapView):
     getting_markets_timer = None
 
