@@ -1,6 +1,12 @@
-class Searching_module(App):
-    m_object_list = None
+class Searching_module():
+    m_object_list = None #first element is current_location
     search_counter = 0
+    # init method or constructor
+    def __init__(self, current_location):
+        self.m_object_list = []
+        self.m_object_list[0]=current_location
+
+
 
     def get_m_object_list(self):
         return self.m_object_list
