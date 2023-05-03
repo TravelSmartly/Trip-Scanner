@@ -4,11 +4,10 @@ from plyer import gps
 import pytest
 
 class Location_module(App):
-    lat = 3223
-    lon = 34432
+    lat = 111045 #one degree of latitude is always 69 miles = 111045 meters
+    lon = 111045 #one degree of latitude in equator, sea level is 69 miles = 111045 meters
     center_location = []
     s_string:str
-    3234432
     #type hints
 
     @staticmethod
@@ -16,7 +15,7 @@ class Location_module(App):
         return 0
     def check_proximity(r,current_location,center_location)->bool:
         #zwraca true jesli current_location jest w srodku elipsy o srodku w punkcie center_location
-        return (current_location[0]-center_location[0] * lat)^2 + (current_location[1]-center_location[1] * lon * cos(lat))^2 < (r)^2
+        return (current_location[0]-center_location[0] * Location_module.lat)^2 + (current_location[1]-center_location[1] * Location_module.lon * math.cos((current_location[0]+center_location[0])/2))^2 < (r)^2
 
 
 
