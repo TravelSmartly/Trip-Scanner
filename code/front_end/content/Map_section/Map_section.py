@@ -1,8 +1,9 @@
 #from Section_intarface import Section_intarface
 from kivy.garden.mapview import MapView
+from kivy.uix.screenmanager import Screen
 
 
-class Map_section():
+class Map_section(Screen):
     def show_map(self):
         print("hi")
     def test_show_map_error(self): pass

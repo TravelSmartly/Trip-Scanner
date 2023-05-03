@@ -1,8 +1,52 @@
 #:import MapView kivy.garden.mapview.MapView
-
 <Places_Mapview>:
     lat: 33.75
     lon: -84.4
     zoom: 10
     on_zoom:
         self.zoom = 10 if self.zoom < 10 else self.zoom
+
+<Map_section>:
+    name: "map_section"
+    BoxLayout:
+        size: root.width, root.height
+        orientation: 'vertical'
+
+        Places_Mapview:
+        Nav_bar:
+    RoundedButton:
+        text: "?"
+#        background_color: (1,1,1,1)
+        pos_hint:{'center_x':0.9, 'center_y':.9}
+        size_hint: None, None
+        width:25
+        height:25
+
+<RoundedButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ""
+    canvas.before:
+        Color:
+            rgba: (0/255, 0/255, 0/255, 0.6)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [58]
+#
+#<Map_section>:
+#	name: "first"
+#
+#	BoxLayout:
+#		orientation: "vertical"
+#		size: root.width, root.height
+#
+#		Label:
+#			text: "First Screen"
+#			font_size: 32
+#
+#		Button:
+#			text: "Next Screen"
+#			font_size: 32
+#			on_release:
+#				app.root.current = "second"
+#				root.manager.transition.direction = "left"

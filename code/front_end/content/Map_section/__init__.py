@@ -1,2 +1,2 @@
 ### IMPORT ALL CLASSES FROM Map_section ###
-from . import Map_section
+from .Map_section import *

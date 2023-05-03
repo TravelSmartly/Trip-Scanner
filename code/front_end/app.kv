@@ -1,0 +1,34 @@
+#:include front_end/content/Map_section/Map_section.kv
+#:include front_end/content/Nav_bar/Nav_bar.kv
+WindowManager:
+	Map_section:
+
+
+#<Lol>:
+#	name: "first"
+#
+#	BoxLayout:
+#		orientation: "vertical"
+#		size: root.width, root.height
+#
+#		Label:
+#			text: "First Screen"
+#			font_size: 32
+#
+#		Button:
+#			text: "Next Screen"
+#			font_size: 32
+#			on_release:
+#				app.root.current = "second"
+#				root.manager.transition.direction = "left"
+
+
+#
+#<Places_section>
+#    name: "places_section"
+#    BoxLayout:
+#        size: root.width, root.height
+#        orientation: 'vertical'
+#        Layout:
+#            text: "Hi"
+#        Nav_bar:
