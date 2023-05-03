@@ -7,18 +7,17 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.app import MDApp
 import os
 from sys import path as sys_path
-from .content.Map_section.__init__ import *
-from .content.Nav_bar.Nav_bar import *
 import time
+
+from .content.Map_section.__init__ import *
+from .content.Places_section.__init__ import *
+from .content.Profile_section.__init__ import *
+from .content.Section_header.__init__ import *
+from .content.Nav_bar.Nav_bar import *
+
 
 # if __name__ != "__main__":
 #     exit()
-Map_section().show_map()
-class Lol(Screen):
-	pass
-
-class SecondWindow(Screen):
-	pass
 
 class WindowManager(ScreenManager):
 	pass
@@ -31,8 +30,9 @@ kv_path = os.path.join(os.path.dirname(__file__), 'app.kv')
 kv = Builder.load_file(kv_path)
 #kv = Builder.load_file("front_end/app.kv")
 
-class FrontApp(App):
+class FrontApp(MDApp):
     def build(self):
-        return kv
+        self.sm = WindowManager()
+        return self.sm
 
 FrontApp().run()

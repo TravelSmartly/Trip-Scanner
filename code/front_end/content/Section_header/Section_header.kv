@@ -1,0 +1,24 @@
+<Section_header>:
+    size_hint: 1, 0.1
+    BoxLayout:
+        orientation: "horizontal"
+        size: root.width, root.height
+        Section_header_return_button:
+        Label:
+            id: text_obj
+            color: 0,0,0,1
+            text: root.header_text
+        Section_header_right_button:
+
+
+<Section_header_return_button>:
+    text:"Hello"
+    on_release:
+        root.return_to_last_section()
+#        if app.root.current != my_section:/
+#            app.root.transition.direction = 'left'/
+#            app.root.current =
+
+
+<Section_header_right_button>:
+    text: ""

@@ -331,7 +331,7 @@ class MDBackdrop(MDFloatLayout):
     and defaults to `True`.
     """
 
-    header_text = StringProperty("Header")
+    header_text = StringProperty("Section_header")
     """
     Text of header.
 
@@ -339,7 +339,7 @@ class MDBackdrop(MDFloatLayout):
         :align: center
 
     :attr:`header_text` is an :class:`~kivy.properties.StringProperty`
-    and defaults to `'Header'`.
+    and defaults to `'Section_header'`.
     """
 
     close_icon = StringProperty("close")

@@ -1,6 +1,9 @@
-#from Section_intarface import Section_intarface
+from kivy.uix.widget import Widget
+from kivy.uix.screenmanager import Screen
+from kivymd.uix.list import MDList, OneLineListItem
+#from kivymd.uix.screenmanager import MDScreenManager
 
-class Profile_section():
+class Profile_section(Screen):
 
     profiles = ()
 

@@ -201,9 +201,9 @@ Standard content for the navigation bar
                         MDNavigationDrawerMenu:
 
                             MDNavigationDrawerHeader:
-                                title: "Header title"
+                                title: "Section_header title"
                                 title_color: "#4a4939"
-                                text: "Header text"
+                                text: "Section_header text"
                                 spacing: "4dp"
                                 padding: "12dp", 0, 0, "56dp"
 
@@ -310,9 +310,9 @@ Standard content for the navigation bar
                                 MDNavigationDrawer(
                                     MDNavigationDrawerMenu(
                                         MDNavigationDrawerHeader(
-                                            title="Header title",
+                                            title="Section_header title",
                                             title_color="#4a4939",
-                                            text="Header text",
+                                            text="Section_header text",
                                             spacing="4dp",
                                             padding=("12dp", 0, 0, "56dp"),
                                         ),
@@ -760,8 +760,8 @@ class MDNavigationDrawerHeader(MDBoxLayout):
             MDNavigationDrawerMenu:
 
                 MDNavigationDrawerHeader:
-                    title: "Header title"
-                    text: "Header text"
+                    title: "Section_header title"
+                    text: "Section_header text"
                     spacing: "4dp"
                     padding: "12dp", 0, 0, "56dp"
 
@@ -780,8 +780,8 @@ class MDNavigationDrawerHeader(MDBoxLayout):
             MDNavigationDrawerMenu:
 
                 MDNavigationDrawerHeader:
-                    title: "Header title"
-                    text: "Header text"
+                    title: "Section_header title"
+                    text: "Section_header text"
                     source: "logo.png"
                     spacing: "4dp"
                     padding: "12dp", 0, 0, "56dp"
@@ -906,8 +906,8 @@ class MDNavigationDrawerItem(OneLineAvatarIconListItem, FocusBehavior):
             MDNavigationDrawerMenu:
 
                 MDNavigationDrawerHeader:
-                    title: "Header title"
-                    text: "Header text"
+                    title: "Section_header title"
+                    text: "Section_header text"
                     spacing: "4dp"
                     padding: "12dp", 0, 0, "56dp"
 
