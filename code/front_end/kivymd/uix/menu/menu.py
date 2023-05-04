@@ -204,8 +204,8 @@ You can use the following parameters to customize the menu items:
 .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/menu-item-customize.png
     :align: center
 
-.. Header:
-Header
+.. Section_header:
+Section_header
 ------
 
 .. code-block:: python

@@ -1,0 +1,32 @@
+<CardItem@RelativeLayout>
+    size_hint_y: None
+    height: 20
+    BoxLayout:
+        orientation: "horizontal"
+        MDLabel:
+            text: "Hello"
+        MDRaisedButton:
+            text: "Hi"
+            md_bg_color: app.theme_cls.disabled_hint_text_color
+
+
+
+<Profile_section>
+    name: "profile_section"
+    BoxLayout:
+        size: root.width, root.height
+        orientation: 'vertical'
+        Section_header:
+            header_text: "Categories"
+        ScrollView:
+            MDList:
+                CardItem:
+                CardItem:
+                OneLineListItem:
+                    id: item2
+                    text: "Hello2"
+
+#        Button:
+#            text: "profile_section"
+#            background_color: 48/255, 20/255, 30/255
+        Nav_bar:

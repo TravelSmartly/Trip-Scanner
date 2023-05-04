@@ -1,7 +1,7 @@
 from kivy.uix.widget import Widget
-
+from kivy.uix.screenmanager import Screen
 ### Nav_bar jest przyciskami pod
-class Nav_bar(Widget):
+class Nav_bar(Screen):
     def __init__(self, **kwargs):
         super(Nav_bar, self).__init__(**kwargs)
         self.is_nav_bar_displayed = ""

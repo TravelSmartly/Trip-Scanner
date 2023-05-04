@@ -5,7 +5,19 @@
         size: root.width, root.height
         Button:
             text: "Maps"
+            on_release:
+                app.root.previous_object = app.root.current
+				app.root.current = "map_section"
+				app.root.transition.direction = "down"
         Button:
             text: "Places"
+            on_release:
+                app.root.previous_object = app.root.current
+				app.root.current = "places_section"
+				app.root.transition.direction = "down"
         Button:
             text: "Profile"
+            on_release:
+                app.root.previous_object = app.root.current
+				app.root.current = "profile_section"
+				app.root.transition.direction = "down"
