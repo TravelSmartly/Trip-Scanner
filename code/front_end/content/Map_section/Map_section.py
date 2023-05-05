@@ -4,9 +4,29 @@ from kivy.garden.mapview import MapView
 from kivy.garden.mapview import MapMarkerPopup
 from kivy.uix.screenmanager import Screen
 import os
-
 # from .Map_object import Map_object
 
+"""
+Map_section sluzy do wyswietlenia rodzialu mapu
+Map seciton 
+Rozdział mapy, tutaj wyświetlam wszystkie miejsca na mapie zgodnie z kategoriami, które starannie pobraliśmy z innych serwisów. 
+Drugie założenie jest takie, że to właśnie Map_section ma za zadanie pobrać dane o miejscach z adaptera i przekazać je do Mapview
+
+Klassa Map_section POWINNA dziedziczyc Screen, poniewaz jest w klasie
+WindowManager
+WindowManager, zarzadza Screen'ami
+"""
+class Map_section(Screen):
+    def show_map(self):
+        print("hi")
+    def test_show_map_error(self): pass
+    def test_show_objects(self): pass
+    def test_show_help(self): pass
+
+
+"""
+Map_object to jest marker miejsca, czyli ikona, ktora pokazuje, gdzie znajduje sie miejsce
+"""
 class Map_object(MapMarkerPopup):
     # cordX: int
     # cordY: int
@@ -30,15 +50,11 @@ class Map_object(MapMarkerPopup):
     def setCord(self): pass
     def setStatus(self): pass
 
-class Map_section(Screen):
-    def show_map(self):
-        print("hi")
-    def test_show_map_error(self): pass
-    def test_show_objects(self): pass
-    def test_show_help(self): pass
-
-
-# DG: w diagramach po prostu Mapview, zamieniłem na Places_Mapview, żeby nie wyglądało podobnie do MapView
+""" 
+DG: w diagramach jest po prostu Mapview, zamieniłem na Places_Mapview, żeby nie wyglądało podobnie do MapView
+Map view zarządza obiektem mapa. Zadaniem Mapview jest rozstawienie miejsc i lokalizacji użytkownika tam, 
+gdzie to powinno być. I  później odświeżać te dane.
+"""
 class Places_Mapview(MapView):
     min_max_lat_lon: list
     getting_place_timer = None

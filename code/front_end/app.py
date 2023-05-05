@@ -22,11 +22,12 @@ from .content.Section_header.__init__ import *
 from .content.Nav_bar.Nav_bar import *
 ###- END IMPORT NAJWAZNIESZYCH KOMPONENTOW -###
 
-# To jest najwazniejsza klassa, ktora odpowiada za przelaczenie rozdzialow
+
+## To jest najwazniejsza klassa, ktora odpowiada za przelaczenie rozdzialow
 class WindowManager(ScreenManager):
     previous_object = StringProperty("")
 
-# Absolute import app.kv
+## Absolute import app.kv
 kv_path = os.path.join(os.path.dirname(__file__), 'app.kv')
 kv = Builder.load_file(kv_path)
 #kv = Builder.load_file("front_end/app.kv")
@@ -38,7 +39,7 @@ def chk_conn(conn):
     except Exception as ex:
         return False
 
-# W tym miejscu zaczyna sie caly graficzny interfejsc
+## W tym miejscu zaczyna sie caly graficzny interfejsc
 class FrontApp(MDApp):
     connection = None
     cursor = None

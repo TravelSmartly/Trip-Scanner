@@ -3,6 +3,11 @@ from kivy.uix.screenmanager import Screen
 from kivymd.uix.list import MDList, OneLineListItem
 #from kivymd.uix.screenmanager import MDScreenManager
 
+
+"""
+Profile section służy do wyboru kategorii dla poszczególnych profilów.
+Równiez mozna wybrac sam profil
+"""
 class Profile_section(Screen):
     profiles = ()
 
@@ -41,13 +46,11 @@ class Set_profile_section():
 
     profiles = []
 
+    def show_profiles(self): pass
+    def change_profiel(self): pass
+    def remove_profile(self): pass
+    def add_profile(self): pass
 
+    def get_profiles(self): pass
 
-def show_profiles(self): pass
-def change_profiel(self): pass
-def remove_profile(self): pass
-def add_profile(self): pass
-
-def get_profiles(self): pass
-
-def set_profiles(self): pass
+    def set_profiles(self): pass
