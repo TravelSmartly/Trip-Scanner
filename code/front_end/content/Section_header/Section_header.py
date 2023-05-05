@@ -27,4 +27,9 @@ class Section_header_return_button(Button):
 
 
 class Section_header_right_button(Button):
+    profile_text=StringProperty("SetProfile")
+    pass
+
+# Przeniesc pozniej do Profile_section
+class Section_header_set_profile_button(Section_header_right_button):
     pass
