@@ -1,1 +1,1 @@
-from front_end.app import *
+from .app import *

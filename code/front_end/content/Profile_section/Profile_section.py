@@ -4,7 +4,6 @@ from kivymd.uix.list import MDList, OneLineListItem
 #from kivymd.uix.screenmanager import MDScreenManager
 
 class Profile_section(Screen):
-
     profiles = ()
 
     categories = ()
