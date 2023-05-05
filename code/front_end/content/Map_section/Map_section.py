@@ -79,7 +79,7 @@ class Places_Mapview(MapView):
 
     def get_place_in_fov(self,  *args):
         # Get reference to main app and the database cursor
-        print(self.get_bbox())
+        # print(self.get_bbox())
         min_lat, min_lon, max_lat, max_lon = self.get_bbox()
         app = App.get_running_app()
         # print(app)
@@ -102,7 +102,7 @@ class Places_Mapview(MapView):
             {"lat":33.77, "lon":-84.181030},
             {"lat":33.78, "lon":-84.181030}
         ]
-        print(places)
+        # print(places)
         for place in places:
             self.add_places(place)
 

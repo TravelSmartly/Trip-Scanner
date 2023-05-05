@@ -9,11 +9,18 @@ from kivy.properties import StringProperty
 class Section_header(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.show_set_profile_button()
 
     header_text = StringProperty("Hello")
     is_header_displayed = 0
     def hi(self):
         print("hello")
+
+    def show_set_profile_button(self):
+        right_button_obj = Section_header_right_button()
+        # print(self.ids.right_button)
+        # self.ids.right_button.add_widget(right_button_obj)
+
     def show_header(self):
         pass
 
@@ -27,9 +34,9 @@ class Section_header_return_button(Button):
 
 
 class Section_header_right_button(Button):
-    profile_text=StringProperty("SetProfile")
+    profile_text=StringProperty("")
     pass
 
 # Przeniesc pozniej do Profile_section
 class Section_header_set_profile_button(Section_header_right_button):
-    pass
+    profile_text="SetProfile"
