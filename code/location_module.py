@@ -11,11 +11,20 @@ class Location_module():
     #type hints
 
     @staticmethod
+    def on_gps_location(**kwargs)->None:
+        #kwargs["lat"]=10.0
+        #kwargs["lon"]=10.0
+        print(kwargs)
+
+    @staticmethod
     def get_current_location()->int:
-        if(works):
-            pass
-        else:
-            return -1 #if not work
+        try:
+            gps.configure(on_location=Location_module.on_gps_location)
+            gps.start(2000)
+            #coordinates = gps.
+            return 0
+        except Exception as e:
+            return -1
     def check_proximity(r,current_location,center_location)->bool:
         #zwraca true jesli current_location jest w srodku elipsy o srodku w punkcie center_location
         return (current_location[0]-center_location[0] * Location_module.lat)^2 + (current_location[1]-center_location[1] * Location_module.lon * math.cos((current_location[0]+center_location[0])/2))^2 < (r)^2
