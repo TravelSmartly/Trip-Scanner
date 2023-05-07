@@ -1,15 +1,27 @@
 #:import MapView kivy.garden.mapview.MapView
+#:import MapMarkerPopup kivy.garden.mapview.MapView
 <Places_Mapview>:
     lat: 33.75
     lon: -84.4
     zoom: 10
     on_zoom:
         self.zoom = 10 if self.zoom < 10 else self.zoom
+    on_lat:
+        self.start_getting_place_in_fov()
+        self.add_localization()
+    on_lon:
+        self.start_getting_place_in_fov()
+    MapMarkerPopup:
+        id: main_map_me
+        lat: 33.765
+        lon: -84.45
+        source: "front_end/content/Map_section/marker.png"
 
+## Odwoluje sie do klassy Map_section
 <Map_section>:
+    ## name jest niezbedny, aby przyciski mogli do tego obiektu sie odwolywac
     name: "map_section"
     BoxLayout:
-
         size: root.width, root.height
         orientation: 'vertical'
         Places_Mapview:

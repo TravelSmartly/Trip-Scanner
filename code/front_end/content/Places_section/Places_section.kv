@@ -1,3 +1,15 @@
+#<CardItem@RelativeLayout>
+#    size_hint_y: None
+#    height: 20
+#    BoxLayout:
+#        orientation: "horizontal"
+#        MDLabel:
+#            text: "Hello"
+#        MDRaisedButton:
+#            text: "Hi"
+#            md_bg_color: app.theme_cls.disabled_hint_text_color
+
+
 <Places_section>
     name: "places_section"
     BoxLayout:
@@ -5,6 +17,16 @@
         orientation: 'vertical'
         Section_header:
             header_text: "Places"
-        Label:
-            text: "places_section"
+
+        ## Tutaj jest kontent place_section
+        ScrollView:
+            MDList:
+                TwoLineListItem:
+                    id: item2
+                    text: "1. 100m"
+                    secondary_text: "Home"
+                TwoLineListItem:
+                    id: item2
+                    text: "2. 30m"
+                    secondary_text: "Biedronka"
         Nav_bar:
