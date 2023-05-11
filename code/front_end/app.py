@@ -6,6 +6,9 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import StringProperty
 from kivymd.app import MDApp
+from kivy.animation import Animation
+from kivymd.uix.expansionpanel import MDExpansionPanel
+
 ###- END IMPORT KIVY -###
 
 import os
@@ -20,12 +23,13 @@ from .content.Places_section.__init__ import *
 from .content.Profile_section.__init__ import *
 from .content.Section_header.__init__ import *
 from .content.Nav_bar.Nav_bar import *
+from .content.test.test import *
 ###- END IMPORT NAJWAZNIESZYCH KOMPONENTOW -###
 
 
 ## To jest najwazniejsza klassa, ktora odpowiada za przelaczenie rozdzialow
 class WindowManager(ScreenManager):
-    previous_object = StringProperty("")
+    previous_object = StringProperty("map_section")
 
 ## Absolute import app.kv
 kv_path = os.path.join(os.path.dirname(__file__), 'app.kv')
@@ -45,7 +49,7 @@ class FrontApp(MDApp):
     cursor = None
     def build(self):
         self.theme_cls.theme_style = "Light"
-        self.theme_cls.primary_palette = "Red"
+        self.theme_cls.primary_palette = "LightBlue"
 
         self.connection = sqlite3.connect("markets.db")
         if chk_conn(self.connection):
@@ -53,5 +57,7 @@ class FrontApp(MDApp):
 
         self.sm = WindowManager()
         return self.sm
+
+
 
 FrontApp().run()

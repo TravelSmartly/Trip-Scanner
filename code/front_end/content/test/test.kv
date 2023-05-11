@@ -1,0 +1,32 @@
+<Test>:
+    name: "test"
+    MDBoxLayout:
+        orientation: "horizontal"
+        MDBoxLayout:
+            pos_hint: {"x": 0.1}
+            MDTextButton:
+                text:"232"
+                md_bg_color: app.theme_cls.primary_color
+        MDBoxLayout:
+            id: box_layout_2
+            pos_hint: {"center_x": 0.5}
+            size_hint: 0.5, 1
+            Widget:
+                size_hint_x: None
+                width: 20
+            MDTextButton:
+                text:"Hello"
+                md_bg_color: app.theme_cls.primary_color
+                size_hint_x: None
+                width: box_layout_2.width * 0.7
+        MDBoxLayout:
+            orientation: "vertical"
+            id: box_layout_3
+#            Widget:
+#                size_hint_x: None
+#                width: box_layout_3.width * 0.7
+            MDTextButton:
+                text:"gerge"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {"x": 0.4, "y": 1}
+

@@ -8,21 +8,99 @@
         text: "Więcej"
 
 
+<MyContent>
+    orientation:"vertical"
+    size_hint: 1, None
+    height: self.minimum_height
+    Button:
+        text:"Hi"
+        size_hint: None, None
+    Button:
+        text:"Hi"
+        size_hint: None, None
+    Button:
+        text:"Hi"
+        size_hint: None, None
+
 <Profile_section>
-    name: "profile_section"
     BoxLayout:
         size: root.width, root.height
         orientation: 'vertical'
         Section_header:
             header_text: "Categories"
+            ## Tutaj Set_profile oznacza, ze chce wybrac Set_profile, zeby sie wyswietlil w Section_header
+            ## opcje te sa w r_but_options
+            r_but_option: "Set_profile"
 
         ScrollView:
-            MDList:
-                Profile_category:
-                Profile_category:
-                OneLineListItem:
-                    id: item2
-                    text: "Hello2"
+            GridLayout:
+                id: panel_container
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+#            MDList:
+#                id: container
+#                Profile_category:
+#                Profile_category:
+#                OneLineListItem:
+#                    id: item2
+#                    text: "Hello2"
+#                MDExpansionPanel:
+#                    panel_cls:
+#                        Label:
+#                            text:"Hi"
+#
+#                    content:
+#                        Button:
+#                            text:"hello"
+#                        Button:
+#                            text:"hello2"
+
+
+#                MDExpansionPanel:
+#                    icon: 'dots-vertical'
+#                    content:
+#                        BoxLayout:
+#                            orientation: 'vertical'
+#                            spacing: '10dp'
+#                            padding: '10dp'
+#
+#                            MDRaisedButton:
+#                                text: 'Opcja 1'
+#                                on_release: app.handle_option('Opcja 1')
+#
+#                            MDRaisedButton:
+#                                text: 'Opcja 2'
+#                                on_release: app.handle_option('Opcja 2')
+#
+#                    panel_cls: 'primary'
+#                    on_open: app.handle_panel_open()
+#                    on_close: app.handle_panel_close()
+#                MDBoxLayout:
+#                    id: button_container
+#                    orientation: "vertical"
+#                    size_hint_y: None
+#                    height: 100
+#                    md_bg_color: 0.2, 0.7, 0.3, 1.0
+#
+#                    MDRaisedButton:
+#                        md_bg_color: 0.2, 0.7, 0.3, 1.0
+#                        text:"hi"
+#
+#                    MDRaisedButton:
+#                        id: main_button
+#                        text: 'Główny przycisk'
+#                        on_release: app.animate_button_height()
+#
+#                    MDRaisedButton:
+#                        text: 'Przycisk 1'
+#                        opacity: 0
+#                        disabled: True
+#
+#                    MDRaisedButton:
+#                        text: 'Przycisk 2'
+#                        opacity: 0
+#                        disabled: True
 
 #        Button:
 #            text: "profile_section"
