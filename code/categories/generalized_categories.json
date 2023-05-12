@@ -1,0 +1,130 @@
+{
+  "Kategorie": [
+    {
+      "Kategoria": "Religijne",
+      "Podkategorie": [
+        "Abbey",
+        "Parochial School",
+        "Parsi Temple",
+        "Abundant Life Church",
+        "Pentecostal Church"
+      ]
+    },
+    {
+      "Kategoria": "Sztuka i Kultura",
+      "Podkategorie": [
+        "Aboriginal Art Gallery",
+        "Festival Hall",
+        "Film and Photograph Library",
+        "Acrobatic Diving Pool",
+        "Figurine Shop",
+        "Film Production Company",
+        "Performing Arts Group",
+        "Performing Arts Theater",
+        "Photographer",
+        "Photography Class"
+      ]
+    },
+    {
+      "Kategoria": "Edukacja",
+      "Podkategorie": [
+        "Parochial School",
+        "Part Time Daycare",
+        "Accounting School",
+        "Acupuncture School",
+        "Acupuncture School",
+        "Adult Education School",
+        "Fire Fighters Academy",
+        "Fisheries School",
+        "Flight School",
+        "Photography Class"
+      ]
+    },
+    {
+      "Kategoria": "Medycyna i Opieka Zdrowotna",
+      "Podkategorie": [
+        "Fertility Clinic",
+        "Abortion Clinic",
+        "Acupuncture Clinic",
+        "Pathologist",
+        "Fertility Physician",
+        "Pediatric Cardiologist",
+        "Pediatric Dentist",
+        "Pediatric Ophthalmologist",
+        "Periodontist",
+        "Pediatrician"
+      ]
+    },
+    {
+      "Kategoria": "Handel",
+      "Podkategorie": [
+        "Abrasives Supplier",
+        "Acrylic Store",
+        "Party Equipment Rental Service",
+        "Accounting Software Company",
+        "Pasta Shop",
+        "Fiberglass Supplier",
+        "Patent Attorney",
+        "Furniture Supplier",
+        "Patisserie",
+        "Pawn Shop",
+        "Payphone",
+        "Perfume Store",
+        "Firewood Supplier",
+        "Pest Control Service",
+        "Pet Adoption Service",
+        "Pet Store",
+        "Pharmacy",
+        "Phone Repair Service"
+      ]
+    },
+    {
+      "Kategoria": "Transport",
+      "Podkategorie": [
+        "Ferry Service",
+        "Acura Dealer",
+        "Fire Department Equipment Supplier",
+        "Fiat Dealer",
+        "Fire Protection Equipment Supplier",
+        "Air Taxi"
+      ]
+    },
+    {
+      "Kategoria": "Finanse i Usługi Prawne",
+      "Podkategorie": [
+        "Accountant",
+        "Accounting Firm",
+        "Administrative Attorney",
+        "Finance Broker",
+        "Patent Attorney",
+        "Financial Audit",
+        "Patent Office",
+        "Financial Planner",
+        "Payroll Service",
+        "Financial Institution",
+        "Personal Injury Attorney"
+      ]
+    },
+    {
+      "Kategoria": "Sport i Rekreacja",
+      "Podkategorie": [
+        "Fencing Salon",
+        "Fencing School",
+        "Adventure Sports",
+        "Fireworks Store",
+        "Fitness Equipment Wholesaler",
+        "Aikido Club",
+        "Floating Market",
+        "Airsoft Supply Store",
+        "Florist",
+        "Golf Course"
+      ]
+    },
+    {
+      "Kategoria": "Technologia",
+      "Podkategorie": [
+        "Acoustical Consultant"
+      ]
+    }
+  ]
+}

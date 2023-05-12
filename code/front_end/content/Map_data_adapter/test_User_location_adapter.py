@@ -1,5 +1,4 @@
-import pytest
-from User_location_adapter import User_location_adapter
+from code.front_end.content.Map_data_adapter.User_location_adapter import User_location_adapter
 
 def test_init():
     loc_module = Location_module()

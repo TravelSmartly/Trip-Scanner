@@ -1,0 +1,16 @@
+{
+  "profiles": [
+    {
+      "text": "profile0",
+      "p_id": 0,
+      "selected": 1,
+      "categories": [0, 2, 3, 4]
+    },
+    {
+      "text": "profile1",
+      "p_id": 0,
+      "selected": 1,
+      "categories": [0, 1]
+    }
+  ]
+}

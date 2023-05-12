@@ -1,5 +1,4 @@
-import pytest
-from Profile_adapter import Profile_adapter
+from code.front_end.content.Profile_adapter.Profile_adapter import Profile_adapter
 
 
 def test_init():

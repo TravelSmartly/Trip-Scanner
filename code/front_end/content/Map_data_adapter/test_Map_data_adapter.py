@@ -1,5 +1,4 @@
-import pytest
-from Map_data_adapter import Map_data_adapter
+from code.front_end.content.Map_data_adapter.Map_data_adapter import Map_data_adapter
 
 
 def test_init():

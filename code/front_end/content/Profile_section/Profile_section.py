@@ -15,16 +15,16 @@ from kivymd.icon_definitions import md_icons
 
 
 
-
 class MyContent(BoxLayout):
     pass
 
 
 class Profile_category(OneLineAvatarIconListItem):
 
-    def __init__(self, category_id, **kwargs):
+    def __init__(self, category_id, active, **kwargs):
         super().__init__(**kwargs)
         self.category_id = category_id
+        self.active
 
     category_id = NumericProperty(0)
 
@@ -74,38 +74,53 @@ class Profile_section(Screen):
         super(Profile_section, self).__init__(**kwargs)
         Clock.schedule_once(self.show_content)
 
-    profiles = ()
+    profiles = [
+        {
+            "text":"profile0",
+            "p_id": 0,
+            "selected": 1,
+            "categories": [0, 2, 3, 4]
+        },
+        {
+            "text": "profile1",
+            "p_id": 0,
+            "selected": 1,
+            "categories": [0, 1]
+        }
+    ]
+
     categories = (
         {
             "id": 0,
+            "text": "Option0",
+
+            "selected": 1
+        },
+        {
+            "id": 1,
             "text": "Option1",
             "selected": 1
         },
         {
-        "id": 1,
-        "text": "Option1",
-        "selected": 1
-        },
-        {
             "id": 2,
-            "text": "Option1",
+            "text": "Option2",
             "selected": 1
         },
         {
             "id": 3,
-            "text": "Option1",
+            "text": "Option3",
             "selected": 1
         },
         {
             "id": 4,
-            "text": "Option1",
+            "text": "Option4",
             "selected": 1
         },
         {
-            "id": 4,
-            "text": "Option1",
+            "id": 5,
+            "text": "Option5",
             "selected": 1
-        },
+        }
     )
 
     sub_categories = ()
@@ -127,7 +142,7 @@ class Profile_section(Screen):
         icons = list(md_icons.keys())
         first_cat = None
         for i in range(self.curr_i, self.curr_i_end):
-            category = Profile_category(text=f"Item {self.categories[i]}", icon=icons[i], category_id=i)
+            category = Profile_category(text=f"Item {self.categories[i]}", active=True, icon=icons[i], category_id=i)
             if i == self.curr_i:
                 first_cat = category
             self.ids.panel_container.add_widget(category)
@@ -137,8 +152,8 @@ class Profile_section(Screen):
     def hi(self):
         print("HI")
 
-    def scroll_event(self, x, y, test):
-        print(x, y, test)
+    def scroll_event(self, x, y):
+        # print(x, y)
         if (y < 0.05):
             try:
                 self.getting_cat_timer.cancel()
