@@ -24,7 +24,7 @@ Usage
     from kivy.metrics import dp
 
     from kivymd.app import MDApp
-    from kivymd.uix.menu import MDDropdownMenu
+    from kivymd.uix.menu_fd import MDDropdownMenu
 
     KV = '''
     MDScreen:
@@ -77,7 +77,7 @@ You can combine the following parameters:
 - trailing_icon
 - trailing_text
 
-...to create the necessary types of menu items:
+...to create the necessary types of menu_fd items:
 
 .. code-block:: python
 
@@ -179,7 +179,7 @@ You can combine the following parameters:
 .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/menu-item-text.png
     :align: center
 
-You can use the following parameters to customize the menu items:
+You can use the following parameters to customize the menu_fd items:
 -----------------------------------------------------------------
 
 - text_color
@@ -214,7 +214,7 @@ Section_header
     from kivy.metrics import dp
 
     from kivymd.app import MDApp
-    from kivymd.uix.menu import MDDropdownMenu
+    from kivymd.uix.menu_fd import MDDropdownMenu
     from kivymd.uix.boxlayout import MDBoxLayout
 
     KV = '''
@@ -239,12 +239,12 @@ Section_header
             id: button
             text: "PRESS ME"
             pos_hint: {"center_x": .5, "center_y": .5}
-            on_release: app.menu.open()
+            on_release: app.menu_fd.open()
     '''
 
 
     class MenuHeader(MDBoxLayout):
-        '''An instance of the class that will be added to the menu header.'''
+        '''An instance of the class that will be added to the menu_fd header.'''
 
 
     class Test(MDApp):
@@ -257,7 +257,7 @@ Section_header
                     "on_release": lambda x=f"Item {i}": self.menu_callback(x),
                 } for i in range(5)
             ]
-            self.menu = MDDropdownMenu(
+            self.menu_fd = MDDropdownMenu(
                 header_cls=MenuHeader(),
                 caller=self.screen.ids.button,
                 items=menu_items,
@@ -292,7 +292,7 @@ for both the righthand and lefthand menus.
     from kivy.metrics import dp
 
     from kivymd.app import MDApp
-    from kivymd.uix.menu import MDDropdownMenu
+    from kivymd.uix.menu_fd import MDDropdownMenu
     from kivymd.uix.snackbar import Snackbar
 
     KV = '''
@@ -301,7 +301,7 @@ for both the righthand and lefthand menus.
 
         MDTopAppBar:
             title: "MDTopAppBar"
-            left_action_items: [["menu", lambda x: app.callback(x)]]
+            left_action_items: [["menu_fd", lambda x: app.callback(x)]]
             right_action_items: [["dots-vertical", lambda x: app.callback(x)]]
 
         MDLabel:
@@ -320,15 +320,15 @@ for both the righthand and lefthand menus.
                     "on_release": lambda x=f"Item {i}": self.menu_callback(x),
                 } for i in range(5)
             ]
-            self.menu = MDDropdownMenu(items=menu_items)
+            self.menu_fd = MDDropdownMenu(items=menu_items)
             return Builder.load_string(KV)
 
         def callback(self, button):
-            self.menu.caller = button
-            self.menu.open()
+            self.menu_fd.caller = button
+            self.menu_fd.open()
 
         def menu_callback(self, text_item):
-            self.menu.dismiss()
+            self.menu_fd.dismiss()
             Snackbar(text=text_item).open()
 
 
@@ -354,7 +354,7 @@ Bottom position
     from kivy.metrics import dp
 
     from kivymd.app import MDApp
-    from kivymd.uix.menu import MDDropdownMenu
+    from kivymd.uix.menu_fd import MDDropdownMenu
 
     KV = '''
     MDScreen:
@@ -365,7 +365,7 @@ Bottom position
             size_hint_x: None
             width: "200dp"
             hint_text: "Password"
-            on_focus: if self.focus: app.menu.open()
+            on_focus: if self.focus: app.menu_fd.open()
     '''
 
 
@@ -378,7 +378,7 @@ Bottom position
                     "text": f"Item {i}",
                     "on_release": lambda x=f"Item {i}": self.set_item(x),
                 } for i in range(5)]
-            self.menu = MDDropdownMenu(
+            self.menu_fd = MDDropdownMenu(
                 caller=self.screen.ids.field,
                 items=menu_items,
                 position="bottom",
@@ -386,7 +386,7 @@ Bottom position
 
         def set_item(self, text_item):
             self.screen.ids.field.text = text_item
-            self.menu.dismiss()
+            self.menu_fd.dismiss()
 
         def build(self):
             self.theme_cls.primary_palette = "Orange"
@@ -408,7 +408,7 @@ Center position
     from kivy.metrics import dp
 
     from kivymd.app import MDApp
-    from kivymd.uix.menu import MDDropdownMenu
+    from kivymd.uix.menu_fd import MDDropdownMenu
 
     KV = '''
     MDScreen:
@@ -417,7 +417,7 @@ Center position
             id: drop_item
             pos_hint: {'center_x': .5, 'center_y': .5}
             text: 'Item 0'
-            on_release: app.menu.open()
+            on_release: app.menu_fd.open()
     '''
 
 
@@ -431,16 +431,16 @@ Center position
                     "on_release": lambda x=f"Item {i}": self.set_item(x),
                 } for i in range(5)
             ]
-            self.menu = MDDropdownMenu(
+            self.menu_fd = MDDropdownMenu(
                 caller=self.screen.ids.drop_item,
                 items=menu_items,
                 position="center",
             )
-            self.menu.bind()
+            self.menu_fd.bind()
 
         def set_item(self, text_item):
             self.screen.ids.drop_item.set_item(text_item)
-            self.menu.dismiss()
+            self.menu_fd.dismiss()
 
         def build(self):
             self.theme_cls.primary_palette = "Orange"
@@ -468,7 +468,7 @@ API break
     from kivymd.app import MDApp
     from kivymd.uix.boxlayout import MDBoxLayout
     from kivymd.uix.list import IRightBodyTouch, OneLineAvatarIconListItem
-    from kivymd.uix.menu import MDDropdownMenu
+    from kivymd.uix.menu_fd import MDDropdownMenu
 
     KV = '''
     <RightContentCls>
@@ -505,7 +505,7 @@ API break
             id: button
             text: "PRESS ME"
             pos_hint: {"center_x": .5, "center_y": .5}
-            on_release: app.menu.open()
+            on_release: app.menu_fd.open()
     '''
 
 
@@ -535,7 +535,7 @@ API break
                     "on_release": lambda x=f"Item {i}": self.menu_callback(x),
                 } for i in range(5)
             ]
-            self.menu = MDDropdownMenu(
+            self.menu_fd = MDDropdownMenu(
                 caller=self.screen.ids.button,
                 items=menu_items,
                 bg_color="#bdc6b0",
@@ -560,7 +560,7 @@ API break
     from kivy.metrics import dp
 
     from kivymd.app import MDApp
-    from kivymd.uix.menu import MDDropdownMenu
+    from kivymd.uix.menu_fd import MDDropdownMenu
 
     KV = '''
     MDScreen:
@@ -569,7 +569,7 @@ API break
             id: button
             text: "PRESS ME"
             pos_hint: {"center_x": .5, "center_y": .5}
-            on_release: app.menu.open()
+            on_release: app.menu_fd.open()
     '''
 
 
@@ -588,7 +588,7 @@ API break
                     "on_release": lambda x=f"Item {i}": self.menu_callback(x),
                 } for i in range(5)
             ]
-            self.menu = MDDropdownMenu(
+            self.menu_fd = MDDropdownMenu(
                 md_bg_color="#bdc6b0",
                 caller=self.screen.ids.button,
                 items=menu_items,
@@ -645,7 +645,7 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.list import IRightBody
 
 with open(
-    os.path.join(uix_path, "menu", "menu.kv"), encoding="utf-8"
+    os.path.join(uix_path, "menu_fd", "menu.kv"), encoding="utf-8"
 ) as kv_file:
     Builder.load_string(kv_file.read())
 
@@ -666,7 +666,7 @@ class MDMenu(RecycleView):
 
 class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
     """
-    Base class for menu items.
+    Base class for menu_fd items.
 
     .. versionadded:: 1.2.0
 
@@ -677,7 +677,7 @@ class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
 
     text = StringProperty()
     """
-    The text of the menu item.
+    The text of the menu_fd item.
 
     :attr:`text` is a :class:`~kivy.properties.StringProperty`
     and defaults to `''`.
@@ -685,7 +685,7 @@ class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
 
     leading_icon = StringProperty()
     """
-    The leading icon of the menu item.
+    The leading icon of the menu_fd item.
 
     :attr:`leading_icon` is a :class:`~kivy.properties.StringProperty`
     and defaults to `''`.
@@ -693,7 +693,7 @@ class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
 
     trailing_icon = StringProperty()
     """
-    The trailing icon of the menu item.
+    The trailing icon of the menu_fd item.
 
     :attr:`trailing_icon` is a :class:`~kivy.properties.StringProperty`
     and defaults to `''`.
@@ -701,7 +701,7 @@ class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
 
     trailing_text = StringProperty()
     """
-    The trailing text of the menu item.
+    The trailing text of the menu_fd item.
 
     :attr:`trailing_text` is a :class:`~kivy.properties.StringProperty`
     and defaults to `''`.
@@ -710,7 +710,7 @@ class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
     text_color = ColorProperty(None)
     """
     The color of the text in (r, g, b, a) or string format for the text of the
-    menu item.
+    menu_fd item.
 
     :attr:`text_color` is a :class:`~kivy.properties.ColorProperty`
     and defaults to `None`.
@@ -719,7 +719,7 @@ class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
     leading_icon_color = ColorProperty(None)
     """
     The color of the text in (r, g, b, a) or string format for the leading icon
-    of the menu item.
+    of the menu_fd item.
 
     :attr:`leading_icon_color` is a :class:`~kivy.properties.ColorProperty`
     and defaults to `None`.
@@ -728,7 +728,7 @@ class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
     trailing_icon_color = ColorProperty(None)
     """
     The color of the text in (r, g, b, a) or string format for the trailing
-    icon of the menu item.
+    icon of the menu_fd item.
 
     :attr:`leading_icon_color` is a :class:`~kivy.properties.ColorProperty`
     and defaults to `None`.
@@ -737,7 +737,7 @@ class BaseDropdownItem(RectangularRippleBehavior, MDBoxLayout):
     trailing_text_color = ColorProperty(None)
     """
     The color of the text in (r, g, b, a) or string format for the trailing
-    text of the menu item.
+    text of the menu_fd item.
 
     :attr:`leading_icon_color` is a :class:`~kivy.properties.ColorProperty`
     and defaults to `None`.
@@ -789,7 +789,7 @@ class MDTrailingIconTextContainer(BaseDropdownItem, IRightBody, MDBoxLayout):
 
 class MDDropdownTextItem(BaseDropdownItem):
     """
-    Implements a menu item with text without leading and trailing icons.
+    Implements a menu_fd item with text without leading and trailing icons.
 
     .. versionadded:: 1.2.0
 
@@ -799,7 +799,7 @@ class MDDropdownTextItem(BaseDropdownItem):
 
 class MDDropdownLeadingIconItem(BaseDropdownItem):
     """
-    Implements a menu item with text, leading icon and without trailing icon.
+    Implements a menu_fd item with text, leading icon and without trailing icon.
 
     .. versionadded:: 1.2.0
 
@@ -809,7 +809,7 @@ class MDDropdownLeadingIconItem(BaseDropdownItem):
 
 class MDDropdownTrailingIconItem(BaseDropdownItem):
     """
-    Implements a menu item with text, without leading icon and with trailing
+    Implements a menu_fd item with text, without leading icon and with trailing
     icon.
 
     .. versionadded:: 1.2.0
@@ -820,7 +820,7 @@ class MDDropdownTrailingIconItem(BaseDropdownItem):
 
 class MDDropdownTrailingIconTextItem(BaseDropdownItem):
     """
-    Implements a menu item with text, without leading icon, with trailing
+    Implements a menu_fd item with text, without leading icon, with trailing
     icon and with trailing text.
 
     .. versionadded:: 1.2.0
@@ -831,7 +831,7 @@ class MDDropdownTrailingIconTextItem(BaseDropdownItem):
 
 class MDDropdownTrailingTextItem(BaseDropdownItem):
     """
-    Implements a menu item with text, without leading icon, without trailing
+    Implements a menu_fd item with text, without leading icon, without trailing
     icon and with trailing text.
 
     .. versionadded:: 1.2.0
@@ -842,7 +842,7 @@ class MDDropdownTrailingTextItem(BaseDropdownItem):
 
 class MDDropdownLeadingIconTrailingTextItem(BaseDropdownItem):
     """
-    Implements a menu item with text, leading icon and with trailing text.
+    Implements a menu_fd item with text, leading icon and with trailing text.
 
     .. versionadded:: 1.2.0
 
@@ -852,7 +852,7 @@ class MDDropdownLeadingIconTrailingTextItem(BaseDropdownItem):
 
 class MDDropdownLeadingTrailingIconTextItem(BaseDropdownItem):
     """
-    Implements a menu item with text, with leading icon, with trailing
+    Implements a menu_fd item with text, with leading icon, with trailing
     icon and with trailing text.
 
     .. versionadded:: 1.2.0
@@ -863,7 +863,7 @@ class MDDropdownLeadingTrailingIconTextItem(BaseDropdownItem):
 
 class MDDropdownLeadingTrailingIconItem(BaseDropdownItem):
     """
-    Implements a menu item with text, with leading icon, with trailing icon.
+    Implements a menu_fd item with text, with leading icon, with trailing icon.
 
     .. versionadded:: 1.2.0
 
@@ -873,7 +873,7 @@ class MDDropdownLeadingTrailingIconItem(BaseDropdownItem):
 
 class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
     """
-    Dropdown menu class.
+    Dropdown menu_fd class.
 
     For more information, see in the
     :class:`~kivymd.uix.behaviors.MotionDropDownMenuBehavior` and
@@ -883,13 +883,13 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     :Events:
         `on_release`
-            The method that will be called when you click menu items.
+            The method that will be called when you click menu_fd items.
     """
 
     header_cls = ObjectProperty()
     """
     An instance of the class (`Kivy` or `KivyMD` widget) that will be added
-    to the menu header.
+    to the menu_fd header.
 
     .. versionadded:: 0.104.2
 
@@ -901,7 +901,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     items = ListProperty()
     """
-    List of dictionaries with properties for menu items.
+    List of dictionaries with properties for menu_fd items.
 
     :attr:`items` is a :class:`~kivy.properties.ListProperty`
     and defaults to `[]`.
@@ -910,7 +910,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
     width_mult = NumericProperty(1, deprecated=True)
     """
     This number multiplied by the standard increment ('56dp' on mobile, '64dp'
-    on desktop), determines the width of the menu items.
+    on desktop), determines the width of the menu_fd items.
 
     If the resulting number were to be too big for the application Window,
     the multiplier will be adjusted for the biggest possible one.
@@ -921,7 +921,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
         .. code-block:: python
 
-            self.menu = MDDropdownMenu(
+            self.menu_fd = MDDropdownMenu(
                 width=dp(240),
                 ...,
             )
@@ -934,7 +934,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     max_height = NumericProperty()
     """
-    The menu will grow no bigger than this number. Set to 0 for no limit.
+    The menu_fd will grow no bigger than this number. Set to 0 for no limit.
 
     :attr:`max_height` is a :class:`~kivy.properties.NumericProperty`
     and defaults to `0`.
@@ -942,11 +942,11 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     border_margin = NumericProperty("4dp")
     """
-    Margin between Window border and menu.
+    Margin between Window border and menu_fd.
 
     .. code-block:: python
 
-        self.menu = MDDropdownMenu(
+        self.menu_fd = MDDropdownMenu(
             border_margin=dp(24),
             ...,
         )
@@ -960,12 +960,12 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     ver_growth = OptionProperty(None, allownone=True, options=["up", "down"])
     """
-    Where the menu will grow vertically to when opening. Set to `None` to let
+    Where the menu_fd will grow vertically to when opening. Set to `None` to let
     the widget pick for you. Available options are: `'up'`, `'down'`.
 
     .. code-block:: python
 
-        self.menu = MDDropdownMenu(
+        self.menu_fd = MDDropdownMenu(
             ver_growth="up",
             ...,
         )
@@ -975,7 +975,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     .. code-block:: python
 
-        self.menu = MDDropdownMenu(
+        self.menu_fd = MDDropdownMenu(
             ver_growth="down",
             ...,
         )
@@ -989,12 +989,12 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     hor_growth = OptionProperty(None, allownone=True, options=["left", "right"])
     """
-    Where the menu will grow horizontally to when opening. Set to `None` to let
+    Where the menu_fd will grow horizontally to when opening. Set to `None` to let
     the widget pick for you. Available options are: `'left'`, `'right'`.
 
     .. code-block:: python
 
-        self.menu = MDDropdownMenu(
+        self.menu_fd = MDDropdownMenu(
             hor_growth="left",
             ...,
         )
@@ -1004,7 +1004,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     .. code-block:: python
 
-        self.menu = MDDropdownMenu(
+        self.menu_fd = MDDropdownMenu(
             hor_growth="right",
             ...,
         )
@@ -1018,7 +1018,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     background_color = ColorProperty(None, deprecated=True)
     """
-    Color in (r, g, b, a) or string format of the background of the menu.
+    Color in (r, g, b, a) or string format of the background of the menu_fd.
 
     .. deprecated:: 1.2.0
 
@@ -1030,7 +1030,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     caller = ObjectProperty()
     """
-    The widget object that calls the menu window.
+    The widget object that calls the menu_fd window.
 
     :attr:`caller` is a :class:`~kivy.properties.ObjectProperty`
     and defaults to `None`.
@@ -1111,7 +1111,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     def adjust_width(self) -> None:
         """
-        Adjust the width of the menu if the width of the menu goes beyond
+        Adjust the width of the menu_fd if the width of the menu_fd goes beyond
         the boundaries of the parent window from  starting point.
         """
 
@@ -1134,7 +1134,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     def check_ver_growth(self) -> None:
         """
-        Checks whether the height of the lower/upper borders of the menu
+        Checks whether the height of the lower/upper borders of the menu_fd
         exceeds the limits borders of the parent window.
         """
 
@@ -1146,7 +1146,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     def check_hor_growth(self) -> None:
         """
-        Checks whether the width of the left/right menu borders exceeds the
+        Checks whether the width of the left/right menu_fd borders exceeds the
         boundaries of the parent window.
         """
 
@@ -1175,7 +1175,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     def set_target_height(self) -> None:
         """
-        Set the target height of the menu depending on the size of each item.
+        Set the target height of the menu_fd depending on the size of each item.
         """
 
         self.target_height = 0
@@ -1203,7 +1203,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
                 )
 
     def set_menu_properties(self, *args) -> None:
-        """Sets the size and position for the menu window."""
+        """Sets the size and position for the menu_fd window."""
 
         if self.caller:
             self.menu.data = self._items
@@ -1260,7 +1260,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     def adjust_position(self) -> str:
         """
-        Return value 'auto' for the menu position if the menu position is out
+        Return value 'auto' for the menu_fd position if the menu_fd position is out
         of screen.
         """
 
@@ -1296,7 +1296,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
         return position
 
     def open(self) -> None:
-        """Animate the opening of a menu window."""
+        """Animate the opening of a menu_fd window."""
 
         self.set_menu_properties()
         Window.add_widget(self)
@@ -1315,7 +1315,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
     def on_items(self, instance, value: list) -> None:
         """
-        The method sets the class that will be used to create the menu item.
+        The method sets the class that will be used to create the menu_fd item.
         """
 
         items = []
@@ -1408,7 +1408,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
         return True
 
     def dismiss(self, *args) -> None:
-        """Closes the menu."""
+        """Closes the menu_fd."""
 
         self.on_dismiss()
 
@@ -1418,7 +1418,7 @@ class MDDropdownMenu(MotionDropDownMenuBehavior, StencilBehavior, MDCard):
 
 
 if __name__ == "__main__":
-    # To test the correct menu position.
+    # To test the correct menu_fd position.
     from kivy.lang import Builder
     from kivy.metrics import dp
 

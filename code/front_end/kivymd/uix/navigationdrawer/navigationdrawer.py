@@ -66,7 +66,7 @@ A simple example
                                 md_bg_color: "#e7e4c0"
                                 specific_text_color: "#4a4939"
                                 left_action_items:
-                                    [['menu', lambda x: nav_drawer.set_state("open")]]
+                                    [['menu_fd', lambda x: nav_drawer.set_state("open")]]
 
 
                     MDNavigationDrawer:
@@ -120,7 +120,7 @@ A simple example
                                             md_bg_color="#e7e4c0",
                                             specific_text_color="#4a4939",
                                             left_action_items=[
-                                                ['menu', lambda x: self.nav_drawer_open()]
+                                                ['menu_fd', lambda x: self.nav_drawer_open()]
                                             ],
                                         )
 
@@ -192,7 +192,7 @@ Standard content for the navigation bar
                                 pos_hint: {"top": 1}
                                 md_bg_color: "#e7e4c0"
                                 specific_text_color: "#4a4939"
-                                left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                                left_action_items: [["menu_fd", lambda x: nav_drawer.set_state("open")]]
 
                     MDNavigationDrawer:
                         id: nav_drawer
@@ -301,7 +301,7 @@ Standard content for the navigation bar
                                             md_bg_color="#e7e4c0",
                                             specific_text_color="#4a4939",
                                             left_action_items=[
-                                                ['menu', lambda x: self.nav_drawer_open()]
+                                                ['menu_fd', lambda x: self.nav_drawer_open()]
                                             ],
                                         )
 
@@ -398,7 +398,7 @@ Switching screens in the ``ScreenManager`` and using the common ``MDTopAppBar``
                     pos_hint: {"top": 1}
                     elevation: 4
                     title: "MDNavigationDrawer"
-                    left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    left_action_items: [["menu_fd", lambda x: nav_drawer.set_state("open")]]
 
                 MDNavigationLayout:
 
@@ -467,7 +467,7 @@ Switching screens in the ``ScreenManager`` and using the common ``MDTopAppBar``
                                 pos_hint={"top": 1},
                                 elevation=4,
                                 title="MDNavigationDrawer",
-                                left_action_items=[["menu", lambda x: self.nav_drawer_open()]],
+                                left_action_items=[["menu_fd", lambda x: self.nav_drawer_open()]],
                             ),
                             MDNavigationLayout(
                                 MDScreenManager(
@@ -658,7 +658,7 @@ class MDNavigationLayout(MDFloatLayout):
 
 class MDNavigationDrawerLabel(MDBoxLayout):
     """
-    Implements a label for a menu for :class:`~MDNavigationDrawer` class.
+    Implements a label for a menu_fd for :class:`~MDNavigationDrawer` class.
 
     For more information, see in the :class:`~kivymd.uix.boxlayout.MDBoxLayout`
     class documentation.
@@ -701,7 +701,7 @@ class MDNavigationDrawerLabel(MDBoxLayout):
 
 class MDNavigationDrawerDivider(MDBoxLayout):
     """
-    Implements a divider for a menu for :class:`~MDNavigationDrawer` class.
+    Implements a divider for a menu_fd for :class:`~MDNavigationDrawer` class.
 
     For more information, see in the :class:`~kivymd.uix.boxlayout.MDBoxLayout`
     class documentation.
@@ -746,7 +746,7 @@ class MDNavigationDrawerDivider(MDBoxLayout):
 
 class MDNavigationDrawerHeader(MDBoxLayout):
     """
-    Implements a header for a menu for :class:`~MDNavigationDrawer` class.
+    Implements a header for a menu_fd for :class:`~MDNavigationDrawer` class.
 
     For more information, see in the :class:`~kivymd.uix.boxlayout.MDBoxLayout`
     class documentation.
@@ -890,7 +890,7 @@ class MDNavigationDrawerHeader(MDBoxLayout):
 
 class MDNavigationDrawerItem(OneLineAvatarIconListItem, FocusBehavior):
     """
-    Implements an item for the :class:`~MDNavigationDrawer` menu list.
+    Implements an item for the :class:`~MDNavigationDrawer` menu_fd list.
 
     For more information, see in the
     :class:`~kivymd.uix.list.OneLineAvatarIconListItem` and
@@ -977,7 +977,7 @@ class MDNavigationDrawerItem(OneLineAvatarIconListItem, FocusBehavior):
 
 class MDNavigationDrawerMenu(MDScrollView):
     """
-    Implements a scrollable list for menu items of the
+    Implements a scrollable list for menu_fd items of the
     :class:`~MDNavigationDrawer` class.
 
     For more information, see in the
@@ -991,7 +991,7 @@ class MDNavigationDrawerMenu(MDScrollView):
 
             MDNavigationDrawerMenu:
 
-                # Your menu items.
+                # Your menu_fd items.
                 ...
     """
 

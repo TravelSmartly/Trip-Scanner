@@ -9,6 +9,25 @@
         root_text: root.text
 
 
+
+MDScrollView:
+    MDList:
+        id: scroll
+
+<MyContent>
+    orientation:"vertical"
+    size_hint: 1, None
+    height: self.minimum_height
+    Button:
+        text:"Hi"
+        size_hint: None, None
+    Button:
+        text:"Hi"
+        size_hint: None, None
+    Button:
+        text:"Hi"
+        size_hint: None, None
+
 <Profile_section>
     BoxLayout:
         size: root.width, root.height
@@ -20,21 +39,11 @@
             r_but_option: "Set_profile"
 
         ScrollView:
-            id: my_scroll_view
-            bar_width: 4
-#            on_touch_move:
-            smooth_scroll_end: 6
-#            scroll_timeout:40
-            on_scroll_move:
-                root.scroll_event(self.scroll_x, self.scroll_y, self.viewport_size)
-
             GridLayout:
                 id: panel_container
                 cols: 1
                 size_hint_y: None
                 height: self.minimum_height
-
-
 #            MDList:
 #                id: container
 #                Profile_category:

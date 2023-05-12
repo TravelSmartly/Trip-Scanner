@@ -999,7 +999,7 @@ class MDDatePicker(BaseDialogPicker):
         self.ids._year_layout.disabled = True
         self.ids.triangle.disabled = False
         self._select_year_dialog_open = False
-        self.ids.triangle.icon = "menu-down"
+        self.ids.triangle.icon = "menu_fd-down"
 
         Animation(opacity=1, d=0.15).start(self.ids.chevron_left)
         Animation(opacity=1, d=0.15).start(self.ids.chevron_right)
@@ -1025,7 +1025,7 @@ class MDDatePicker(BaseDialogPicker):
         anim = Animation(_scale_year_layout=1, d=0.15)
         anim.bind(on_complete=disabled_chevron_buttons)
         anim.start(self)
-        self.ids.triangle.icon = "menu-up"
+        self.ids.triangle.icon = "menu_fd-up"
         self.generate_list_widgets_years()
         self.set_position_to_current_year()
         if self.min_year <= self.year < self.max_year:

@@ -728,7 +728,7 @@ class MDBottomSheet(MDBoxLayout, CommonElevationBehavior, TouchBehavior):
 
     auto_positioning = BooleanProperty(True)
     """
-    Close or expand the bottom menu automatically when you release the
+    Close or expand the bottom menu_fd automatically when you release the
     drag handle.
 
     .. versionadded:: 1.2.0
@@ -881,8 +881,8 @@ class MDBottomSheet(MDBoxLayout, CommonElevationBehavior, TouchBehavior):
     _diff_between_touch_height_sheet = 0
     _alpha_channel_value = 0
     # Menu state:
-    #     - value 'down' - menu is captured;
-    #     - value 'none' - menu is not captured;
+    #     - value 'down' - menu_fd is captured;
+    #     - value 'none' - menu_fd is not captured;
     _state = OptionProperty("none", options=["none", "down"])
     # There was a touch to the bottom sheet.
     _touch_sheet = False

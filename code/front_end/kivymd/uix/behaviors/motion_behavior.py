@@ -10,7 +10,7 @@ Behaviors/Motion
 .. versionadded:: 1.2.0
 
 Classes of the `Motion` type implement the display behavior of widgets such
-as dialogs, dropdown menu, snack bars, and so on.
+as dialogs, dropdown menu_fd, snack bars, and so on.
 """
 
 __all__ = (
@@ -66,7 +66,7 @@ class MotionBase:
 
 class MotionDropDownMenuBehavior(MotionBase):
     """
-    Base class for the dropdown menu movement behavior.
+    Base class for the dropdown menu_fd movement behavior.
 
     For more information, see in the :class:`~MotionBase` class documentation.
     """

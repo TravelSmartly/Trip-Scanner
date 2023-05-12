@@ -1167,7 +1167,7 @@ class MDChip(
                     "According to the material design standards of version 3, "
                     "only on desktop computers and tablets, filter chips can "
                     "contain a finishing icon for directly removing the chip "
-                    "or opening the options menu."
+                    "or opening the options menu_fd."
                 )
                 return
             if (

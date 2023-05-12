@@ -82,7 +82,7 @@ Example
 
                 MDBackdrop:
                     id: backdrop
-                    left_action_items: [['menu', lambda x: self.open()]]
+                    left_action_items: [['menu_fd', lambda x: self.open()]]
                     title: "Example Backdrop"
                     radius_left: "25dp"
                     radius_right: "0dp"
@@ -417,7 +417,7 @@ class MDBackdrop(MDFloatLayout):
         if menu:
             self.left_action_items = [menu[0]]
         else:
-            self.left_action_items = [["menu", lambda x: self.open()]]
+            self.left_action_items = [["menu_fd", lambda x: self.open()]]
         self._open_icon = self.left_action_items[0][0]
 
     def on_header(self, instance_backdrop, value: bool) -> None:

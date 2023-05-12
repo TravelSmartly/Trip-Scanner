@@ -437,7 +437,7 @@ class TableData(RecycleView):
 
     pagination_menu = ObjectProperty()
     """
-    :class:`~kivymd.uix.menu.MDDropdownMenu` class.
+    :class:`~kivymd.uix.menu_fd.MDDropdownMenu` class.
 
     :attr:`pagination_menu` is an :class:`~kivy.properties.ObjectProperty`
     and defaults to `None`.
@@ -469,7 +469,7 @@ class TableData(RecycleView):
 
     pagination_menu_open = BooleanProperty(False)
     """
-    Open or close the menu for selecting the number of rows displayed
+    Open or close the menu_fd for selecting the number of rows displayed
     on the table page.
 
     :attr:`pagination_menu_open` is an :class:`~kivy.properties.BooleanProperty`
@@ -666,12 +666,12 @@ class TableData(RecycleView):
         return all(tmp)
 
     def close_pagination_menu(self, *args) -> None:
-        """Called when the pagination menu window is closed."""
+        """Called when the pagination menu_fd window is closed."""
 
         self.pagination_menu_open = False
 
     def open_pagination_menu(self) -> None:
-        """Open pagination menu window."""
+        """Open pagination menu_fd window."""
 
         if self.pagination_menu.items:
             self.pagination_menu_open = True

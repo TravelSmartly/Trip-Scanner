@@ -15,9 +15,9 @@ class Map_object(MapMarkerPopup):
     def on_release(self):
         # Open up the LocationPopupMenu
         pass
-        # menu = LocationPopupMenu(self.market_data)
-        # menu.size_hint = [.8, .9]
-        # menu.open()
+        # menu_fd = LocationPopupMenu(self.market_data)
+        # menu_fd.size_hint = [.8, .9]
+        # menu_fd.open()
 
     def getCord(self): pass
     def getStatus(self): pass

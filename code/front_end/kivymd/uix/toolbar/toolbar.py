@@ -56,7 +56,7 @@ TopAppBar
 .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/toolbar-1.png
     :align: center
 
-Add left menu
+Add left menu_fd
 -------------
 
 .. code-block:: kv
@@ -64,16 +64,16 @@ Add left menu
     MDTopAppBar:
         title: "MDTopAppBar"
         anchor_title: "left"
-        left_action_items: [["menu", lambda x: app.callback()]]
+        left_action_items: [["menu_fd", lambda x: app.callback()]]
 
 .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/toolbar-2.png
     :align: center
 
 .. note::
 
-    The callback is optional. ``left_action_items: [["menu"]]`` would also work for a button that does nothing.
+    The callback is optional. ``left_action_items: [["menu_fd"]]`` would also work for a button that does nothing.
 
-Add right menu
+Add right menu_fd
 --------------
 
 .. code-block:: kv
@@ -86,7 +86,7 @@ Add right menu
 .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/toolbar-3.png
     :align: center
 
-Add two item to the right menu
+Add two item to the right menu_fd
 ------------------------------
 
 .. code-block:: kv
@@ -173,7 +173,7 @@ Usage
                 title: "MDBottomAppBar"
                 icon: "git"
                 type: "bottom"
-                left_action_items: [["menu", lambda x: x]]
+                left_action_items: [["menu_fd", lambda x: x]]
     '''
 
 
@@ -203,7 +203,7 @@ Event ``on_action_button``:
             title: "MDBottomAppBar"
             icon: "git"
             type: "bottom"
-            left_action_items: [["menu", lambda x: x]]
+            left_action_items: [["menu_fd", lambda x: x]]
             on_action_button: app.callback(self.icon)
 
 Floating button position
@@ -224,7 +224,7 @@ Mode:
             title: "MDBottomAppBar"
             icon: "git"
             type: "bottom"
-            left_action_items: [["menu", lambda x: x]]
+            left_action_items: [["menu_fd", lambda x: x]]
             mode: "end"
 
 .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/toolbar-9.png
@@ -238,7 +238,7 @@ Mode:
             title: "MDBottomAppBar"
             icon: "git"
             type: "bottom"
-            left_action_items: [["menu", lambda x: x]]
+            left_action_items: [["menu_fd", lambda x: x]]
             mode: "free-end"
 
 .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/toolbar-10.png
@@ -255,7 +255,7 @@ Custom color
             title: "MDBottomAppBar"
             icon: "git"
             type: "bottom"
-            left_action_items: [["menu", lambda x: x]]
+            left_action_items: [["menu_fd", lambda x: x]]
             icon_color: 0, 1, 0, 1
             md_bg_bottom_color: "brown"
 
@@ -564,7 +564,7 @@ as shown below:
 
         MDTopAppBar:
             title: "MDTopAppBar"
-            left_action_items: [["menu", "This is the navigation"]]
+            left_action_items: [["menu_fd", "This is the navigation"]]
             right_action_items:
                 [
                 [
@@ -734,8 +734,8 @@ class ActionTopAppBarButton(MDIconButton, MDTooltip):
     classes documentation.
     """
 
-    # The text of the menu item of the corresponding action button that will
-    # be displayed in the `OverFlowMenu` menu.
+    # The text of the menu_fd item of the corresponding action button that will
+    # be displayed in the `OverFlowMenu` menu_fd.
     overflow_text = StringProperty()
 
 
@@ -754,7 +754,7 @@ class MDActionBottomAppBarButton(ActionTopAppBarButton):
 
 class MDActionOverFlowButton(ActionTopAppBarButton):
     """
-    Implements a bar action button for the `OverFlowMenu` menu.
+    Implements a bar action button for the `OverFlowMenu` menu_fd.
 
     For more information, see in the
     :class:`~kivymd.uix.button.MDIconButton` and
@@ -767,13 +767,13 @@ class MDActionOverFlowButton(ActionTopAppBarButton):
 
 class OverFlowMenu(MDDropdownMenu):
     """
-    Implements a menu for the items (:class:`~OverFlowMenuItem`) of the
+    Implements a menu_fd for the items (:class:`~OverFlowMenuItem`) of the
     corresponding action buttons.
     """
 
 
 class OverFlowMenuItem(OneLineIconListItem):
-    """Implements a menu (:class:`~OverFlowMenu`) item."""
+    """Implements a menu_fd (:class:`~OverFlowMenu`) item."""
 
     icon = StringProperty()
 
@@ -988,7 +988,7 @@ class MDTopAppBar(DeclarativeBehavior, NotchedBox, WindowController):
     .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/toolbar-tooltip-text.png
         :align: center
 
-    ``overflow text`` - is the text for menu items (:class:`~OverFlowMenuItem`)
+    ``overflow text`` - is the text for menu_fd items (:class:`~OverFlowMenuItem`)
     of the corresponding action buttons:
 
     .. code-block:: kv
@@ -1071,7 +1071,7 @@ class MDTopAppBar(DeclarativeBehavior, NotchedBox, WindowController):
                 title: "Title"
                 icon: "git"
                 type: "bottom"
-                left_action_items: [["menu", lambda x: x]]
+                left_action_items: [["menu_fd", lambda x: x]]
                 mode: "end"
 
     .. image:: https://github.com/HeaTTheatR/KivyMD-data/raw/master/gallery/kivymddoc/toolbar-9.png
@@ -1194,7 +1194,7 @@ class MDTopAppBar(DeclarativeBehavior, NotchedBox, WindowController):
 
     use_overflow = BooleanProperty(False)
     """
-    As a top app bar is resized, actions move to the overflow menu from right
+    As a top app bar is resized, actions move to the overflow menu_fd from right
     to left.
 
     .. versionadded:: 1.0.0
@@ -1218,8 +1218,8 @@ class MDTopAppBar(DeclarativeBehavior, NotchedBox, WindowController):
 
     overflow_cls = ObjectProperty()
     """
-    Must be an object of the :class:`~kivymd.uix.menu.MDDropdownMenu' class.
-    See :class:`~kivymd.uix.menu.MDDropdownMenu` class documentation for more
+    Must be an object of the :class:`~kivymd.uix.menu_fd.MDDropdownMenu' class.
+    See :class:`~kivymd.uix.menu_fd.MDDropdownMenu` class documentation for more
     information.
 
     .. versionadded:: 1.0.0
@@ -1229,7 +1229,7 @@ class MDTopAppBar(DeclarativeBehavior, NotchedBox, WindowController):
         from kivy.lang import Builder
 
         from kivymd.app import MDApp
-        from kivymd.uix.menu import MDDropdownMenu
+        from kivymd.uix.menu_fd import MDDropdownMenu
 
         KV = '''
         #:import CustomOverFlowMenu __main__.CustomOverFlowMenu
@@ -1257,7 +1257,7 @@ class MDTopAppBar(DeclarativeBehavior, NotchedBox, WindowController):
 
 
         class CustomOverFlowMenu(MDDropdownMenu):
-            # In this class you can set custom properties for the overflow menu.
+            # In this class you can set custom properties for the overflow menu_fd.
             pass
 
 
@@ -1340,7 +1340,7 @@ class MDTopAppBar(DeclarativeBehavior, NotchedBox, WindowController):
     # List of action buttons (ActionTopAppBarButton instance) that have been
     # .added to the overflow
     _hidden_items = []
-    # See `kivymd.uix.menu.MDDropdownMenu.items` attribute.
+    # See `kivymd.uix.menu_fd.MDDropdownMenu.items` attribute.
     _overflow_menu_items = []
 
     def __init__(self, **kwargs):

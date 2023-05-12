@@ -336,7 +336,7 @@ You can copy the label text by double clicking on it:
 
             Example().run()
 
-Example of copying/cutting labels using the context menu
+Example of copying/cutting labels using the context menu_fd
 --------------------------------------------------------
 
 .. code-block:: python
@@ -347,7 +347,7 @@ Example of copying/cutting labels using the context menu
 
     from kivymd.app import MDApp
     from kivymd.uix.label import MDLabel
-    from kivymd.uix.menu import MDDropdownMenu
+    from kivymd.uix.menu_fd import MDDropdownMenu
     from kivymd.toast import toast
 
     KV = '''

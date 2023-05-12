@@ -71,7 +71,7 @@ Example with TwoLineAvatarListItem
         MDTopAppBar:
             id: toolbar
             title: "Inbox"
-            left_action_items: [["menu"]]
+            left_action_items: [["menu_fd"]]
             right_action_items: [["magnify"], ["dots-vertical"]]
             md_bg_color: 0, 0, 0, 1
 
@@ -122,7 +122,7 @@ Example with TwoLineAvatarListItem
                 right_action_items = [["trash-can"], ["dots-vertical"]]
             else:
                 md_bg_color = (0, 0, 0, 1)
-                left_action_items = [["menu"]]
+                left_action_items = [["menu_fd"]]
                 right_action_items = [["magnify"], ["dots-vertical"]]
                 self.root.ids.toolbar.title = "Inbox"
 
@@ -167,7 +167,7 @@ Example with FitImage
         MDTopAppBar:
             id: toolbar
             title: "Inbox"
-            left_action_items: [["menu"]]
+            left_action_items: [["menu_fd"]]
             right_action_items: [["magnify"], ["dots-vertical"]]
             md_bg_color: app.theme_cls.bg_light
             specific_text_color: 0, 0, 0, 1
@@ -225,7 +225,7 @@ Example with FitImage
                 right_action_items = [["trash-can"], ["dots-vertical"]]
             else:
                 md_bg_color = (1, 1, 1, 1)
-                left_action_items = [["menu"]]
+                left_action_items = [["menu_fd"]]
                 right_action_items = [["magnify"], ["dots-vertical"]]
                 self.root.ids.toolbar.title = "Inbox"
 

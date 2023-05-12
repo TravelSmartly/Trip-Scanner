@@ -59,7 +59,7 @@ Example
 
         MDTopAppBar:
             title: "MDFileManager"
-            left_action_items: [["menu", lambda x: None]]
+            left_action_items: [["menu_fd", lambda x: None]]
             elevation: 3
 
         MDFloatLayout:

@@ -37,7 +37,7 @@ Example
                 md_bg_color: app.theme_cls.primary_color
                 background_palette: 'Primary'
                 elevation: 4
-                left_action_items: [['menu', lambda x: x]]
+                left_action_items: [['menu_fd', lambda x: x]]
 
             MDScrollViewRefreshLayout:
                 id: refresh_layout

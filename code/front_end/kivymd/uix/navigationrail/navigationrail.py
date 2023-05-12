@@ -223,7 +223,7 @@ Example
                             padding: 0, 0, 0, "12dp"
 
                             MDIconButton:
-                                icon: "menu"
+                                icon: "menu_fd"
 
                             MDBoxLayout:
                                 adaptive_height: True
@@ -290,7 +290,7 @@ Example
                     self, instance_navigation_rail, instance_navigation_rail_item
                 ):
                     '''
-                    Called when tapping on rail menu items. Switches application screens.
+                    Called when tapping on rail menu_fd items. Switches application screens.
                     '''
 
                     self.root.ids.screen_manager.current = (
@@ -444,7 +444,7 @@ Example
                             MDNavigationDrawerMenu(
                                 MDBoxLayout(
                                     MDIconButton(
-                                        icon="menu",
+                                        icon="menu_fd",
                                     ),
                                     MDBoxLayout(
                                         ExtendedButton(
@@ -485,7 +485,7 @@ Example
 
                 def switch_screen(self, *args, screen_manager_content=None):
                     '''
-                    Called when tapping on rail menu items. Switches application screens.
+                    Called when tapping on rail menu_fd items. Switches application screens.
                     '''
 
                     instance_navigation_rail, instance_navigation_rail_item = args
@@ -586,17 +586,17 @@ class PanelRoot(MDFloatLayout):
     """
     Contains
     :class:`~MDNavigationRailFabButton`, :class:`~MDNavigationRailMenuButton`
-    buttons and a :class:`~Paneltems` container with menu items.
+    buttons and a :class:`~Paneltems` container with menu_fd items.
     """
 
 
 class PanelItems(MDBoxLayout):
-    """Box for menu items."""
+    """Box for menu_fd items."""
 
 
 class RippleWidget(MDWidget, ScaleBehavior):
     """
-    Implements a background color for a menu item -
+    Implements a background color for a menu_fd item -
     (:class:`~MDNavigationRailItem`).
     """
 
@@ -630,13 +630,13 @@ class MDNavigationRailFabButton(MDFloatingActionButton):
 
 class MDNavigationRailMenuButton(MDIconButton):
     """
-    Implements a menu button.
+    Implements a menu_fd button.
 
     For more information, see in the
     :class:`~kivymd.uix.button.MDIconButton` classes documentation.
     """
 
-    icon = StringProperty("menu")
+    icon = StringProperty("menu_fd")
     """
     Button icon name.
 
@@ -651,13 +651,13 @@ class MDNavigationRailMenuButton(MDIconButton):
         :align: center
 
     :attr:`icon` is an :class:`~kivy.properties.StringProperty`
-    and defaults to `'menu'`.
+    and defaults to `'menu_fd'`.
     """
 
 
 class MDNavigationRailItem(ButtonBehavior, MDBoxLayout):
     """
-    Implements a menu item with an icon and text.
+    Implements a menu_fd item with an icon and text.
 
     For more information, see in the
     :class:`~kivy.uix.behaviors.ButtonBehavior` and
@@ -849,11 +849,11 @@ class MDNavigationRail(MDCard):
 
     :Events:
         :attr:`on_item_press`
-            Called on the `on_press` event of menu item -
+            Called on the `on_press` event of menu_fd item -
             :class:`~MDNavigationRailItem`.
 
         :attr:`on_item_release`
-            Called on the `on_release` event of menu item -
+            Called on the `on_release` event of menu_fd item -
             :class:`~MDNavigationRailItem`.
     """
 
@@ -876,7 +876,7 @@ class MDNavigationRail(MDCard):
 
     anchor = OptionProperty("top", options=["top", "bottom", "center"])
     """
-    The position of the panel with menu items.
+    The position of the panel with menu_fd items.
     Available options are: `'top'`, `'bottom'`, `'center'`.
 
     .. rubric:: Top
@@ -926,7 +926,7 @@ class MDNavigationRail(MDCard):
         "labeled", options=["labeled", "selected", "unselected"]
     )
     """
-    Type of switching menu items.
+    Type of switching menu_fd items.
     Available options are: `'labeled'`, `'selected'`, `'unselected'`.
 
     .. rubric:: Labeled
@@ -974,7 +974,7 @@ class MDNavigationRail(MDCard):
 
     text_color_item_normal = ColorProperty(None)
     """
-    The text color in (r, g, b, a) or string format of the normal menu item
+    The text color in (r, g, b, a) or string format of the normal menu_fd item
     (:class:`~MDNavigationRailItem`).
 
     .. code-block:: kv
@@ -994,7 +994,7 @@ class MDNavigationRail(MDCard):
 
     text_color_item_active = ColorProperty(None)
     """
-    The text color in (r, g, b, a) or string format of the active menu item
+    The text color in (r, g, b, a) or string format of the active menu_fd item
     (:class:`~MDNavigationRailItem`).
 
     .. code-block:: kv
@@ -1014,7 +1014,7 @@ class MDNavigationRail(MDCard):
 
     icon_color_item_normal = ColorProperty(None)
     """
-    The icon color in (r, g, b, a) or string format of the normal menu item
+    The icon color in (r, g, b, a) or string format of the normal menu_fd item
     (:class:`~MDNavigationRailItem`).
 
     .. code-block:: kv
@@ -1034,7 +1034,7 @@ class MDNavigationRail(MDCard):
 
     icon_color_item_active = ColorProperty(None)
     """
-    The icon color in (r, g, b, a) or string format of the active menu item
+    The icon color in (r, g, b, a) or string format of the active menu_fd item
     (:class:`~MDNavigationRailItem`).
 
     .. code-block:: kv
@@ -1054,7 +1054,7 @@ class MDNavigationRail(MDCard):
 
     selected_color_background = ColorProperty(None)
     """
-    Background color which will highlight the icon of the active menu item -
+    Background color which will highlight the icon of the active menu_fd item -
     :class:`~MDNavigationRailItem` - in (r, g, b, a) format.
 
     .. code-block:: kv
@@ -1074,7 +1074,7 @@ class MDNavigationRail(MDCard):
 
     ripple_color_item = ColorProperty(None)
     """
-    Ripple effect color of menu items (:class:`~MDNavigationRailItem`)
+    Ripple effect color of menu_fd items (:class:`~MDNavigationRailItem`)
     in (r, g, b, a) format.
 
     .. code-block:: kv
@@ -1094,7 +1094,7 @@ class MDNavigationRail(MDCard):
 
     ripple_transition = StringProperty("out_cubic")
     """
-    Type of animation of the ripple effect when a menu item is selected.
+    Type of animation of the ripple effect when a menu_fd item is selected.
 
     :attr:`ripple_transition` is a :class:`~kivy.properties.StringProperty`
     and defaults to `'ripple_transition'`.
@@ -1102,7 +1102,7 @@ class MDNavigationRail(MDCard):
 
     current_selected_item = NumericProperty(0)
     """
-    Index of the menu list item (:class:`~MDNavigationRailItem`) that will be
+    Index of the menu_fd list item (:class:`~MDNavigationRailItem`) that will be
     active by default
 
     .. code-block:: kv
@@ -1122,7 +1122,7 @@ class MDNavigationRail(MDCard):
 
     font_name = StringProperty("Roboto")
     """
-    Font path for menu item (:class:`~MDNavigationRailItem`) text.
+    Font path for menu_fd item (:class:`~MDNavigationRailItem`) text.
 
     .. code-block:: kv
 
@@ -1152,13 +1152,13 @@ class MDNavigationRail(MDCard):
 
     def on_item_press(self, *args) -> None:
         """
-        Called on the `on_press` event of menu item -
+        Called on the `on_press` event of menu_fd item -
         :class:`~MDNavigationRailItem`.
         """
 
     def on_item_release(self, *args) -> None:
         """
-        Called on the `on_release` event of menu item -
+        Called on the `on_release` event of menu_fd item -
         :class:`~MDNavigationRailItem`.
         """
 
@@ -1166,9 +1166,9 @@ class MDNavigationRail(MDCard):
         self, selected_navigation_rail_item: MDNavigationRailItem
     ) -> None:
         """
-        Sets the `active` value to `False` for all menu items
+        Sets the `active` value to `False` for all menu_fd items
         (:class:`~MDNavigationRailItem`) except the selected item.
-        Called when a menu item is touched.
+        Called when a menu_fd item is touched.
         """
 
         for navigation_rail_item in self.ids.box_items.children:
@@ -1185,7 +1185,7 @@ class MDNavigationRail(MDCard):
         instance_fab_button: Union[None, MDNavigationRailFabButton],
         instance_menu_button: Union[None, MDNavigationRailFabButton],
     ) -> None:
-        """Set :class:`~Paneltems` panel position with menu items."""
+        """Set :class:`~Paneltems` panel position with menu_fd items."""
 
         if self.anchor == "top":
             if instance_fab_button:
@@ -1208,7 +1208,7 @@ class MDNavigationRail(MDCard):
             self.ids.box_items.y = dp(12)
 
     def set_current_selected_item(self, interval: Union[int, float]) -> None:
-        """Sets the active menu list item (:class:`~MDNavigationRailItem`)."""
+        """Sets the active menu_fd list item (:class:`~MDNavigationRailItem`)."""
 
         if self.ids.box_items.children:
             items = self.ids.box_items.children[:]
@@ -1217,9 +1217,9 @@ class MDNavigationRail(MDCard):
             if len(items) <= self.current_selected_item:
                 Logger.error(
                     f"MDNavigationRail:You have "
-                    f"{len(self.ids.box_items.children)} menu items, but you "
+                    f"{len(self.ids.box_items.children)} menu_fd items, but you "
                     f"set {self.current_selected_item} as the active item. "
-                    f"The very first menu item will be set active."
+                    f"The very first menu_fd item will be set active."
                 )
                 index = 0
             else:
