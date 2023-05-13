@@ -8,6 +8,7 @@ class Configuration_module:
 	proximity: int = 3 #in kilometers, could be changed in the future
 	first_timer: bool = False
 	notification_system: bool = True 
+	night_mode: bool = False
 
 	def put_profiles_to_front ():
 		return self.profile_object
@@ -23,11 +24,17 @@ class Configuration_module:
 		with open(config_folder_path, 'w') as fwd:
 			json.dump (self.profile_object, fwd)
 
+	def read_profiles ():
+		pass
+
 	def save_config_file(settings):
-    		with open("config_file.conf", 'w') as fdw:
-			
-		except IOError:
-    		print "Could not find file: config_file.conf"
+		config_folder_path = pathlib.Path('../config/config_file.cfg')
+    	with open("config_file.conf", 'w') as fdw:
+			fwd.write (self.first_timer + '\n' +
+			self.notification_system + '\n' + 
+			self.interval + '\n' +
+			self.night_mode + '\n' +
+			self.profile_current + '\n')
 
 	def put_settings_front():
 		pass
