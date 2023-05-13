@@ -1,8 +1,9 @@
 {
   "Kategorie": [
     {
-      "Kategoria": "Religijne",
-      "Podkategorie": [
+      "id": 0,
+      "category": "Religijne",
+      "subcategories": [
         "Abbey",
         "Parochial School",
         "Parsi Temple",
@@ -11,8 +12,9 @@
       ]
     },
     {
-      "Kategoria": "Sztuka i Kultura",
-      "Podkategorie": [
+      "id": 1,
+      "category": "Sztuka i Kultura",
+      "subcategories": [
         "Aboriginal Art Gallery",
         "Festival Hall",
         "Film and Photograph Library",
@@ -26,8 +28,9 @@
       ]
     },
     {
-      "Kategoria": "Edukacja",
-      "Podkategorie": [
+      "id": 2,
+      "category": "Edukacja",
+      "subcategories": [
         "Parochial School",
         "Part Time Daycare",
         "Accounting School",
@@ -41,8 +44,9 @@
       ]
     },
     {
-      "Kategoria": "Medycyna i Opieka Zdrowotna",
-      "Podkategorie": [
+      "id": 3,
+      "category": "Medycyna i Opieka Zdrowotna",
+      "subcategories": [
         "Fertility Clinic",
         "Abortion Clinic",
         "Acupuncture Clinic",
@@ -56,8 +60,9 @@
       ]
     },
     {
-      "Kategoria": "Handel",
-      "Podkategorie": [
+      "id": 4,
+      "category": "Handel",
+      "subcategories": [
         "Abrasives Supplier",
         "Acrylic Store",
         "Party Equipment Rental Service",
@@ -79,8 +84,9 @@
       ]
     },
     {
-      "Kategoria": "Transport",
-      "Podkategorie": [
+      "id": 5,
+      "category": "Transport",
+      "subcategories": [
         "Ferry Service",
         "Acura Dealer",
         "Fire Department Equipment Supplier",
@@ -90,8 +96,9 @@
       ]
     },
     {
-      "Kategoria": "Finanse i Usługi Prawne",
-      "Podkategorie": [
+      "id": 6,
+      "category": "Finanse i Usługi Prawne",
+      "subcategories": [
         "Accountant",
         "Accounting Firm",
         "Administrative Attorney",
@@ -106,8 +113,9 @@
       ]
     },
     {
-      "Kategoria": "Sport i Rekreacja",
-      "Podkategorie": [
+      "id": 7,
+      "category": "Sport i Rekreacja",
+      "subcategories": [
         "Fencing Salon",
         "Fencing School",
         "Adventure Sports",
@@ -121,8 +129,9 @@
       ]
     },
     {
-      "Kategoria": "Technologia",
-      "Podkategorie": [
+      "id": 8,
+      "category": "Technologia",
+      "subcategories": [
         "Acoustical Consultant"
       ]
     }
