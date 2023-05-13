@@ -3,7 +3,6 @@
 class Configuration_module:
 	profile_current: str = '' #blank profile default
 	profiles_object = '' #json object with profiles
-	categories: categories = None #categories list should be read from the file
 	interval: int = 15 #how often to update location
 	proximity: int = 3 #in kilometers, could be changed in the future
 	first_timer: bool = False
