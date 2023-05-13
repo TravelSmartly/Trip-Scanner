@@ -1,21 +1,24 @@
 
 @dataclass
 class Configuration_module:
-	profile_name: str = '' #blank profile default
-	profile_object = '' #json object with profiles
+	profile_current: str = '' #blank profile default
+	profiles_object = '' #json object with profiles
 	categories: categories = None #categories list should be read from the file
 	interval: int = 15 #how often to update location
 	proximity: int = 3 #in kilometers, could be changed in the future
 	first_timer: bool = False
 	notification_system: bool = True 
 
-	def put_profile_to_front ():
+	def put_profiles_to_front ():
 		return self.profile_object
 	
 	def put_profile_name_front ():
-		return self.profile_name
+		return self.profile_current
 
-	def save_profile ():
+	def set_current_profile (current_profile_object):
+		self.profile_current = current_profile_object
+
+	def save_profiles ():
 		config_folder_path = pathlib.Path('../config/profiles.json')
 		with open(config_folder_path, 'w') as fwd:
 			json.dump (self.profile_object, fwd)
