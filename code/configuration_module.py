@@ -1,24 +1,28 @@
 
-
+@dataclass
 class Configuration_module:
+	profile_name: str = '' #blank profile default
+	profile_object = '' #json object with profiles
+	categories: categories = None #categories list should be read from the file
+	interval: int = 15 #how often to update location
+	proximity: int = 3 #in kilometers, could be changed in the future
+	first_timer: bool = False
+	notification_system: bool = True 
 
-	def __init__(self):
-		self.profile_name = ''	#blank profile
-		self.categories = None	#categories list should be read from the file
-		self.interval = 15 #how often to update location, etc in minutes 
-		self.proximity = 3 # in kilometers, could be changed in the future
-		self.first_timer = False
+	def put_profile_to_front ():
+		return self.profile_object
+	
+	def put_profile_name_front ():
+		return self.profile_name
 
-	def put_profile_to_front (current_profile):
-		pass
+	def save_profile ():
+		config_folder_path = pathlib.Path('../config/profiles.json')
+		with open(config_folder_path, 'w') as fwd:
+			json.dump (self.profile_object, fwd)
 
-	def save_profile (current_profile):
-		pass
-
-	def save_config_file(profiles, settings, favourites):
-		try:
+	def save_config_file(settings):
     		with open("config_file.conf", 'w') as fdw:
-            	pass #do stuff here  
+			
 		except IOError:
     		print "Could not find file: config_file.conf"
 
