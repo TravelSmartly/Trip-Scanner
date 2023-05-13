@@ -1,4 +1,17 @@
+<Section_header_set_profile_button>:
+    text: root.button_text
+
+    theme_text_color: "Custom"
+    text_color: app.theme_cls.primary_color
+
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    on_release:
+        app.root.previous_object = app.root.current
+        app.root.current = "set_profile_section"
+
+
 <RightCheckbox>
+
 
 <Profile_category>
     IconLeftWidget:
@@ -7,6 +20,7 @@
     RightCheckbox:
         root_id: root.category_id
         root_text: root.text
+        active: root.is_active
 
 
 <Profile_section>
@@ -14,10 +28,12 @@
         size: root.width, root.height
         orientation: 'vertical'
         Section_header:
-            header_text: "Categories"
+#            header_text: "Categories"
+            header_text: root.selected_profile_name
             ## Tutaj Set_profile oznacza, ze chce wybrac Set_profile, zeby sie wyswietlil w Section_header
             ## opcje te sa w r_but_options
-            r_but_option: "Set_profile"
+#            r_but_option: "Set_profile"
+            r_but_obj: root.r_but
 
         ScrollView:
             id: my_scroll_view

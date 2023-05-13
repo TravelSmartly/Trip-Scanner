@@ -6,7 +6,7 @@ from kivymd.uix.button import MDTextButton
 from kivy.uix.label import Label
 from kivymd.uix.button import MDRaisedButton
 from kivy.uix.screenmanager import Screen
-from kivy.properties import StringProperty, OptionProperty
+from kivy.properties import StringProperty, OptionProperty, ObjectProperty
 
 from kivy.clock import Clock
 
@@ -16,25 +16,35 @@ class Section_header_right_button(Label):
     def do_transition(self): pass
 
 
-# Przeniesc pozniej do Profile_section
-class Section_header_set_profile_button(MDTextButton):
-    button_text = "SetProfile"
-
-
-
 ## Header, odpowiada za pokazanie rozdziału i rownież zarządzanie przyciskami na górze
 class Section_header(Screen):
-    def __init__(self, **kwargs):
-        super(Section_header, self).__init__(**kwargs)
-        Clock.schedule_once(self.show_set_profile_button)
+    ## Referencja na prawy przycisk
+    r_but_obj = ObjectProperty(None)
 
     header_text = StringProperty("<")
     r_but_options = {"None": Section_header_right_button,
-                     "Set_profile": Section_header_set_profile_button }
+                     "Set_profile": None }
     r_but_option = StringProperty("None")
     is_header_displayed = 0
 
-    def show_set_profile_button(self, dt):
+
+    def __init__(self, **kwargs):
+        super(Section_header, self).__init__(**kwargs)
+        ## To odpala mozliwosc wyboru przycisku
+        # Clock.schedule_once(self.show_custom_right_button_option)
+        ## To pozwala dodac kastomowy przycisk do prawej czesci headera
+        Clock.schedule_once(self.show_custom_right_button)
+
+
+    def show_custom_right_button(self, dt):
+        right_button_obj = None
+        if self.r_but_obj is not None:
+            right_button_obj = self.r_but_obj
+        else:
+            right_button_obj = Section_header_right_button()
+        self.ids.right_button.add_widget(right_button_obj)
+
+    def show_custom_right_button_option(self, dt):
         right_button_obj = None
         for option in self.r_but_options:
             if option == self.r_but_option:

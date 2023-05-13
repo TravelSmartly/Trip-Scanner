@@ -1,5 +1,6 @@
 ###- IMPORT KIVY -###
 from kivy.app import App
+from kivymd.app import MDApp
 from kivy.uix.button import Button
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
@@ -20,7 +21,7 @@ from .content.Section_header.__init__ import *
 from .content.Nav_bar.Nav_bar import *
 from .content.test.test import *
 
-from .content.Profile_adapter.Profile_adapter import Profile_adapter
+from .content.Profile_adapter.Profile_adapter import Profile_adapter, Category_adapter
 ###- END IMPORT NAJWAZNIESZYCH KOMPONENTOW -###
 
 
@@ -52,6 +53,9 @@ class FrontApp(MDApp):
         ## because otherwise I would have to create 2 profile adapters in Profile_section and Set_profile_section
         ## which is not good, and also I would have to import the adapter twice.
         self.profile_adapter = Profile_adapter(None)
+        self.profile_adapter.postprocessing()
+        self.category_adapter = Category_adapter(None)
+        self.category_adapter.postprocessing()
 
 
         ###- END OF ADAPTERS -###
@@ -68,4 +72,4 @@ class FrontApp(MDApp):
 
 
 
-FrontApp().run()
+

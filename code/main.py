@@ -18,9 +18,12 @@ Window.size = (360, 640)
 """
 Importuję w tym przypadku front_end/__init__.py
 """
-import front_end
+from front_end.__init__ import *
 
 ###-- END OF FRONT-END ZONE --###
+
+front_end_app = FrontApp()
+front_end_app.run()
 
 
 

@@ -2,13 +2,11 @@
   "profiles": [
     {
       "name": "profile0",
-      "p_id": 0,
       "selected": 1,
       "categories": [0, 2, 3, 4]
     },
     {
       "name": "profile1",
-      "p_id": 1,
       "selected": 0,
       "categories": [0, 1]
     }

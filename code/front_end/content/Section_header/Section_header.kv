@@ -44,16 +44,5 @@
 #            app.root.transition.direction = 'left'/
 #            app.root.current =
 
-<Section_header_set_profile_button>:
-    text: root.button_text
-
-    theme_text_color: "Custom"
-    text_color: app.theme_cls.primary_color
-
-    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-    on_release:
-        app.root.previous_object = app.root.current
-        app.root.current = "set_profile_section"
-
 <Section_header_right_button>:
     text: root.button_text
