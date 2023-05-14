@@ -24,24 +24,32 @@ class Configuration_module:
 			json.dump (self.profile_object, fwd)
 
 	def read_profiles ():
-		pass
+		config_folder_path = pathlib.Path('../config/profiles.json')
+		with open(config_folder_path) as frd:
+			self.profile_object = json.loads(frd.read())
 
 	def save_config_file(settings):
 		config_folder_path = pathlib.Path('../config/config_file.cfg')
-    	with open("config_file.conf", 'w') as fdw:
+    	with open("config_file.conf", 'w') as fwd:
 			fwd.write (self.first_timer + '\n' +
 			self.notification_system + '\n' + 
 			self.interval + '\n' +
 			self.night_mode + '\n' +
 			self.profile_current + '\n')
+	
+	def read_config_file (name):
+		config_folder_path = pathlib.Path('../config/config_file.cfg')
+    	with open("config_file.conf") as frd:
+			conf = list(frd.read().split('\n'))
+			self.notification_system, self.interval, self.night_mode, self.profile_current = *conf
+			
 
 	def put_settings_front():
 		pass
 
 	
 
-	def read_config_file (name):
-		pass
+	
 
 	def start_configuration_module():
 		pass
