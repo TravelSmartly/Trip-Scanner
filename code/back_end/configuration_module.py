@@ -36,7 +36,7 @@ class Configuration_module:
 			self.interval + '\n' +
 			self.night_mode + '\n' +
 			self.profile_current + '\n')
-	
+	#for first version: notification w
 	def read_config_file (name):
 		config_folder_path = pathlib.Path('../config/config_file.cfg')
     	with open("config_file.conf") as frd:
@@ -55,3 +55,14 @@ class Configuration_module:
 		pass
 		#Does not return any specific objects, so just make sure that it returns 0 if succeeded
 		#Returns -7 if config_file does not exist or could not have been opened
+		
+		#notification options: normal and more subtle
+		#day or night mode
+		#font size, normal and eye-friendly
+		#remember about colors - recognisable to colorblind-people
+		#button for feedback
+		
+		### for next versions
+		# auto translation by google translator for exmaple
+		# text to speech, no need to look at phone each time
+		# 
