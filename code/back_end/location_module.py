@@ -22,7 +22,7 @@ class Location_module:
     def get_current_location()->int:
         try:
             gps.configure(on_location=Location_module.on_gps_location)
-            gps.start(2000)
+            gps.start()
             #coordinates = gps.
             return Location_module.current_location
         except Exception as e:
