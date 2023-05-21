@@ -1,4 +1,4 @@
-class Searching_module():
+class Searching_module:
     m_object_list = None #first element is current_location
     search_counter = 0
     # init method or constructor

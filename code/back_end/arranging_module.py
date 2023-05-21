@@ -1,5 +1,5 @@
 
-class Arranging_module(App):
+class Arranging_module:
     categorize_obj = None
 
     def categorize_obj(map_object):
