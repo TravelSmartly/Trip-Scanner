@@ -11,7 +11,7 @@ class Location_module:
     #type hints
 
     @staticmethod
-    def on_gps_location(**kwargs)->None:
+    def on_gps_location(self, **kwargs)->None:
         #kwargs["lat"]=10.0
         #kwargs["lon"]=10.0
         #print(kwargs)
