@@ -1,7 +1,6 @@
 from kivy.app import App
 from kivy.uix.label import Label
 from plyer import gps
-import pytest
 
 class Location_module:
     lat = 111045 #one degree of latitude is always 69 miles = 111045 meters
