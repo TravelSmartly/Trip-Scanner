@@ -1,8 +1,14 @@
 ### libraries
-# import gmaps
+import os
+from time import time
 from kivy.app import App
+from kivy.uix.label import Label
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
+from kivy.lang import Builder
+from plyer import gps
+from plyer import notification
+
 
 ### classes
 #from classes import Configuration
