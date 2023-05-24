@@ -45,6 +45,7 @@ def chk_conn(conn):
 class FrontApp(MDApp):
     connection = None
     cursor = None
+    conf_module = None
     def build(self):
 
         ###- ADAPTERTS -###
@@ -52,9 +53,9 @@ class FrontApp(MDApp):
         ## but I decided to create it in the App Builder
         ## because otherwise I would have to create 2 profile adapters in Profile_section and Set_profile_section
         ## which is not good, and also I would have to import the adapter twice.
-        self.profile_manipulator = Profile_manipulator(None)
+        self.profile_manipulator = Profile_manipulator(self.conf_module)
         self.profile_manipulator.postprocessing()
-        self.category_adapter = Category_adapter(None)
+        self.category_adapter = Category_adapter(self.conf_module)
         self.category_adapter.postprocessing()
 
 
@@ -70,6 +71,9 @@ class FrontApp(MDApp):
         self.sm = WindowManager()
         return self.sm
 
+
+    def set_conf_module(self, conf_module):
+        self.conf_module = conf_module
 
 
 

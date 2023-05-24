@@ -43,10 +43,17 @@ class MainApp:
         print("hi")
 
     def start(self):
+        ###-- BACK-END PART --###
         config_module = Configuration_module()
-        # config_module.hi()
+        ###-- END OF BACK-END PART --###
+
+
+
+        ###-- FRON-END PART --###
         front_end_app = FrontApp()
+        front_end_app.set_conf_module(config_module)
         front_end_app.run()
+        ###-- END OF FRON-END PART --###
 
 ###-- !!!END OF MAIN ZONE!!! --###
 
