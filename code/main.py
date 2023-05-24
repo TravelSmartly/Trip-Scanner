@@ -41,7 +41,8 @@ Window.size = (360, 640)
 class MainApp:
     def __init__(self):
         print("hi")
-
+    def on_stop(self):
+        print("HELLO STOP")
     def start(self):
         ###-- BACK-END PART --###
         config_module = Configuration_module()

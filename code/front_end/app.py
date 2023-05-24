@@ -75,6 +75,15 @@ class FrontApp(MDApp):
     def set_conf_module(self, conf_module):
         self.conf_module = conf_module
 
+    def on_pause(self):
+        print("HELLO")
+
+    def on_resume(self):
+        print("RESUME")
+
+    def on_stop(self):
+        print("HELLO STOP")
+
 
 
 
