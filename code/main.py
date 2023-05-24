@@ -48,6 +48,7 @@ class MainApp:
         ###-- BACK-END PART --###
         config_module = Configuration_module()
         config_module.read_profiles()
+        config_module.read_categories()
         config_module.find_current_profile()
         ###-- END OF BACK-END PART --###
 

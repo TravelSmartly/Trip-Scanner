@@ -12,8 +12,8 @@ class Profile_provider:
     profiles_raw = []
     ## DG: nowa zmienna profile_refreshed, sluzy do tego, aby sie dowiedziec, czy profil sie odswierzyl
     profile_refreshed = 0
-    categories_url = "categories/generalized_categories.json"
-    profile_url = "categories/profiles.json"
+    # categories_url = "categories/generalized_categories.json"
+    # profile_url = "categories/profiles.json"
     conf_module = None
 
 
@@ -35,11 +35,7 @@ class Profile_provider:
         # self.profiles = self.conf_module.put_profile_front()
         # self.profile_refreshed = 1
         # profiles = self.profiles
-        try:
-            f = open(self.categories_url)
-            self.categories_raw = json.load(f)
-        except Exception as e:
-            self.categories_raw = []
+        self.categories_raw = self.conf_module.put_categories_to_front()
 
         # print(self.categories)
 

@@ -8,6 +8,7 @@ class Configuration_module:
 	## RemXYZ: Zmienilem typy zmiennych na bardziej pasujace
 	profile_current = [] #blank profile default
 	profiles_object = [] #json object with profiles
+	categories_object = [] #json object with categories
 	interval: int = 15 #how often to update location
 	proximity: int = 3 #in kilometers, could be changed in the future
 	first_timer: bool = False
@@ -21,6 +22,9 @@ class Configuration_module:
 	## wszystkie zmiany we front-endzie, czy gdize kolwiek takze od razu beda pojawialy sie w tym obiekcie
 	def put_profiles_to_front (self):
 		return self.profile_object
+
+	def put_categories_to_front (self):
+		return self.categories_object
 
 	## RemXYZ: zamieniłem nazwe na bardziej pasujaca
 	## DG: Ta metoda pozwala na pobieranie wybranego profilu
@@ -52,7 +56,7 @@ class Configuration_module:
 		except Exception as e:
 			return -1
 
-	def read_profiles (self):
+	def read_profiles (self) -> int:
 		## RemXYZ: Zmienilem pathlib.Path('../categories/profiles.json') na "categories/profiles.json"
 		config_folder_path = "categories/profiles.json"
 		try:
@@ -63,10 +67,24 @@ class Configuration_module:
 				##  wiec musze go pobrac na samym poczatku
 				## czyli to wyglada tak {"profiles": {name:"profile0", selected:1,...} ...}
 				self.profile_object = profiles
-				print(self.profile_object)
+				return 0
+				# print(self.profile_object)
 		## RemXYZ: Dodałem Try exept, zeby na wszelki wypadek aplikacja sie nie zamknela
 		except Exception as e:
 			self.profile_object = []
+			return -1
+
+
+	def read_categories(self) -> int:
+		categories_file_path = "categories/generalized_categories.json"
+		try:
+			with open(categories_file_path) as frd:
+				self.categories_object = json.load(frd)
+				return 0
+		except Exception as e:
+			self.categories_raw = []
+			return -1
+
 
 	def save_config_file(self,settings):
 		config_folder_path = pathlib.Path('../config/config_file.cfg')
