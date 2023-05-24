@@ -1,16 +1,1 @@
-{
-  "profiles": [
-    {
-      "id": 0,
-      "name": "profile0",
-      "selected": 1,
-      "categories": [0, 3, 4, 1]
-    },
-    {
-      "id": 1,
-      "name": "profile1",
-      "selected": 0,
-      "categories": [0, 1]
-    }
-  ]
-}
+[{"id": 0, "name": "profile0", "selected": 1, "categories": [0, 3, 1, 4, 5, 6], "distance": 100}, {"id": 1, "name": "profile1", "selected": 0, "categories": [0, 1], "distance": 100}]

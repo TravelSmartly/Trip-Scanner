@@ -72,7 +72,7 @@ class FrontApp(MDApp):
         return self.sm
 
 
-    def set_conf_module(self, conf_module):
+    def set_conf_module(self, conf_module: object):
         self.conf_module = conf_module
 
     def on_pause(self):

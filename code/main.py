@@ -1,6 +1,6 @@
 ### libraries
 import os
-from dataclasses import dataclass 
+from dataclasses import dataclass
 from time import time
 from kivy.app import App
 from kivy.uix.label import Label
@@ -47,6 +47,8 @@ class MainApp:
     def start(self):
         ###-- BACK-END PART --###
         config_module = Configuration_module()
+        config_module.read_profiles()
+        config_module.find_current_profile()
         ###-- END OF BACK-END PART --###
 
 

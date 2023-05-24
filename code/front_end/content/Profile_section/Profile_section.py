@@ -224,7 +224,10 @@ class Profile_section(Screen):
         save_layout.opacity = 0
 
     def send_profile(self):
-        self.profile_mnp.prepare_send_profile()
+        did_send_correctly = self.profile_mnp.prepare_send_profile()
+        if did_send_correctly != 0:
+            pass
+        self.hide_save_layout()
         # self.reselect()
 
 

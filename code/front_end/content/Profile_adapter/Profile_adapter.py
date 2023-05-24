@@ -22,17 +22,20 @@ class Profile_adapter(Profile_provider):
     }
     selected = None
 
-    def __init__(self, conf_module):
+
+    def __init__(self, conf_module: object):
         ### INITIALIZATION ###
         super().__init__(conf_module)
+
 
     def hi(self):
         print("hi profile adapter")
 
+
     def postprocessing(self):
         ## PROFILE DOWNLOADING
         self.download_profiles()
-        profiles = self.get_profiles_raw()["profiles"]
+        profiles = self.get_profiles_raw()
 
         if len(profiles) == 0:
             return -1
@@ -44,14 +47,12 @@ class Profile_adapter(Profile_provider):
 
         return 0
 
+
     ## DG: added download_selected_profile, which allows to download right away selected_profile from back_end
     def download_selected_profile(self):
-        profiles = self.get_profiles()
-        for profile in profiles:
-            if profile["selected"] == 1:
-                return profile
+        selected = self.conf_module.put_selected_profile_to_front()
+        return selected
 
-        return -1
 
     def get_instraction(self):
         return self.instraction
@@ -69,14 +70,14 @@ class Profile_adapter(Profile_provider):
         self.instraction = pro_inst
 
 
-## DG: ! Dodalem Profile_manipulator, aby zdjac ladunek manipulowania interfejsem profilu
+## DG: ! Dodalem Profile_manipulator, aby zdjac ladunek manipulowania interfejsem profilu, by trzymac sie zasad SOLID, ale mozna bylo tego nie robic
 ## (EN)I added Profile_manipulator to take the load off from Profile_adapter
 
 class Profile_manipulator(Profile_adapter):
     is_categories_changed = 0
     last_changed_categories_id = -1
     first_changed_categories_id = -1
-    def __init__(self, conf_module):
+    def __init__(self, conf_module: object):
         ### INITIALIZATION ###
         super().__init__(conf_module)
 
@@ -90,7 +91,7 @@ class Profile_manipulator(Profile_adapter):
     ## Tutaj jest zaleznosc miedzy aktualnym profilem,
     ## wiec jesli gdzies go zmienie, to zmieni sie on wszedzie,
     ## ale w moim przypadku dbam o dobra hermetycznosc
-    def select_category(self, id) -> int:
+    def select_category(self, id: int) -> int:
         if id is None and type(id) is not int:
             return -1
         sel_cat = self.get_selected_categories()
@@ -101,12 +102,11 @@ class Profile_manipulator(Profile_adapter):
             sel_cat.append(id)
 
         # print(self.get_selected()[self.get_instraction()["categories"]], "ON")
-        ## If first element has been changed double time
+        ## If first element has been changed double time, then i don't change nothing
         to_rechenge = 0
         if self.first_changed_categories_id == id:
             self.is_categories_changed = 0
             to_rechenge = 1
-
         self.first_changed_categories_id = -1
 
         if not self.is_categories_changed and to_rechenge == 0:
@@ -119,7 +119,7 @@ class Profile_manipulator(Profile_adapter):
 
         return 0
 
-    def deselect_category(self, id) -> int:
+    def deselect_category(self, id: int) -> int:
         if id is None and type(id) is int:
             return -1
 
@@ -148,11 +148,17 @@ class Profile_manipulator(Profile_adapter):
         return 0
 
 
-    def prepare_send_profile(self):
-        selected_profile = self.get_selected()
-        if selected_profile is None and type(selected_profile) is not dict:
+    def prepare_send_profile(self) -> int:
+        # selected_profile = self.get_selected()
+        profiles = self.get_profiles()
+        if profiles is None and type(profiles) is not dict:
             return -1
-        self.send_profile(selected_profile)
+        # print(profiles)
+        did_send_correctly = self.send_profile(profiles)
+        if did_send_correctly == 0:
+            return 0
+        else:
+            return did_send_correctly
 
     ## Init changes odpowiada za inicjalizacja wybranych categorii
     def get_selected_categories(self):
@@ -179,7 +185,7 @@ class Category_adapter(Profile_provider):
         "icon": "icon"
     }
 
-    def __init__(self, conf_module):
+    def __init__(self, conf_module: object):
         ### INITIALIZATION ###
         super().__init__(conf_module)
 
@@ -187,7 +193,7 @@ class Category_adapter(Profile_provider):
         print("hi categories adapter")
 
     ## DG: Added categories_postprocessing
-    def postprocessing(self):
+    def postprocessing(self) -> int:
         # profiles = self.get_profiles()
         # if len(profiles) != 0:
         #     return -1
@@ -198,13 +204,13 @@ class Category_adapter(Profile_provider):
         self.categories = categories["Categories"]
         return 0
 
-    def get_categories(self):
+    def get_categories(self) -> list:
         return self.categories
 
-    def get_instraction(self):
+    def get_instraction(self) -> dict:
         return self.instraction
 
-    def set_instraction(self, cat_inst):
+    def set_instraction(self, cat_inst: dict):
         self.instraction = cat_inst
 
     def set_categories(self):
