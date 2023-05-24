@@ -1,8 +1,7 @@
 import pathlib
 import json
 
-## RemXYZ: Dlaczego ta referencja?
-# @dataclass
+@dataclass
 class Configuration_module:
 	profile_current: str = '' #blank profile default
 	profiles_object = '' #json object with profiles
