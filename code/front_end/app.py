@@ -21,7 +21,7 @@ from .content.Section_header.__init__ import *
 from .content.Nav_bar.Nav_bar import *
 from .content.test.test import *
 
-from .content.Profile_adapter.Profile_adapter import Profile_adapter, Category_adapter
+from .content.Profile_adapter.Profile_adapter import Profile_manipulator, Category_adapter
 ###- END IMPORT NAJWAZNIESZYCH KOMPONENTOW -###
 
 
@@ -52,8 +52,8 @@ class FrontApp(MDApp):
         ## but I decided to create it in the App Builder
         ## because otherwise I would have to create 2 profile adapters in Profile_section and Set_profile_section
         ## which is not good, and also I would have to import the adapter twice.
-        self.profile_adapter = Profile_adapter(None)
-        self.profile_adapter.postprocessing()
+        self.profile_manipulator = Profile_manipulator(None)
+        self.profile_manipulator.postprocessing()
         self.category_adapter = Category_adapter(None)
         self.category_adapter.postprocessing()
 
@@ -69,6 +69,7 @@ class FrontApp(MDApp):
 
         self.sm = WindowManager()
         return self.sm
+
 
 
 

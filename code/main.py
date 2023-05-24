@@ -9,29 +9,50 @@ from kivy.lang import Builder
 from plyer import gps
 from plyer import notification
 
+###-- BACK-END ZONE --###
 
-### classes
-#from classes import Configuration
+###---- IMPORT BACK-END AND PACKAGES ----###
+from back_end.__init__ import *
+
+###---- END OF IMPORT BACK-END AND PACKAGES ----###
+
+
+###-- END OF BACK-END ZONE --###
+
+
 
 ###-- FRONT-END ZONE --###
-""" 
-Od tego miejsca zaczyna się działać front-end, w tej chwili od razu odpala się cały interfejs, 
-ale później powinno się zaczynać od maina w tym miejscu. 
-"""
-
-Window.size = (360, 640)
-### IMPORT FRONT-END AND PACKAGES ###
+###---- IMPORT FRONT-END AND PACKAGES ----###
 """
 Importuję w tym przypadku front_end/__init__.py
 """
 from front_end.__init__ import *
+###---- END OF IMPORT FRONT-END AND PACKAGES ----###
+
+Window.size = (360, 640)
 
 ###-- END OF FRONT-END ZONE --###
 
-front_end_app = FrontApp()
-front_end_app.run()
 
 
+###-- !!!START MAIN ZONE!!! --###
+
+## DG: ! We changed name "main" to "MainApp"!
+class MainApp:
+    def __init__(self):
+        print("hi")
+
+    def start(self):
+        config_module = Configuration_module()
+        # config_module.hi()
+        front_end_app = FrontApp()
+        front_end_app.run()
+
+###-- !!!END OF MAIN ZONE!!! --###
+
+if __name__ == "__main__":
+    app = MainApp()
+    app.start()
 
 
 

@@ -69,16 +69,16 @@ class Set_profile_section(Screen):
 
         ##- PROFILE ADAPTER -##
         app = MDApp.get_running_app()
-        profile_adp = app.profile_adapter
-        self.profile_adt = profile_adp
+        profile_mnp = app.profile_manipulator
+        self.profile_mnp = profile_mnp
 
 
 
-        self.profiles = profile_adp.get_profiles()
-        self.profile_inst = profile_adp.get_instraction()
-        self.selected_profile = profile_adp.get_selected()
+        self.profiles = profile_mnp.get_profiles()
+        self.profile_inst = profile_mnp.get_instraction()
+        self.selected_profile = profile_mnp.get_selected()
         self.curr_i_end = len(self.profiles)
-        print(self.selected_profile, "selected_profile w set_profile")
+        # print(self.selected_profile, "selected_profile w set_profile")
 
         self.selected_categories = self.selected_profile[self.profile_inst["categories"]]
         self.selected_profile_name = self.selected_profile[self.profile_inst["name"]]
@@ -89,14 +89,14 @@ class Set_profile_section(Screen):
         ## poniewaz w show_content UYWAM ids! To jest bardzo wazne, poniewaz w init ids jeszcze nie sa
         ## znalezione, wiec nalezy poczekac, poki sie pojawia, wiec Clock czeka chwile i pokazuje kontent
         ## Mozliwe, ze sie da zrobic to inaczej, ale nie umiem
-        Clock.schedule_once(self.show_profiles)
+        Clock.schedule_once(self.show_content)
 
-    def show_profiles(self, dt):
+    def show_content(self, dt):
         prof_name = self.profile_inst["name"]  ## name
         prof_icon = self.profile_inst["icon"]  ## icon
         prof_id = self.profile_inst["id"]  ## id
         for i in range(self.curr_i, self.curr_i_end):
-            print(self.profiles[i])
+            # print(self.profiles[i])
             profile = self.profiles[i]
             is_active = False
             if profile[prof_name] == self.selected_profile[prof_name]:

@@ -4,53 +4,23 @@ import json
 
 
 class Profile_provider:
-    ## DG: usunełem sub_categories, zamist tego, zrobiłem categories dict
-    ##! Usuń komentarz, po uzgodnieniu kanwencji kategorii
-    # categories = (
-    #     {
-    #         "id": 0,
-    #         "Category": "Option0"
-    #         ""
-    #     },
-    #     {
-    #         "id": 1,
-    #         "Category": "Option1"
-    #     },
-    #     {
-    #         "id": 2,
-    #         "Category": "Option2"
-    #     },
-    #     {
-    #         "id": 3,
-    #         "text": "Option3"
-    #     },
-    #     {
-    #         "id": 4,
-    #         "text": "Option4"
-    #     },
-    #     {
-    #         "id": 5,
-    #         "text": "Option5"
-    #     }
-    # )
+    ## DG: usunełem sub_categories, zamist tego, zrobiłem categories dict in list
     categories = []
-    changes = []
     profiles = []
     ## DG: nowa zmienna profile_refreshed, sluzy do tego, aby sie dowiedziec, czy profil sie odswierzyl
     profile_refreshed = 0
     categories_url = "categories/generalized_categories.json"
     profile_url = "categories/profiles.json"
+    conf_module = None
     def __init__(self, conf_module):
         ### INITIALIZATION conf_module###
-        self.conf_module = None
         if isinstance(conf_module, object):
             self.conf_module = conf_module
 
-        ## CATEGORIES DOWNLOADING
+        ## OOn the start I want to have categories
         self.download_categories()
 
-
-
+    ## CATEGORIES DOWNLOADING FROM BACK END
     def download_categories(self):
         # if self.conf_module is None:
         #     return -1
@@ -78,6 +48,17 @@ class Profile_provider:
         except Exception as e:
             self.profiles_raw = []
 
+        profile_refreshed = 1
+
+        return 0
+
+    ## DG: send_categories changed on send_profile, becuse instead sending categories, which is const,
+    ## we sending profile with selected categories
+    def send_profile(self, profile):
+        if hasattr(self.conf_module, 'put_to_profile_front') == 0:
+            return -1
+        self.conf_module.put_to_profile_front(profile)
+        profile_refreshed = 0
         return 0
 
 
