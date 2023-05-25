@@ -11,7 +11,7 @@ class Configuration_module:
 	categories_object = [] #json object with categories
 	interval: int = 15 #how often to update location
 	proximity: int = 3 #in kilometers, could be changed in the future
-	first_timer: bool = False
+	first_timer: bool = True
 	notification_system: bool = True 
 	night_mode: bool = False
 
@@ -107,7 +107,17 @@ class Configuration_module:
 			self.notification_system, self.interval, self.night_mode, self.profile_current = conf
 			
 	def create_config_file (self):
-		pass
+		self.first_timer = False
+		config_folder_path = pathlib.Path.cwd / 'config' / 'config_file.cfg'
+		if config_folder_path.is_file():
+			return -1
+		else:
+			with open(config_folder_path, 'a') as fwd:
+				fwd.write (self.first_timer + '\n' +
+				self.notification_system + '\n' +
+				self.interval + '\n' +
+				self.night_mode + '\n' +
+				self.profile_current + '\n')
 
 	def put_settings_front(self):
 		pass
