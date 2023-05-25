@@ -5,7 +5,6 @@ import os
 
 @dataclass
 class Configuration_module:
-	## RemXYZ: Zmienilem typy zmiennych na bardziej pasujace
 	profile_current = [] #blank profile default
 	profiles_object = [] #json object with profiles
 	categories_object = [] #json object with categories
@@ -26,8 +25,6 @@ class Configuration_module:
 	def put_categories_to_front (self):
 		return self.categories_object
 
-	## RemXYZ: zamieniłem nazwe na bardziej pasujaca
-	## DG: Ta metoda pozwala na pobieranie wybranego profilu
 	def put_selected_profile_to_front (self):
 		return self.profile_current
 
@@ -47,7 +44,6 @@ class Configuration_module:
 	def save_profiles (self, profiles = None) -> int:
 		if profiles is None:
 			profiles = self.profile_object
-		#config_folder_path = "categories/profiles.json"
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'profiles.json'
 		try:
 			with open(config_folder_path, 'w') as fwd:
@@ -56,12 +52,10 @@ class Configuration_module:
 		except Exception as e:
 			return -1
 
+	### Read json file with all available profiles created by users
+	### returns 0 on sucess, otherwise -1
 	def read_profiles (self) -> int:
-		## RemXYZ: Zmienilem pathlib.Path('../categories/profiles.json') na "categories/profiles.json"
-		#config_folder_path = "categories/profiles.json"
-		# Updated once again
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'profiles.json'
-
 		try:
 			with open(config_folder_path) as frd:
 				profiles = json.loads(frd.read())
@@ -91,7 +85,7 @@ class Configuration_module:
 			return -1
 
 
-	def save_config_file(self,settings):
+	def save_config_file(self,settings = None):
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
 		with open(config_folder_path, 'w') as fwd:
 			fwd.write (self.first_timer + '\n' +
@@ -99,25 +93,38 @@ class Configuration_module:
 			self.interval + '\n' +
 			self.night_mode + '\n' +
 			self.profile_current + '\n')
-	#for first version: notification w
+			return 0
+		return -1
+
 	def read_config_file (self):
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
+		if not config_folder_path.is_file():
+			return -1
 		with open(config_folder_path) as frd:
 			conf = list(frd.read().split('\n'))
 			self.notification_system, self.interval, self.night_mode, self.profile_current = conf
+		return 0
 			
+	### During first app usage, this method creates 
+	### all needed configuration files 
 	def create_config_file (self):
 		self.first_timer = False
-		config_folder_path = pathlib.Path.cwd / 'config' / 'config_file.cfg'
+		working_dir_path = pathlib.Path.cwd() / 'config'
+		if not working_dir_path.is_dir():
+			working_dir_path.mkdir()
+		config_folder_path = working_dir_path / 'config_file.cfg'
 		if config_folder_path.is_file():
 			return -1
-		else:
-			with open(config_folder_path, 'a') as fwd:
-				fwd.write (self.first_timer + '\n' +
-				self.notification_system + '\n' +
-				self.interval + '\n' +
-				self.night_mode + '\n' +
-				self.profile_current + '\n')
+		with open(config_folder_path, 'a') as fwd:
+			fwd.write (self.first_timer + '\n' +
+			self.notification_system + '\n' +
+			self.interval + '\n' +
+			self.night_mode + '\n' +
+			self.profile_current + '\n')
+		profiles_path, gen_cat_path = working_dir_path / 'profiles.json', working_dir_path / 'generalized_categories.json'
+		profiles_path.touch()
+		gen_cat_path.touch()
+		return 0
 
 	def put_settings_front(self):
 		pass
