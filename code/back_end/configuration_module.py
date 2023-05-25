@@ -108,7 +108,7 @@ class Configuration_module:
 			
 	def create_config_file (self):
 		self.first_timer = False
-		config_folder_path = pathlib.Path.cwd / 'config' / 'config_file.cfg'
+		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
 		if config_folder_path.is_file():
 			return -1
 		else:
