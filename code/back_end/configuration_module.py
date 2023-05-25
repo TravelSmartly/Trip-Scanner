@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1459f770d3e8d31ae58bbf22abb55faf412d8f26
 from dataclasses import dataclass
 @dataclass
 class Configuration_module:
@@ -96,12 +99,14 @@ class Configuration_module:
 			self.night_mode + '\n' +
 			self.profile_current + '\n')
 	#for first version: notification w
-	def read_config_file (self, name):
+	def read_config_file (self):
 		config_folder_path = pathlib.Path('./config/config_file.cfg')
 		with open("config_file.conf") as frd:
 			conf = list(frd.read().split('\n'))
 			self.notification_system, self.interval, self.night_mode, self.profile_current = conf
 			
+	def create_config_file (self):
+		pass
 
 	def put_settings_front(self):
 		pass
