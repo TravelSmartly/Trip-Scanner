@@ -1,0 +1,38 @@
+<Nav_bar>:
+#    size_hint: 1, 0.12
+    MDBoxLayout:
+        orientation: "horizontal"
+        size: root.width, root.height
+
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: "map_section"
+                text: "Maps"
+                icon: "map-marker-radius"
+#                Map_section:
+#                Map_section:
+#                MDLabel
+#                    text: "Maps"
+#                    on_release:
+#                        app.root.previous_object = app.root.current
+#                        app.root.current = "map_section"
+#                        app.root.transition.direction = "down"
+            MDBottomNavigationItem:
+                name: "places_section"
+                text: "Places"
+                icon: "list-box-outline"
+                on_tab_press:
+                    print("HELLO")
+
+                Places_section:
+#                on_release:
+#                    app.root.previous_object = app.root.current
+#                    app.root.current = "places_section"
+#                    app.root.transition.direction = "down"
+            MDBottomNavigationItem:
+                name: "profile_section"
+                text: "Profile"
+                icon: "list-status"
+
+                ProfileManager:
+

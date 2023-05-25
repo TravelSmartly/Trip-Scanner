@@ -63,6 +63,8 @@ class FrontApp(MDApp):
 
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "LightBlue"
+        # self.theme_cls.primary_dark = ""
+        self.theme_cls.disabled_button_primary_color = (89/255, 98/255, 104/255)
 
         self.connection = sqlite3.connect("markets.db")
         if chk_conn(self.connection):

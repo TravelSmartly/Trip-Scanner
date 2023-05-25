@@ -20,12 +20,13 @@
 ## Odwoluje sie do klassy Map_section
 <Map_section>:
     ## name jest niezbedny, aby przyciski mogli do tego obiektu sie odwolywac
-    name: "map_section"
+
     BoxLayout:
         size: root.width, root.height
         orientation: 'vertical'
         Places_Mapview:
         Nav_bar:
+            section_name: root.name
 
     RoundedButton:
         text: "?"
