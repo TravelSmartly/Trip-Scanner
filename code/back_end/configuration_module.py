@@ -99,6 +99,8 @@ class Configuration_module:
 			conf = list(frd.read().split('\n'))
 			self.notification_system, self.interval, self.night_mode, self.profile_current = conf
 			
+	def create_config_file (self):
+		pass
 
 	def put_settings_front(self):
 		pass
