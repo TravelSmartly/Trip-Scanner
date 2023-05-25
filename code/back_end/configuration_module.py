@@ -47,7 +47,7 @@ class Configuration_module:
 		if profiles is None:
 			profiles = self.profile_object
 		#config_folder_path = "categories/profiles.json"
-		config_folder_path = pathlib.Path('./config/profiles.json')
+		config_folder_path = pathlib.Path.cwd() / 'config' / 'profiles.json'
 		try:
 			with open(config_folder_path, 'w') as fwd:
 				json.dump(profiles, fwd)
@@ -59,7 +59,7 @@ class Configuration_module:
 		## RemXYZ: Zmienilem pathlib.Path('../categories/profiles.json') na "categories/profiles.json"
 		#config_folder_path = "categories/profiles.json"
 		# Updated once again
-		config_folder_path = pathlib.Path('./categories/profiles.json')
+		config_folder_path = pathlib.Path.cwd() / 'config' / 'profiles.json'
 		try:
 			with open(config_folder_path) as frd:
 				profiles = json.loads(frd.read())
@@ -78,7 +78,7 @@ class Configuration_module:
 
 	def read_categories(self) -> int:
 		#categories_file_path = "categories/generalized_categories.json"
-		config_file_path = pathlib.Path('./config/generalized_categories.json')
+		config_folder_path = pathlib.Path.cwd() / 'config' / 'generalized_categories.json'
 		print(config_file_path)
 		try:
 			with open(config_file_path) as frd:
@@ -90,8 +90,8 @@ class Configuration_module:
 
 
 	def save_config_file(self,settings):
-		config_folder_path = pathlib.Path('./config/config_file.cfg')
-		with open("config_file.conf", 'w') as fwd:
+		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
+		with open(config_file_path, 'w') as fwd:
 			fwd.write (self.first_timer + '\n' +
 			self.notification_system + '\n' +
 			self.interval + '\n' +
@@ -99,8 +99,8 @@ class Configuration_module:
 			self.profile_current + '\n')
 	#for first version: notification w
 	def read_config_file (self):
-		config_folder_path = pathlib.Path('./config/config_file.cfg')
-		with open("config_file.conf") as frd:
+		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
+		with open(config_file_path) as frd:
 			conf = list(frd.read().split('\n'))
 			self.notification_system, self.interval, self.night_mode, self.profile_current = conf
 			
