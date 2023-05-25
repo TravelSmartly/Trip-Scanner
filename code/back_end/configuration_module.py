@@ -42,8 +42,8 @@ class Configuration_module:
 	def save_profiles (self, profiles = None) -> int:
 		if profiles is None:
 			profiles = self.profile_object
-		# config_folder_path = pathlib.Path('../categories/profiles.json')
-		config_folder_path = "categories/profiles.json"
+		#config_folder_path = "categories/profiles.json"
+		config_folder_path = pathlib.Path('./config/profiles.json')
 		try:
 			with open(config_folder_path, 'w') as fwd:
 				json.dump(profiles, fwd)
@@ -53,7 +53,9 @@ class Configuration_module:
 
 	def read_profiles (self) -> int:
 		## RemXYZ: Zmienilem pathlib.Path('../categories/profiles.json') na "categories/profiles.json"
-		config_folder_path = "categories/profiles.json"
+		#config_folder_path = "categories/profiles.json"
+		# Updated once again
+		config_folder_path = pathlib.Path('./categories/profiles.json')
 		try:
 			with open(config_folder_path) as frd:
 				profiles = json.loads(frd.read())
@@ -71,18 +73,19 @@ class Configuration_module:
 
 
 	def read_categories(self) -> int:
-		categories_file_path = "categories/generalized_categories.json"
+		#categories_file_path = "categories/generalized_categories.json"
+		config_file_path = pathlib.Path('./config/generalized_categories.json')
 		try:
-			with open(categories_file_path) as frd:
+			with open(config_file_path) as frd:
 				self.categories_object = json.load(frd)
 				return 0
 		except Exception as e:
-			self.categories_raw = []
+			self.categories_object = []
 			return -1
 
 
 	def save_config_file(self,settings):
-		config_folder_path = pathlib.Path('../config/config_file.cfg')
+		config_folder_path = pathlib.Path('./config/config_file.cfg')
 		with open("config_file.conf", 'w') as fwd:
 			fwd.write (self.first_timer + '\n' +
 			self.notification_system + '\n' +
@@ -91,7 +94,7 @@ class Configuration_module:
 			self.profile_current + '\n')
 	#for first version: notification w
 	def read_config_file (self, name):
-		config_folder_path = pathlib.Path('../config/config_file.cfg')
+		config_folder_path = pathlib.Path('./config/config_file.cfg')
 		with open("config_file.conf") as frd:
 			conf = list(frd.read().split('\n'))
 			self.notification_system, self.interval, self.night_mode, self.profile_current = conf
