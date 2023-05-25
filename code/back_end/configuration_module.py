@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+import json
+import pathlib
 @dataclass
 class Configuration_module:
 	## RemXYZ: Zmienilem typy zmiennych na bardziej pasujace
