@@ -2,7 +2,6 @@
 import os
 import json
 import pathlib
-import dataclasses
 from time import time
 from kivy.app import App
 from kivy.uix.label import Label
