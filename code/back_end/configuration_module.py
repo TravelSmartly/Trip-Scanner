@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 @dataclass
 class Configuration_module:
 	## RemXYZ: Zmienilem typy zmiennych na bardziej pasujace
