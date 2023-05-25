@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 1459f770d3e8d31ae58bbf22abb55faf412d8f26
 from dataclasses import dataclass
 @dataclass
 class Configuration_module:
