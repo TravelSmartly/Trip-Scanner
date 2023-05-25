@@ -1,0 +1,53 @@
+<Nav_bar_button_icon>:
+    pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+    theme_icon_color: "Custom"
+#    icon_color: app.theme_cls.primary_color
+    icon_color: app.theme_cls.disabled_button_primary_color
+    on_release:
+        self.change_section(self.screen_name)
+
+<Nav_bar_button>:
+#    text: "Places"
+    pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+    font_size: "16sp"
+    line_color: 0, 0, 0, 0
+    text_color: app.theme_cls.disabled_button_primary_color
+    on_release:
+        self.change_section(self.screen_name)
+
+
+<Nav_bar_button_item>:
+    Nav_bar_button_icon:
+        id: nav_bar_icon
+        icon: root.button_icon
+        screen_name: root.screen_name
+        is_active: root.active
+
+    Nav_bar_button:
+        id: nav_bar_button
+        text: root.button_text
+        screen_name: root.screen_name
+        is_active: root.active
+
+<Nav_bar>:
+    id: root_nav_bar
+    size_hint: 1, 0.12
+    MDBoxLayout:
+        orientation: "horizontal"
+        size: root.width, root.height
+
+        Nav_bar_button_item:
+            button_icon: "map-marker-radius"
+            screen_name: "map_section"
+            button_text: "Maps"
+
+        Nav_bar_button_item:
+            button_icon: "list-box-outline"
+            screen_name: "places_section"
+            button_text: "Places"
+
+        Nav_bar_button_item:
+            button_icon: "list-status"
+            screen_name: "profile_section"
+            button_text: "Profile"
+

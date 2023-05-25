@@ -1,53 +1,54 @@
-<Nav_bar_button_icon>:
-    pos_hint: {'center_x': 0.5, 'center_y': 0.75}
-    theme_icon_color: "Custom"
-#    icon_color: app.theme_cls.primary_color
-    icon_color: app.theme_cls.disabled_button_primary_color
-    on_release:
-        self.change_section(self.screen_name)
-
-<Nav_bar_button>:
-#    text: "Places"
-    pos_hint: {'center_x': 0.5, 'center_y': 0.35}
-    font_size: "16sp"
-    line_color: 0, 0, 0, 0
-    text_color: app.theme_cls.disabled_button_primary_color
-    on_release:
-        self.change_section(self.screen_name)
-
-
-<Nav_bar_button_item>:
-    Nav_bar_button_icon:
-        id: nav_bar_icon
-        icon: root.button_icon
-        screen_name: root.screen_name
-        is_active: root.active
-
-    Nav_bar_button:
-        id: nav_bar_button
-        text: root.button_text
-        screen_name: root.screen_name
-        is_active: root.active
-
 <Nav_bar>:
-    id: root_nav_bar
-    size_hint: 1, 0.12
-    MDBoxLayout:
+#    size_hint: 1, 0.12
+    size: root.width, root.height
+    MDFloatLayout:
         orientation: "horizontal"
-        size: root.width, root.height
 
-        Nav_bar_button_item:
-            button_icon: "map-marker-radius"
-            screen_name: "map_section"
-            button_text: "Maps"
+        Navigation:
+            id: navigation_manager_id
+            first_widget: profile_section_nav_id
+            MDBottomNavigationItem:
+                name: "map_section"
+                text: "Maps"
+                icon: "map-marker-radius"
+                on_tab_press:
+                    navigation_manager_id.previous_tab_name = navigation_manager_id.previous_tab.name
+                Map_section:
+                    navigation_manager: navigation_manager_id
 
-        Nav_bar_button_item:
-            button_icon: "list-box-outline"
-            screen_name: "places_section"
-            button_text: "Places"
+            MDBottomNavigationItem:
+                name: "places_section"
+                text: "Places"
+                icon: "list-box-outline"
+                on_tab_press:
+                    navigation_manager_id.previous_tab_name = navigation_manager_id.previous_tab.name
 
-        Nav_bar_button_item:
-            button_icon: "list-status"
-            screen_name: "profile_section"
-            button_text: "Profile"
+                Places_section:
+                    navigation_manager: navigation_manager_id
+
+
+            MDBottomNavigationItem:
+                id: profile_section_nav_id
+                name: "profile_section"
+                text: "Profile"
+                icon: "list-status"
+
+
+                on_tab_press:
+                    navigation_manager_id.previous_tab_name = navigation_manager_id.previous_tab.name
+#                    navigation_manager_id.go_to_previous_tab()
+
+                Profile_manager:
+                    id: profile_manager_id
+                    navigation_manager: navigation_manager_id
+
+
+#                Places_section:
+#                on_release:
+#                    app.root.previous_object = app.root.current
+#                    app.root.current = "places_section"
+#                    app.root.transition.direction = "down"
+
+
+#                ProfileManager:
 

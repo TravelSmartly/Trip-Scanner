@@ -1,3 +1,15 @@
+<Profile_manager>:
+    Profile_section:
+        id: profile_section_id
+        profile_manager: root
+        navigation_manager: root.navigation_manager
+	    name: "places_section"
+	Set_profile_section:
+	    profile_manager: root
+	    navigation_manager: root.navigation_manager
+	    name: "set_profile_section"
+
+
 <Section_header_set_profile_button>:
     text: root.button_text
 
@@ -6,8 +18,8 @@
 
     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
     on_release:
-        app.root.previous_object = app.root.current
-        app.root.current = "set_profile_section"
+        root.profile_manager.previous_tab_name = root.profile_manager.current
+        root.profile_manager.current = "set_profile_section"
 
 
 <RightCheckbox>
@@ -36,6 +48,8 @@
             ## opcje te sa w r_but_options
 #            r_but_option: "Set_profile"
             r_but_obj: root.r_but
+            curr_screen_manager: root.navigation_manager
+            go_to_previous_tab: root.navigation_manager_go_to_previous
 
         ScrollView:
             id: my_scroll_view
@@ -74,5 +88,5 @@
                     root.send_profile()
 #            opacity: 0
 #            md_bg_color: app.theme_cls.primary_color
-        Nav_bar:
-            section_name: root.name
+#        Nav_bar:
+#            section_name: root.name

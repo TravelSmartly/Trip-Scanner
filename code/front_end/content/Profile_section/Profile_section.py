@@ -2,7 +2,7 @@ from kivy.app import App
 from kivymd.app import MDApp
 
 from kivy.uix.widget import Widget
-from kivy.uix.screenmanager import Screen
+from kivy.uix.screenmanager import Screen, ScreenManager
 from kivymd.uix.list import MDList, OneLineListItem, OneLineAvatarIconListItem
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
@@ -19,7 +19,20 @@ from kivymd.icon_definitions import md_icons
 from kivy.uix.checkbox import CheckBox
 
 
+class Profile_manager(ScreenManager):
+    navigation_manager = ObjectProperty(None)
+    previous_tab_name = StringProperty("map_section")
+    def go_to_previous_tab(self):
+        self.transition.direction = 'left'
+        try:
+            self.current = self.previous_tab_name
+        except:
+            pass
+            # print("NO")
+
+
 class Section_header_set_profile_button(MDTextButton):
+    profile_manager = ObjectProperty(None)
     button_text = "Set profile"
 
 
@@ -113,6 +126,10 @@ Profile section służy do wyboru kategorii dla poszczególnych profilów.
 Równiez mozna wybrac sam profil
 """
 class Profile_section(Screen):
+    navigation_manager = ObjectProperty(None)
+    navigation_manager_go_to_previous = ObjectProperty(None)
+    profile_manager = ObjectProperty(None)
+    r_but = ObjectProperty(None)
     app = None
 
     profiles = []
@@ -142,7 +159,6 @@ class Profile_section(Screen):
 
     def __init__(self, **kwargs):
         super(Profile_section, self).__init__(**kwargs)
-
         ## r_but is for passing it into Section header, to show "Set profile" on the top right
         self.r_but = Section_header_set_profile_button()
 
@@ -174,6 +190,10 @@ class Profile_section(Screen):
         Clock.schedule_once(self.show_content)
 
     def show_content(self, dt):
+        self.r_but.profile_manager = self.profile_manager
+        self.navigation_manager_go_to_previous = self.navigation_manager.go_to_previous_tab
+        # print(self.navigation_manager_go_to_previous)
+
         icons = list(md_icons.keys())
         first_cat = None
         cat_name = self.categories_inst["name"] ## category

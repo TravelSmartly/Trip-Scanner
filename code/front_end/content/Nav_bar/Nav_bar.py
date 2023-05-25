@@ -2,10 +2,28 @@ from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivymd.uix.button import MDRoundFlatButton, MDIconButton
 from kivymd.uix.floatlayout import MDFloatLayout
+from kivymd.uix.bottomnavigation import MDBottomNavigation
 from kivy.properties import StringProperty, BooleanProperty
 from kivymd.app import MDApp
 from kivy.clock import Clock
 ### Nav_bar jest przyciskami pod
+
+
+class Navigation(MDBottomNavigation):
+    previous_tab_name = StringProperty("map_section")
+    def go_to_previous_tab(self):
+        last_name = self.previous_tab_name
+        self.switch_tab(last_name)
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Clock.schedule_once(self.show_nav_bar, 1)
+
+    def show_nav_bar(self, td):
+        pass
+        # self.switch_tab("profile_section")
+
+
 class Nav_bar(Screen):
     section_name = StringProperty("")
     active = StringProperty("")
@@ -14,11 +32,11 @@ class Nav_bar(Screen):
         self.is_nav_bar_displayed = ""
         self.last_section = ""
         self.curr_section = ""
-        Clock.schedule_once(self.show_nav_bar)
+        Clock.schedule_once(self.show_nav_bar, 0.01)
 
+    def show_nav_bar(self, td):
+        pass
 
-    def show_nav_bar(self, args):
-        print(self.section_name)
     def show_nav_bar_error(self): pass
     def nav_bar_status(self): pass
 

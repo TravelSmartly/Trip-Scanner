@@ -9,12 +9,14 @@
 
 
 <Set_profile_section>:
+    id: set_profile_section_id
     
     BoxLayout:
         size: root.width, root.height
         orientation: 'vertical'
         Section_header:
             header_text: "Set profile"
+            go_to_previous_tab: root.profile_manager_go_to_previous
         ScrollView:
 #            MDList:
 #                OneLineListItem:
@@ -29,5 +31,5 @@
                 size_hint_y: None
                 height: self.minimum_height
 
-        Nav_bar:
-            section_name: root.name
+#        Nav_bar:
+#            section_name: root.name

@@ -17,6 +17,8 @@
         orientation: 'vertical'
         Section_header:
             header_text: "Places"
+            curr_screen_manager: root.navigation_manager
+            go_to_previous_tab: root.navigation_manager_go_to_previous
 
         ## Tutaj jest kontent place_section
         ScrollView:
@@ -29,5 +31,5 @@
                     id: item2
                     text: "2. 30m"
                     secondary_text: "Biedronka"
-        Nav_bar:
-            section_name: root.name
+#        Nav_bar:
+#            section_name: root.name

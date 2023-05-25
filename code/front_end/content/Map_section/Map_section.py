@@ -3,6 +3,7 @@ from kivy.clock import Clock
 from kivy.garden.mapview import MapView
 from kivy.garden.mapview import MapMarkerPopup
 from kivy.uix.screenmanager import Screen
+from kivy.properties import ObjectProperty
 import os
 # from .Map_object import Map_object
 
@@ -17,6 +18,7 @@ WindowManager
 WindowManager, zarzadza Screen'ami
 """
 class Map_section(Screen):
+    navigation_manager = ObjectProperty(None)
     def show_map(self):
         print("hi")
     def test_show_map_error(self): pass

@@ -73,7 +73,10 @@ class FrontApp(MDApp):
         self.sm = WindowManager()
         return self.sm
 
-
+    def on_start(self):
+        # self.root.ids.bottom_navigation.switch_tab('screen 3')
+        pass
+        # self.root.ids.nav_bar_id.ids.navigation_manager_id.switch_tab("profile_section")
     def set_conf_module(self, conf_module: object):
         self.conf_module = conf_module
 
