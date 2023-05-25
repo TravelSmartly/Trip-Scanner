@@ -1,3 +1,5 @@
+
+from dataclasses import dataclass
 @dataclass
 class Configuration_module:
 	## RemXYZ: Zmienilem typy zmiennych na bardziej pasujace
@@ -75,6 +77,7 @@ class Configuration_module:
 	def read_categories(self) -> int:
 		#categories_file_path = "categories/generalized_categories.json"
 		config_file_path = pathlib.Path('./config/generalized_categories.json')
+		print(config_file_path)
 		try:
 			with open(config_file_path) as frd:
 				self.categories_object = json.load(frd)

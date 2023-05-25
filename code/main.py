@@ -49,17 +49,18 @@ class MainApp:
     def start(self):
         ###-- BACK-END PART --###
         config_module = Configuration_module()
-        config_module.read_profiles()
-        config_module.read_categories()
+        profile_import_status = config_module.read_profiles()
+        categories_import_status = config_module.read_categories()
+        print(categories_import_status, profile_import_status)
         config_module.find_current_profile()
         ###-- END OF BACK-END PART --###
 
 
 
         ###-- FRON-END PART --###
-        front_end_app = FrontApp()
-        front_end_app.set_conf_module(config_module)
-        front_end_app.run()
+        # front_end_app = FrontApp()
+        # front_end_app.set_conf_module(config_module)
+        # front_end_app.run()
         ###-- END OF FRON-END PART --###
 
 ###-- !!!END OF MAIN ZONE!!! --###
