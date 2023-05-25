@@ -8,6 +8,7 @@ from kivy.clock import Clock
 ### Nav_bar jest przyciskami pod
 class Nav_bar(Screen):
     section_name = StringProperty("")
+    active = StringProperty("")
     def __init__(self, **kwargs):
         super(Nav_bar, self).__init__(**kwargs)
         self.is_nav_bar_displayed = ""
@@ -39,7 +40,9 @@ class Nav_bar_button_item(MDFloatLayout):
         Clock.schedule_once(self.show_nav_bar_button)
 
     def show_nav_bar_button(self, args):
-        pass
+        if self.active == True:
+            self.ids.nav_bar_icon.icon_color = MDApp.get_running_app().theme_cls.primary_color
+            self.ids.nav_bar_button.text_color = MDApp.get_running_app().theme_cls.primary_color
         # if self.active == True:
 
 
