@@ -35,7 +35,7 @@ class Configuration_module:
 		profiles = self.put_profiles_to_front()
 		for profile in profiles:
 			if profile["selected"] == 1:
-				print(profile)
+				# print(profile)
 				self.profile_current = profile
 				return 0
 		return -1
@@ -47,7 +47,7 @@ class Configuration_module:
 		if profiles is None:
 			profiles = self.profile_object
 		#config_folder_path = "categories/profiles.json"
-		config_folder_path = pathlib.Path('./config/profiles.json')
+		config_folder_path = pathlib.Path('./back_end/config/profiles.json')
 		try:
 			with open(config_folder_path, 'w') as fwd:
 				json.dump(profiles, fwd)
@@ -59,7 +59,7 @@ class Configuration_module:
 		## RemXYZ: Zmienilem pathlib.Path('../categories/profiles.json') na "categories/profiles.json"
 		#config_folder_path = "categories/profiles.json"
 		# Updated once again
-		config_folder_path = pathlib.Path('./categories/profiles.json')
+		config_folder_path = pathlib.Path('./back_end/config/profiles.json')
 		try:
 			with open(config_folder_path) as frd:
 				profiles = json.loads(frd.read())
@@ -78,8 +78,8 @@ class Configuration_module:
 
 	def read_categories(self) -> int:
 		#categories_file_path = "categories/generalized_categories.json"
-		config_file_path = pathlib.Path('./config/generalized_categories.json')
-		print(config_file_path)
+		config_file_path = pathlib.Path('./back_end/config/generalized_categories.json')
+		# print(config_file_path)
 		try:
 			with open(config_file_path) as frd:
 				self.categories_object = json.load(frd)

@@ -41,25 +41,22 @@ Window.size = (360, 640)
 
 ## DG: ! We changed name "main" to "MainApp"!
 class MainApp:
-    def __init__(self):
-        print("hi")
-    def on_stop(self):
-        print("HELLO STOP")
+
     def start(self):
         ###-- BACK-END PART --###
         config_module = Configuration_module()
         profile_import_status = config_module.read_profiles()
         categories_import_status = config_module.read_categories()
-        print(categories_import_status, profile_import_status)
+        # print(categories_import_status, profile_import_status)
         config_module.find_current_profile()
         ###-- END OF BACK-END PART --###
 
 
 
         ###-- FRON-END PART --###
-        # front_end_app = FrontApp()
-        # front_end_app.set_conf_module(config_module)
-        # front_end_app.run()
+        front_end_app = FrontApp()
+        front_end_app.set_conf_module(config_module)
+        front_end_app.run()
         ###-- END OF FRON-END PART --###
 
 ###-- !!!END OF MAIN ZONE!!! --###
