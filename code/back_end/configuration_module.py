@@ -93,7 +93,7 @@ class Configuration_module:
 			self.night_mode + '\n' +
 			self.profile_current + '\n')
 	#for first version: notification w
-	def read_config_file (self, name):
+	def read_config_file (self):
 		config_folder_path = pathlib.Path('./config/config_file.cfg')
 		with open("config_file.conf") as frd:
 			conf = list(frd.read().split('\n'))
