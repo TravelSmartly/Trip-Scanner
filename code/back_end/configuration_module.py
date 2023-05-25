@@ -1,8 +1,3 @@
-import pathlib
-# from os import path as os_path
-import os
-import json
-from dataclasses import dataclass
 @dataclass
 class Configuration_module:
 	## RemXYZ: Zmienilem typy zmiennych na bardziej pasujace
