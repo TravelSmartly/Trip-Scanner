@@ -6,14 +6,8 @@ from .searching_module import Searching_module
 class Location_module:
     lat = 111045 #one degree of latitude is always 69 miles = 111045 meters
     lon = 111045 #one degree of latitude in equator, sea level is 69 miles = 111045 meters
-    ## RemXYZ: zmieniłęm lokalizację na bardziej aktualną
-    center_location = (33.765, -84.45) #last saved location of a user
+    center_location = (33.765, -84.45) #last saved location of a user, center of an ellipse
     current_location = (33.765, -84.45)
-    #s_string:str
-    #type hints
-
-    # def __init__(self):
-    #     test = 0
 
     @classmethod
     def on_gps_location(cls, *args, **kwargs)->None:
