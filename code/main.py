@@ -55,6 +55,8 @@ class MainApp:
             gps.start(minTime=1000, minDistance=0)
         ###########################################################
 
+
+
         config_module = Configuration_module()
         config_module.create_config_file()
         profile_import_status = config_module.read_profiles()

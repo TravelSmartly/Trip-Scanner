@@ -1,3 +1,8 @@
+## RemXYZ: Bez tego nie dziala
+# from classmethod import classmethod
+import math
+from .searching_module import Searching_module
+
 class Location_module:
     lat = 111045 #one degree of latitude is always 69 miles = 111045 meters
     lon = 111045 #one degree of latitude in equator, sea level is 69 miles = 111045 meters
@@ -6,8 +11,8 @@ class Location_module:
     #s_string:str
     #type hints
 
-    def __init__():
-        test = 0
+    # def __init__(self):
+    #     test = 0
 
     @classmethod
     def on_gps_location(cls, *args, **kwargs)->None:
@@ -16,11 +21,11 @@ class Location_module:
     ### This method should return a tuple 
     ### with current user coordinates
     @classmethod
-	def get_current_location(cls):
-		try:
-			return cls.current_location
-		except Exception as e:
-			return -1
+    def get_current_location(cls):
+        try:
+            return cls.current_location
+        except Exception as e:
+            return -1
 
     ### This method should return true if current_location
     ### is inside an elipse with the center in center_location variable
@@ -46,9 +51,9 @@ class Location_module:
             #center_location = current_location
             #odpal searching module
             cls.center_location = current_location
-            searcher = searching_module.Searching_module(current_location)
+            searcher = Searching_module(current_location)
             try:
-               searcher.start_seaching_module()
+               searcher.start_searching_module(current_location)
                return searcher
             except TypeError:
                 print("Searcher for some reason didn't get initialised properly...")

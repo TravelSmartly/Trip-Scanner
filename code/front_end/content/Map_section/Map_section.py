@@ -1,11 +1,12 @@
-from kivy.app import App
+from kivymd.app import MDApp
 from kivy.clock import Clock
 from kivy.garden.mapview import MapView
-from kivy.garden.mapview import MapMarkerPopup
+# from kivy.garden.mapview import MapMarkerPopup
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 import os
-# from .Map_object import Map_object
+from .Map_object import Map_object
+# from .Map_description import Map_description
 
 """
 Map_section sluzy do wyswietlenia rodzialu mapu
@@ -26,31 +27,6 @@ class Map_section(Screen):
     def test_show_help(self): pass
 
 
-"""
-Map_object to jest marker miejsca, czyli ikona, ktora pokazuje, gdzie znajduje sie miejsce
-"""
-class Map_object(MapMarkerPopup):
-    # cordX: int
-    # cordY: int
-    # cord: int
-    # id: int
-    # display_status: int
-    # from_place_list: int
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        src = os.path.join(os.path.dirname(__file__), 'marker.png')
-        self.source = src
-    # market_data = []
-
-    def on_release(self):
-        # Open up the LocationPopupMenu
-        pass
-
-    def getCord(self): pass
-    def getStatus(self): pass
-
-    def setCord(self): pass
-    def setStatus(self): pass
 
 """ 
 DG: w diagramach jest po prostu Mapview, zamieniłem na Places_Mapview, żeby nie wyglądało podobnie do MapView
@@ -65,6 +41,7 @@ class Places_Mapview(MapView):
     specific_place: dict
     # DG: added location
     location = {"lat":33.75, "lon": -84.4}
+    market_names = []
 
     def show_map_place(self): pass
 
@@ -83,7 +60,7 @@ class Places_Mapview(MapView):
         # Get reference to main app and the database cursor
         # print(self.get_bbox())
         min_lat, min_lon, max_lat, max_lon = self.get_bbox()
-        app = App.get_running_app()
+        app = MDApp.get_running_app()
         # print(app)
         # sql_statement = "SELECT * FROM markets WHERE x > %s AND x < %s AND y > %s AND y < %s " % (
         # min_lon, max_lon, min_lat, max_lat)
@@ -91,29 +68,43 @@ class Places_Mapview(MapView):
         # app.cursor.execute(sql_statement)
         # markets = app.cursor.fetchall()
         places = [
-            {"lat":33.879017, "lon": -84.12754},
-            {"lat":33.75, "lon": -84.41},
-            {"lat":33.75, "lon": -84.43},
-            {"lat":33.75, "lon": -84.45},
-            {"lat":33.75, "lon": -84.60},
-            {"lat":33.75, "lon": -84.70},
-            {"lat":33.75, "lon": -85.20},
-            {"lat":33.90, "lon": -85.40},
-            {"lat":33.80, "lon": -85.20},
-            {"lat":33.76, "lon":-84.181030},
-            {"lat":33.77, "lon":-84.181030},
-            {"lat":33.78, "lon":-84.181030}
+            {
+                "name": "Hello",
+                "lat":33.879017,
+                "lon": -84.12754
+            },
+            {"name": "Hello1", "lat":33.75, "lon": -84.41},
+            {"name": "Hello2", "lat":33.75, "lon": -84.43},
+            {"name": "Hello3", "lat":33.75, "lon": -84.45},
+            {"name": "Hello4", "lat":33.75, "lon": -84.60},
+            {"name": "Hello5", "lat":33.75, "lon": -84.70},
+            {"name": "Hello6", "lat":33.75, "lon": -85.20},
+            {"name": "Hello7", "lat":33.90, "lon": -85.40},
+            {"name": "Hello8", "lat":33.80, "lon": -85.20},
+            {"name": "Hello9", "lat":33.76, "lon":-84.181030},
+            {"name": "Hello10", "lat":33.77, "lon":-84.181030},
+            {"name": "Hello11", "lat":33.78, "lon":-84.181030}
         ]
         # print(places)
         for place in places:
-            self.add_places(place)
+            name = place["name"]
+            if name in self.market_names:
+                continue
+            else:
+                self.add_places(place)
+            # self.add_places(place)
 
 
     def add_places(self, place):
         lat, lon = place["lat"], place["lon"]
         # print(lat, lon)
         marker = Map_object(lat=lat, lon=lon)
+        marker.place_data = place
         self.add_widget(marker)
+
+        # Keep track of the marker's name
+        name = place["name"]
+        self.market_names.append(name)
 
 
     # DG: literówka w add_localizasion, zamienione na add_localization
@@ -121,6 +112,7 @@ class Places_Mapview(MapView):
         lat, lon = self.location["lat"], self.location["lon"]
         location = Map_object(lat=lat, lon=lon)
         self.add_widget(location)
+
 
 
     def refresh_places(self): pass
@@ -133,7 +125,7 @@ class Places_Mapview(MapView):
 
 
 
-class Map_object_button(Map_object):
+class Map_object_button():
     description_status: int
 
     def show_description(self): pass
@@ -142,18 +134,7 @@ class Map_object_button(Map_object):
 
 
 
-class Map_description():
-    link: str
-    imgs: list
-    favorite: int
 
-    def is_it_favorite(self): pass
-
-    def get_url(self): pass
-    def get_img(self): pass
-
-    def set_img(self): pass
-    def set_url(self): pass
 
 
 class Map_description_button():

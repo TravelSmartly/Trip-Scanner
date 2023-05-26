@@ -16,7 +16,7 @@ class Searching_module:
         pass
     def remove_old_objects(self):
         pass
-    def start_searching_module(current_location):
+    def start_searching_module(self, current_location):
         if (current_location == ()):
             return -2
         elif (-90 < current_location[0] < 90 or -180 < current_location[1] < 180):

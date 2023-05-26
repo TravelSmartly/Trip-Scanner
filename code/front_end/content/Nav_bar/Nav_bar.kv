@@ -7,13 +7,16 @@
         Navigation:
             id: navigation_manager_id
             first_widget: profile_section_nav_id
+
             MDBottomNavigationItem:
+                id: map_section_nav_id
                 name: "map_section"
                 text: "Maps"
                 icon: "map-marker-radius"
                 on_tab_press:
                     navigation_manager_id.previous_tab_name = navigation_manager_id.previous_tab.name
                 Map_section:
+                    id: map_section_id
                     navigation_manager: navigation_manager_id
 
             MDBottomNavigationItem:

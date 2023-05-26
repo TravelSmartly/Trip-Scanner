@@ -18,6 +18,21 @@ At least in the front-end part
 
 "DG:" - means that something has been changed in class diagrams
 
+"USER_NAME:" - means note from member of team
+
 "##" and " """" "- means note
 
 "#" - means that the code has been commented out 
+
+Convention
+------
+
+### Spaces
+
+In Front-end
+
+3 enters we do for space between classes
+
+2 enters we do between functions (desides getters and setters)
+
+1 enter we do between logical space
