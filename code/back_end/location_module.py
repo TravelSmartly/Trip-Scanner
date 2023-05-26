@@ -6,8 +6,9 @@ from .searching_module import Searching_module
 class Location_module:
     lat = 111045 #one degree of latitude is always 69 miles = 111045 meters
     lon = 111045 #one degree of latitude in equator, sea level is 69 miles = 111045 meters
-    center_location = (10, 10) #last saved location of a user
-    current_location = (10, 10)
+    ## RemXYZ: zmieniłęm lokalizację na bardziej aktualną
+    center_location = (33.765, -84.45) #last saved location of a user
+    current_location = (33.765, -84.45)
     #s_string:str
     #type hints
 
@@ -22,6 +23,8 @@ class Location_module:
     ### with current user coordinates
     @classmethod
     def get_current_location(cls):
+        # cls.current_location[0] =  cls.current_location[0] + 0.1
+        # cls.current_location[1] += cls.current_location[1] + 0.1
         try:
             return cls.current_location
         except Exception as e:
