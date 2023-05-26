@@ -6,6 +6,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 import os
 from .Map_object import Map_object
+from .gpsblinker import GpsBlinker
 # from .Map_description import Map_description
 
 """
@@ -20,6 +21,10 @@ WindowManager, zarzadza Screen'ami
 """
 class Map_section(Screen):
     navigation_manager = ObjectProperty(None)
+    # def __init__(self):
+    #     super().__init__()
+        # GpsBlinker()
+
     def show_map(self):
         print("hi")
     def test_show_map_error(self): pass

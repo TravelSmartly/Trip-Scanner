@@ -14,12 +14,12 @@ import sqlite3
 
 
 ###- IMPORT NAJWAZNIESZYCH KOMPONENTOW -###
+from .content.Map_section.gpshelper import *
 from .content.Map_section.__init__ import *
 from .content.Places_section.__init__ import *
 from .content.Profile_section.__init__ import *
 from .content.Section_header.__init__ import *
 from .content.Nav_bar.Nav_bar import *
-from .content.Map_section.gpshelper import *
 from .content.test.test import *
 
 from .content.Profile_adapter.Profile_adapter import Profile_manipulator, Category_adapter
@@ -76,8 +76,8 @@ class FrontApp(MDApp):
 
     def on_start(self):
         # self.root.ids.bottom_navigation.switch_tab('screen 3')
-        # GpsHelper().run()
-        pass
+        GpsHelper().run()
+        # pass
         # self.root.ids.nav_bar_id.ids.navigation_manager_id.switch_tab("profile_section")
     def set_conf_module(self, conf_module: object):
         self.conf_module = conf_module
