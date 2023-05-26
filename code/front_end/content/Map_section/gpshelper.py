@@ -1,53 +1,62 @@
-from kivy.app import App
+from kivymd.app import MDApp
 from kivy.utils import platform
 from kivymd.uix.dialog import MDDialog
+from kivy.clock import Clock
+from functools import partial
 
 class GpsHelper():
     has_centered_map = False
     def run(self):
-        gps_blinker = App.get_running_app().root.ids.nav_bar_id.ids.map_section_id.ids.mapview.ids.blinker
+        my_map = MDApp.get_running_app().root.ids.nav_bar_id.ids.map_section_id.ids.mapview
+        self.map = my_map
         # gps_blinker = App.get_running_app().root.ids.mapview.ids.blinker
-        self.gps_blinker = gps_blinker
-        print(gps_blinker)
+        self.gps_blinker = my_map.ids.blinker
+        print(self.gps_blinker)
         self.gps_blinker.blink()
         ## Odswierzam lokalizacje
-        self.update_blinker_position(lat=30, lon=30)
+        # self.update_blinker_position(lat=30, lon=30)
+        Clock.schedule_interval(self.update_blinker_position, 5)
+
 
         # Request permissions on Android
-        if platform == 'android':
-            from android.permissions import Permission, request_permissions
-            def callback(permission, results):
-                if all([res for res in results]):
-                    print("Got all permissions")
-                    from plyer import gps
-                    gps.configure(on_location=self.update_blinker_position,
-                                  on_status=self.on_auth_status)
-                    gps.start(minTime=1000, minDistance=0)
-                else:
-                    print("Did not get all permissions")
+        # if platform == 'android':
+        #     from android.permissions import Permission, request_permissions
+            # def callback(permission, results):
+            #     if all([res for res in results]):
+            #         print("Got all permissions")
+            #         from plyer import gps
+            #         gps.configure(on_location=self.update_blinker_position,
+            #                       on_status=self.on_auth_status)
+            #         gps.start(minTime=1000, minDistance=0)
+            #     else:
+            #         print("Did not get all permissions")
+            #
+            # request_permissions([Permission.ACCESS_COARSE_LOCATION,
+            #                      Permission.ACCESS_FINE_LOCATION], callback)
 
-            request_permissions([Permission.ACCESS_COARSE_LOCATION,
-                                 Permission.ACCESS_FINE_LOCATION], callback)
 
 
-
-    def update_blinker_position(self, *args, **kwargs):
+    def update_blinker_position(self, dt):
         # print(args)
-        my_lat = kwargs['lat']
-        my_lon = kwargs['lon']
-        my_lat = 33.765
-        my_lon = -84.45
+        location_module = MDApp.get_running_app().loc_module
+        loction = location_module.get_current_location()
+        print(loction)
+        # my_lat = kwargs['lat']
+        # my_lon = kwargs['lon']
+        my_lat = loction[0]
+        my_lon = loction[1]
         print("GPS POSITION", my_lat, my_lon)
         # Update GpsBlinker position
-        # gps_blinker = App.get_running_app().root.ids.mapview.ids.blinker
+        # gps_blinker = MDApp.get_running_app().root.ids.mapview.ids.blinker
         # self.gps_blinker = gps_blinker
         self.gps_blinker.lat = my_lat
         self.gps_blinker.lon = my_lon
+        self.map.trigger_update(0)
 
         # Center map on gps
         if not self.has_centered_map:
-            map = App.get_running_app().root.ids.nav_bar_id.ids.map_section_id.ids.mapview
-            map.center_on(my_lat, my_lon)
+
+            self.map.center_on(my_lat, my_lon)
             self.has_centered_map = True
 
 

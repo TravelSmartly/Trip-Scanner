@@ -30,6 +30,7 @@ from back_end.__init__ import *
 Importuję w tym przypadku front_end/__init__.py
 """
 from front_end.__init__ import *
+# from .front_end.content.Map_section.gpshelper import GpsHelper
 ###---- END OF IMPORT FRONT-END AND PACKAGES ----###
 
 Window.size = (360, 640)
@@ -45,18 +46,18 @@ class MainApp:
 
     def start(self):
         ###-- BACK-END PART --###
-
+        location_module = Location_module()
         ### GPS system -> may not work on devices other than android!
         ### starts updating current phone location
         if platform == 'android':
             from android.permissions import request_permissions, Permission
+            from plyer import gps
+            from plyer import notification
             request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET, Permission.ACCESS_FINE_LOCATION, Permission.ACCESS_COARSE_LOCATION])
-            gps.configure(on_location=Location_module.on_gps_location)
+            gps.configure(on_location=location_module.on_gps_location)
             gps.start(minTime=1000, minDistance=0)
+
         ###########################################################
-
-
-
         config_module = Configuration_module()
         config_module.create_config_file()
         profile_import_status = config_module.read_profiles()
@@ -67,9 +68,13 @@ class MainApp:
 
 
 
-        ###-- FRON-END PART --###
+        ###-- FRON-END INIT PART --###
         front_end_app = FrontApp()
+
+        ###-- END OF FRON-END INIT PART --###
+        ###-- FRON-END PART --###
         front_end_app.set_conf_module(config_module)
+        front_end_app.set_location_module(location_module)
         front_end_app.run()
         ###-- END OF FRON-END PART --###
 

@@ -14,7 +14,7 @@ import sqlite3
 
 
 ###- IMPORT NAJWAZNIESZYCH KOMPONENTOW -###
-from .content.Map_section.gpshelper import *
+from .content.Map_section.gpshelper import GpsHelper
 from .content.Map_section.__init__ import *
 from .content.Places_section.__init__ import *
 from .content.Profile_section.__init__ import *
@@ -47,6 +47,7 @@ class FrontApp(MDApp):
     connection = None
     cursor = None
     conf_module = None
+    loc_module = None
     def build(self):
 
         ###- ADAPTERTS -###
@@ -76,11 +77,17 @@ class FrontApp(MDApp):
 
     def on_start(self):
         # self.root.ids.bottom_navigation.switch_tab('screen 3')
-        GpsHelper().run()
+        self.gpshelper = GpsHelper()
+        self.gpshelper.run()
+        # if self.gpshelper is not None:
+        #     self.gpshelper.run()
         # pass
         # self.root.ids.nav_bar_id.ids.navigation_manager_id.switch_tab("profile_section")
     def set_conf_module(self, conf_module: object):
         self.conf_module = conf_module
+
+    def set_location_module(self, loc_module: object):
+        self.loc_module = loc_module
 
     def on_pause(self):
         print("HELLO")
@@ -90,6 +97,9 @@ class FrontApp(MDApp):
 
     def on_stop(self):
         print("HELLO STOP")
+
+    # def set_gpshelper(self, gpshelper):
+    #     self.gpshelper = gpshelper
 
 
 

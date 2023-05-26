@@ -75,7 +75,7 @@ class Places_Mapview(MapView):
         places = [
             {
                 "name": "Hello",
-                "lat":33.879017,
+                "lat": 33.879017,
                 "lon": -84.12754
             },
             {"name": "Hello1", "lat":33.75, "lon": -84.41},
