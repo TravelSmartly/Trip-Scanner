@@ -2,7 +2,12 @@ python v3.9
 
 # https://kivy.org/doc/stable/gettingstarted/installation.html#installation-canonical
 kivy==2.1.0
+
 # https://kivymd.readthedocs.io/en/1.1.1/getting-started/
 KivyMD==1.1.1
+
 https://pypi.org/project/plyer/
 plyer==2.1.0
+
+https://github.com/googlemaps/google-maps-services-python
+googlemaps == 4.10.0
