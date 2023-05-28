@@ -46,7 +46,7 @@ class MainApp:
 
     def start(self):
         ###-- BACK-END PART --###
-
+        location_module = Location_module()
         ### GPS system -> may not work on devices other than android!
         ### starts updating current phone location
         ### To get current phone user location, use: 
@@ -58,7 +58,7 @@ class MainApp:
             from plyer import gps
             from plyer import notification
             request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET, Permission.ACCESS_FINE_LOCATION, Permission.ACCESS_COARSE_LOCATION])
-            gps.configure(on_location=Location_module.on_gps_location)
+            gps.configure(on_location=location_module.on_gps_location)
             gps.start(minTime=1000, minDistance=0)
 
         ###########################################################
