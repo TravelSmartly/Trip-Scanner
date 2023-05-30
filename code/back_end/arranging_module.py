@@ -1,8 +1,9 @@
 
-class Arranging_module(App):
+class Arranging_module:
     categorize_obj = None
 
-    def categorize_obj(map_object):
+    ## RemXYZ: nie moze byc ta sama nazwa obiektu i funkcji
+    def categorize(map_object):
 
         #extract google categories from map object
 
@@ -43,7 +44,7 @@ class Arranging_module(App):
         # -2 for None object
         pass
 
-    def provide_objects():
+    def provide_objects(self):
         pass
 
 
