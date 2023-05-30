@@ -78,7 +78,7 @@ class MainApp:
         ###-- END OF FRON-END INIT PART --###
         ###-- FRON-END PART --###
         front_end_app.set_conf_module(config_module)
-        front_end_app.set_location_module(location_module)
+        front_end_app.set_location_module(Location_module)
         front_end_app.run()
         ###-- END OF FRON-END PART --###
 

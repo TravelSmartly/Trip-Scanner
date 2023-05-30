@@ -40,12 +40,12 @@ class GpsHelper():
         # print(args)
         location_module = MDApp.get_running_app().loc_module
         loction = location_module.get_current_location()
-        print(loction)
+        # print(loction)
         # my_lat = kwargs['lat']
         # my_lon = kwargs['lon']
         my_lat = loction[0]
         my_lon = loction[1]
-        print("GPS POSITION", my_lat, my_lon)
+        # print("GPS POSITION", my_lat, my_lon)
         # Update GpsBlinker position
         # gps_blinker = MDApp.get_running_app().root.ids.mapview.ids.blinker
         # self.gps_blinker = gps_blinker
