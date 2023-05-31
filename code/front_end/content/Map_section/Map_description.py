@@ -17,24 +17,35 @@ class Map_description:
     menu = None
     map_section = ObjectProperty(None)
 
-    def __init__(self, market_data):
+    def __init__(self, place_data):
         super().__init__()
+        if "description" not in place_data:
+            place_data["description"] = None
 
+        if "category" not in place_data:
+            place_data["category"] = None
+
+        if "rating" not in place_data:
+            place_data["rating"] = None
+
+        coords = "({0},{1})".format(place_data["lat"], place_data["lon"])
         headers = {
-            "Name": [market_data["name"], 1],
-            "Lat": [market_data["lat"],1],
-            "Lon": [market_data["lon"],1]
+            "Name": [1, place_data["name"]],
+            "Coordinates": [1, coords],
+            "Category": [1, place_data["category"]],
+            "Description": [2, place_data["description"]],
+            "Rating": [2, place_data["rating"]],
         }
-        # print(market_data)
+        # print(place_data)
         content = Map_description_content()
         list = MDList()
         content.add_widget(list)
         for [k, v] in headers.items():
             new_widget = None
-            if v[1] == 2:
-                new_widget = TwoLineListItem(text=f"{k}:", secondary_text=f"{v[0]}")
+            if v[0] == 2:
+                new_widget = TwoLineListItem(text=f"{k}:", secondary_text=f"{v[1]}")
             else:
-                new_widget = OneLineListItem(text=f"{k}: {v[0]}")
+                new_widget = OneLineListItem(text=f"{k}: {v[1]}")
             list.add_widget(
                 new_widget
             )

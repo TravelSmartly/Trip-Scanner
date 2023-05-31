@@ -1,6 +1,7 @@
 from kivymd.app import MDApp
 from kivy.garden.mapview import MapView
 from .Map_object import Map_object
+from kivy.properties import ObjectProperty, ListProperty
 from kivy.clock import Clock
 """
 DG: w diagramach jest po prostu Mapview, zamieniłem na Places_Mapview, żeby nie wyglądało podobnie do MapView
@@ -11,11 +12,26 @@ class Places_Mapview(MapView):
     min_max_lat_lon: list
     getting_place_timer = None
     places_names: list
-    places: list
+    places = ListProperty(0)
     specific_place: dict
     # DG: added location
-    location = {"lat":33.75, "lon": -84.4}
-    market_names = []
+    location = {"lat": 33.75, "lon": -84.4}
+    places_id = set()
+
+    def __init__(self, **krawgs):
+        super(Places_Mapview, self).__init__(**krawgs)
+        app = MDApp.get_running_app()
+        map_adp = app.map_data_adapter
+        self.map_adp = map_adp
+
+        self.places = self.map_adp.get_places()
+        timer = self.map_adp.get_timer()
+
+        Clock.schedule_interval(self.refresh_places, timer)
+
+
+
+
 
     def show_map_place(self): pass
 
@@ -27,44 +43,29 @@ class Places_Mapview(MapView):
         except:
             pass
 
-        self.getting_place_timer = Clock.schedule_once(self.get_place_in_fov, 1)
+        self.getting_place_timer = Clock.schedule_once(self.get_place_in_fov, 0.5)
 
 
     def get_place_in_fov(self,  *args):
         # Get reference to main app and the database cursor
         # print(self.get_bbox())
         min_lat, min_lon, max_lat, max_lon = self.get_bbox()
-        app = MDApp.get_running_app()
+        # app = MDApp.get_running_app()
         # print(app)
         # sql_statement = "SELECT * FROM markets WHERE x > %s AND x < %s AND y > %s AND y < %s " % (
         # min_lon, max_lon, min_lat, max_lat)
         #
         # app.cursor.execute(sql_statement)
         # markets = app.cursor.fetchall()
-        places = [
-            {
-                "name": "Hello",
-                "lat": 33.879017,
-                "lon": -84.12754
-            },
-            {"name": "Hello1", "lat":33.75, "lon": -84.41},
-            {"name": "Hello2", "lat":33.75, "lon": -84.43},
-            {"name": "Hello3", "lat":33.75, "lon": -84.45},
-            {"name": "Hello4", "lat":33.75, "lon": -84.60},
-            {"name": "Hello5", "lat":33.75, "lon": -84.70},
-            {"name": "Hello6", "lat":33.75, "lon": -85.20},
-            {"name": "Hello7", "lat":33.90, "lon": -85.40},
-            {"name": "Hello8", "lat":33.80, "lon": -85.20},
-            {"name": "Hello9", "lat":33.76, "lon":-84.181030},
-            {"name": "Hello10", "lat":33.77, "lon":-84.181030},
-            {"name": "Hello11", "lat":33.78, "lon":-84.181030}
-        ]
+        places = self.places
         # print(places)
         for place in places:
-            name = place["name"]
-            if name in self.market_names:
+            place_id = place["id"]
+            lat, lon = place["lat"], place["lon"]
+            if place_id in self.places_id:
                 continue
-            else:
+            print(place)
+            if min_lat < lat and lat < max_lat and min_lon < lon and lon < max_lon:
                 self.add_places(place)
             # self.add_places(place)
 
@@ -77,19 +78,19 @@ class Places_Mapview(MapView):
         self.add_widget(marker)
 
         # Keep track of the marker's name
-        name = place["name"]
-        self.market_names.append(name)
+        place_id = place["id"]
+        self.places_id.update([place_id])
+        # print(self.places_id)
 
-
-    # DG: literówka w add_localizasion, zamienione na add_localization
-    def add_localization(self):
-        lat, lon = self.location["lat"], self.location["lon"]
-        location = Map_object(lat=lat, lon=lon)
-        self.add_widget(location)
+    # DG: funkcje add_localization wykonuje gpshelper, ktory ciagle aktualizuje lokalizacje
+    # def add_localization(self):
 
 
 
-    def refresh_places(self): pass
+    ## Again a download new place
+    def refresh_places(self, dt):
+        self.map_adp.postprocessing()
+        # print(self.places)
 
 
     def refresh_localization(self): pass

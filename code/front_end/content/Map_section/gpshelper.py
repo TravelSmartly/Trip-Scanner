@@ -11,7 +11,7 @@ class GpsHelper():
         self.map = my_map
         # gps_blinker = App.get_running_app().root.ids.mapview.ids.blinker
         self.gps_blinker = my_map.ids.blinker
-        print(self.gps_blinker)
+        # print(self.gps_blinker)
         self.gps_blinker.blink()
         ## Odswierzam lokalizacje
         # self.update_blinker_position(lat=30, lon=30)

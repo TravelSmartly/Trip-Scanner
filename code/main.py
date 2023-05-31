@@ -12,14 +12,13 @@ from kivy.lang import Builder
 from plyer import gps
 from plyer import notification
 
-###-- BACK-END ZONE --###
 
+
+###-- BACK-END ZONE --###
 ###---- IMPORT BACK-END AND PACKAGES ----###
 from back_end.__init__ import *
 
 ###---- END OF IMPORT BACK-END AND PACKAGES ----###
-
-
 ###-- END OF BACK-END ZONE --###
 
 
@@ -46,7 +45,6 @@ class MainApp:
 
     def start(self):
         ###-- BACK-END PART --###
-        location_module = Location_module()
         ### GPS system -> may not work on devices other than android!
         ### starts updating current phone location
         ### To get current phone user location, use: 
@@ -58,7 +56,7 @@ class MainApp:
             from plyer import gps
             from plyer import notification
             request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET, Permission.ACCESS_FINE_LOCATION, Permission.ACCESS_COARSE_LOCATION])
-            gps.configure(on_location=location_module.on_gps_location)
+            gps.configure(on_location=Location_module.on_gps_location)
             gps.start(minTime=1000, minDistance=0)
 
         ###########################################################
@@ -68,17 +66,19 @@ class MainApp:
         categories_import_status = config_module.read_categories()
         # print(categories_import_status, profile_import_status)
         config_module.find_current_profile()
+
+        arranging_module = Arranging_module()
         ###-- END OF BACK-END PART --###
 
 
 
+        ###-- FRON-END PART --###
         ###-- FRON-END INIT PART --###
         front_end_app = FrontApp()
-
         ###-- END OF FRON-END INIT PART --###
-        ###-- FRON-END PART --###
         front_end_app.set_conf_module(config_module)
         front_end_app.set_location_module(Location_module)
+        front_end_app.set_arranging_module(arranging_module)
         front_end_app.run()
         ###-- END OF FRON-END PART --###
 

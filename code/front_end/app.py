@@ -23,6 +23,7 @@ from .content.Nav_bar.Nav_bar import *
 from .content.test.test import *
 
 from .content.Profile_adapter.Profile_adapter import Profile_manipulator, Category_adapter
+from .content.Map_data_adapter.Map_data_adapter import Map_data_adapter
 ###- END IMPORT NAJWAZNIESZYCH KOMPONENTOW -###
 
 
@@ -60,6 +61,8 @@ class FrontApp(MDApp):
         self.category_adapter = Category_adapter(self.conf_module)
         self.category_adapter.postprocessing()
 
+        self.map_data_adapter = Map_data_adapter(self.arrg_module)
+        self.map_data_adapter.postprocessing()
 
         ###- END OF ADAPTERS -###
 
@@ -88,6 +91,9 @@ class FrontApp(MDApp):
 
     def set_location_module(self, loc_module: object):
         self.loc_module = loc_module
+
+    def set_arranging_module (self, arrg_module: object):
+        self.arrg_module = arrg_module
 
     def on_pause(self):
         print("HELLO")
