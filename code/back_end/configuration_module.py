@@ -28,6 +28,12 @@ class Configuration_module:
 	def put_selected_profile_to_front (self):
 		return self.profile_current
 
+	def get_interval (self):
+		return self.interval
+
+	def update_interval (self, interv):
+		self.interval = interv
+
 	## RemXYZ: pobieram wszystkie profile, dalej za pomoca petli szukam ten, ktory ma w selected 1, i przyrownuje go do zmiennej profile_current, zatrzymujac przy tym petle i zwracam 0
 	def find_current_profile(self):
 		profiles = self.put_profiles_to_front()
