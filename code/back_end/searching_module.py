@@ -1,4 +1,5 @@
-import googlemaps
+#import googlemaps
+import overpy
 
 class Searching_module:
     #search_counter = 0
@@ -28,45 +29,43 @@ class Searching_module:
     def remove_old_objects(self):
         self.m_object_list = []
 
-    def start_searching_module(self, current_location):
-        if (current_location == ()):
-            return -2
-        elif (-90 < current_location[0] < 90 or -180 < current_location[1] < 180):
-            return -1
-        else:
-            return 0
-
     def start_searching_module(self, input_location = None, input_radius = None):
         map_client = googlemaps.Client(API_KEY)
-        if (input_location):
+        if -90 > input_location[0] > 90 or 180 < input_location[1] < -180:
+            return -1
+        if input_location:
             response = map_client.places_nearby (location = input_location, radius = input_radius)
+        else:
+            return -2
+
+    def search_the_area(coordinates, radius, typ):
+        lat, lon = coordinates[0], coordinates[1]
+        api = overpy.Overpass()
+        
+        lat, lon = 50.05918219735402, 20.003032346862184 # Kraków
+        radius = 2000  # w metrach
+        typ = "restaurant"  # typ miejsca
+
+        # Zapytanie Overpass do znalezienia typów miejsc w określonym promieniu
+        query = f"""
+        [out:json];
+        (
+            node["amenity"="{typ}"](around:{radius},{lat},{lon});
+            way["amenity"="{typ}"](around:{radius},{lat},{lon});
+            relation["amenity"="{typ}"](around:{radius},{lat},{lon});
+        );
+        out center;
+        """
+
+        result = api.query(query)
+        print (result.nodes)
+
+        # Wyświetl nazwy i lokalizacje znalezionych miejsc
+        for element in result.nodes:
+            print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
+
+        for element in result.ways:
+            print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
 
     def prepare_search_result (self, params):
         pass
-
-        
-        
-#test with request, worth to try gmaps won't work well
-#import requests
-
-# set up the API endpoint and parameters
-#url = "https://maps.googleapis.com/maps/api/place/radarsearch/json"
-#params = {
-    #"location": "50.060683036581125,19.935779508513296", # latitude,longitude of the center of the search area
-    #"radius": 5000, # search radius in meters
-    #"type": "restaurant", # type of place to search for
-    #"key": "" # replace with your own API key
-#}
-
-# send the request and get the response
-#response = requests.get(url, params=params)
-#print(response)
-#data = response.json()
-
-# extract the place_ids
-# place_ids = [result["place_id"] for result in data["results"]]
-# while "next_page_token" in data:
-#     params["pagetoken"] = data["next_page_token"]
-#     response = requests.get(url, params=params)
-#     data = response.json()
-#     place_ids += [result["place_id"] for result in data["results"]]
