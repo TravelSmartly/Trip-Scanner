@@ -1,5 +1,4 @@
-
-class Arranging_module(App):
+class Arranging_module():
     categorize_obj = None
 
     #key_value in dictonary
