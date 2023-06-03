@@ -3,7 +3,6 @@ import overpy
 
 class Searching_module:
     #search_counter = 0
-    # init method or constructor
     API_KEY = 'insert_api_key_here'
 
     def __init__(self, current_location = None):
@@ -26,14 +25,14 @@ class Searching_module:
     def remove_old_objects(self):
         self.m_object_list = []
 
-    def start_searching_module(self, input_location = None, input_radius = None):
-        map_client = googlemaps.Client(API_KEY)
-        if -90 > input_location[0] > 90 or 180 < input_location[1] < -180:
-            return -1
-        if input_location:
-            response = map_client.places_nearby (location = input_location, radius = input_radius)
-        else:
-            return -2
+    #def start_searching_module(self, input_location = None, input_radius = None):
+    #    map_client = googlemaps.Client(API_KEY)
+    #   if -90 > input_location[0] > 90 or 180 < input_location[1] < -180:
+    #        return -1
+    #    if input_location:
+    #        response = map_client.places_nearby (location = input_location, radius = input_radius)
+    #    else:
+    #        return -2
 
     def search_the_area(coordinates, radius, category, subcategory):
         lat, lon = coordinates[0], coordinates[1]
