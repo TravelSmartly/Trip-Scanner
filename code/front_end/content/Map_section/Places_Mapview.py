@@ -1,5 +1,5 @@
 from kivymd.app import MDApp
-from kivy.garden.mapview import MapView
+from .mapview_build.lib.kivy_garden.mapview import MapView
 from .Map_object import Map_object
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.clock import Clock

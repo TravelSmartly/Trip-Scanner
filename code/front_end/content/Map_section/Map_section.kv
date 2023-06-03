@@ -1,5 +1,5 @@
-#:import MapView kivy.garden.mapview.MapView
-#:import MapMarkerPopup kivy.garden.mapview.MapView
+#:import MapView front_end.content.Map_section.mapview_build.lib.kivy_garden.mapview
+#:import MapMarkerPopup front_end.content.Map_section.mapview_build.lib.kivy_garden.mapview
 
 <Places_Mapview>:
     lat: 33.75
@@ -43,6 +43,8 @@
         size_hint: None, None
         width:25
         height:25
+        on_press:
+            root.show_help()
 
 <RoundedButton@Button>
     background_color: (0,0,0,0)
@@ -72,3 +74,9 @@
 #			on_release:
 #				app.root.current = "second"
 #				root.manager.transition.direction = "left"
+
+<Help_popup_menu_content>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: root.width * 0.8

@@ -9,6 +9,16 @@
 #            text: "Hi"
 #            md_bg_color: app.theme_cls.disabled_hint_text_color
 
+<Place_option>
+    adaptive_height: True
+
+    TwoLineListItem:
+        text: root.description
+        secondary_text: root.rating
+
+#        IconLeftWidget:
+#            icon: 'phone'
+
 
 <Places_section>
 
@@ -22,14 +32,34 @@
 
         ## Tutaj jest kontent place_section
         ScrollView:
-            MDList:
-                TwoLineListItem:
-                    id: item2
-                    text: "1. 100m"
-                    secondary_text: "Home"
-                TwoLineListItem:
-                    id: item2
-                    text: "2. 30m"
-                    secondary_text: "Biedronka"
+            MDGridLayout:
+                #MDList:
+                id: box
+                cols: 1
+                adaptive_height: True
+#                Profile_category:
+#                Profile_category:
+#                OneLineListItem:
+#                    id: item2
+#                    text: "Hello2"
+#                MDExpansionPanel:
+#                    panel_cls:
+#                        Label:
+#                            text:"Hi"
+#
+#                    content:
+#                        Button:
+#                            text:"hello"
+#                        Button:
+#                            text:"hello2"
+#            MDList:
+#                TwoLineListItem:
+#                    id: item2
+#                    text: "1. 100m"
+#                    secondary_text: "Home"
+#                TwoLineListItem:
+#                    id: item2
+#                    text: "2. 30m"
+#                    secondary_text: "Biedronka"
 #        Nav_bar:
 #            section_name: root.name

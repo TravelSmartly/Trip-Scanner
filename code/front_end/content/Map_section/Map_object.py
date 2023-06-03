@@ -1,4 +1,5 @@
-from kivy.garden.mapview import MapMarkerPopup
+# from kivy.garden.mapview import MapMarkerPopup
+from .mapview_build.lib.kivy_garden.mapview import MapMarkerPopup
 from .Map_description import Map_description
 import os
 

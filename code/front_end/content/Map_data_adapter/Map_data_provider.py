@@ -35,7 +35,7 @@ class Map_place_provider:
             {
                 "id": 334234,
                 "name": "a Grande Mamma",
-                "category": "None",
+                "category": "Restaurant",
                 "lat": 33.88,
                 "lon": -84.42,
                 "description": "Good place",
