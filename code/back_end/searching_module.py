@@ -23,9 +23,6 @@ class Searching_module:
     def set_m_object_list(self,list):
         self.m_object_list = list
 
-    def search_the_area(self):
-        pass
-
     def remove_old_objects(self):
         self.m_object_list = []
 
@@ -38,21 +35,21 @@ class Searching_module:
         else:
             return -2
 
-    def search_the_area(coordinates, radius, typ):
+    def search_the_area(coordinates, radius, category, subcategory):
         lat, lon = coordinates[0], coordinates[1]
         api = overpy.Overpass()
         
         lat, lon = 50.05918219735402, 20.003032346862184 # Kraków
         radius = 2000  # w metrach
-        typ = "restaurant"  # typ miejsca
+        category = "amenity"
+        subcategory = "restaurant"  # typ miejsca
 
         # Zapytanie Overpass do znalezienia typów miejsc w określonym promieniu
         query = f"""
         [out:json];
         (
-            node["amenity"="{typ}"](around:{radius},{lat},{lon});
-            way["amenity"="{typ}"](around:{radius},{lat},{lon});
-            relation["amenity"="{typ}"](around:{radius},{lat},{lon});
+            node["{category}"="{subcategory}"](around:{radius},{lat},{lon});
+            way["{category}"="{subcategory}"](around:{radius},{lat},{lon});
         );
         out center;
         """
