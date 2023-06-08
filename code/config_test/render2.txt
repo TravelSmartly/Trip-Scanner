@@ -1,0 +1,656 @@
+ 1. highway:
+        ◦ footway
+        ◦ motorway
+        ◦ trunk
+        ◦ primary
+        ◦ secondary
+        ◦ tertiary
+        ◦ unclassified
+        ◦ road
+        ◦ living street
+        ◦ service
+        ◦ pedestrian
+        ◦ track
+        ◦ bus guideway
+        ◦ escape
+        ◦ raceway
+        ◦ busway
+        ◦ bridleway
+        ◦ steps
+        ◦ corridor
+        ◦ path
+        ◦ via ferrata
+    2. aerialway:
+        ◦ cable_car
+        ◦ gondola
+        ◦ mixed_lift
+        ◦ chair_lift
+        ◦ drag_lift
+        ◦ t-bar
+        ◦ j-bar
+        ◦ platter
+        ◦ rope_tow
+        ◦ magic_carpet
+        ◦ zip_line
+        ◦ goods
+        ◦ pylon
+        ◦ station
+    3. aeroway:
+        ◦ aerodrome
+        ◦ aircraft_crossing
+        ◦ apron
+        ◦ gate
+        ◦ hangar
+        ◦ helipad
+        ◦ heliport
+        ◦ navigationaid
+        ◦ runway
+        ◦ spaceport
+        ◦ taxiway
+        ◦ terminal
+        ◦ windsock
+    4. amenity:
+        ◦ bar
+        ◦ pub
+        ◦ biergarten
+        ◦ fast food
+        ◦ driving school
+        ◦ cafe
+        ◦ restaurant
+        ◦ food court
+        ◦ ice cream
+        ◦ college
+        ◦ kindergarten
+        ◦ language school
+        ◦ library
+        ◦ toy library
+        ◦ research institute
+        ◦ training
+        ◦ music school
+        ◦ school
+        ◦ traffic park
+        ◦ university
+        ◦ bicycle parking
+        ◦ bicycle repair station
+        ◦ bicycle rental
+        ◦ boat rental
+        ◦ boat sharing
+        ◦ bus station
+        ◦ car rental
+        ◦ car sharing
+        ◦ car wash
+        ◦ compressed air
+        ◦ vehicle inspection
+        ◦ charging station
+        ◦ driver training
+        ◦ ferry terminal
+        ◦ fuel
+        ◦ grit bin
+        ◦ motorcycle parking
+        ◦ parking
+        ◦ parking entrance
+        ◦ parking space
+        ◦ taxi
+        ◦ atm
+        ◦ bank
+        ◦ bureau_de_change
+        ◦ baby hatch
+        ◦ clinic
+        ◦ dentist
+        ◦ doctors
+        ◦ hospital
+        ◦ nursing home
+        ◦ social facility
+        ◦ pharmacy
+        ◦ veterinary
+        ◦ arts centre
+        ◦ brothel
+        ◦ casino
+        ◦ cinema
+        ◦ community centre
+        ◦ conference centre
+        ◦ events venue
+        ◦ exhibition centre
+        ◦ fountain
+        ◦ gambling
+        ◦ bookmaker
+        ◦ love hotel
+        ◦ music venue
+        ◦ nightclub
+        ◦ stripclub
+        ◦ planetarium
+        ◦ public bookcase
+        ◦ social centre
+        ◦ studio
+        ◦ swingerclub
+        ◦ theatre
+        ◦ courthouse
+        ◦ fire station
+        ◦ police
+        ◦ post box
+        ◦ post depot
+        ◦ post office
+        ◦ prison
+        ◦ ranger station
+        ◦ townhall
+        ◦ bbq
+        ◦ fuel_wood
+        ◦ bench
+        ◦ dog toilet
+        ◦ dressing room
+        ◦ drinking water
+        ◦ give box
+        ◦ mailroom
+        ◦ parcel locker
+        ◦ shelter
+        ◦ shower
+        ◦ telephone
+        ◦ toilets
+        ◦ water point
+        ◦ watering place
+        ◦ sanitary dump station
+        ◦ recycling
+        ◦ waste basket
+        ◦ waste disposal
+        ◦ waste transfer station
+        ◦ animal boarding
+        ◦ animal breeding
+        ◦ animal shelter
+        ◦ animal training
+        ◦ baking oven
+        ◦ bakehouse
+        ◦ childcare
+        ◦ clock
+        ◦ crematorium
+        ◦ dive centre
+        ◦ funeral hall
+        ◦ grave yard
+        ◦ cemetery
+        ◦ hunting stand
+        ◦ internet cafe
+        ◦ kitchen
+        ◦ kneipp water cure
+        ◦ lounger
+        ◦ marketplace
+        ◦ monastery
+        ◦ photo booth
+        ◦ place of mourning
+        ◦ place of worship
+        ◦ public bath
+        ◦ public building
+        ◦ government
+        ◦ refugee site
+        ◦ vending machine
+    5. barrier:
+        ◦ cable_barrier
+        ◦ city_wall
+        ◦ ditch
+        ◦ fence
+        ◦ guard_rail
+        ◦ handrail
+        ◦ hedge
+        ◦ kerb
+        ◦ retaining_wall
+        ◦ wall
+        ◦ block
+        ◦ bollard
+        ◦ border_control
+        ◦ bump_gate
+        ◦ bus_trap
+        ◦ cattle_grid
+        ◦ chain
+        ◦ cycle_barrier
+        ◦ debris
+        ◦ entrance
+        ◦ full-height_turnstile
+        ◦ gate
+        ◦ hampshire_gate
+        ◦ height_restrictor
+        ◦ horse_stile
+        ◦ jersey_barrier
+        ◦ kissing_gate
+        ◦ lift_gate
+        ◦ log
+        ◦ motorcycle_barrier
+        ◦ rope
+        ◦ sally_port
+        ◦ spikes
+        ◦ stile
+        ◦ sump_buster
+        ◦ swing_gate
+        ◦ toll_booth
+        ◦ turnstile
+        ◦ yes
+    6. boundary:
+        ◦ aboriginal_lands
+        ◦ administrative
+        ◦ border_zone
+        ◦ forest
+        ◦ forest_compartment
+        ◦ hazard
+        ◦ maritime
+        ◦ marker
+        ◦ national_park
+        ◦ place
+        ◦ political
+        ◦ postal_code
+        ◦ protected_area
+        ◦ special_economic_zone
+        ◦ disputed
+    7. building:
+        ◦ supermarket
+        ◦ apartments
+        ◦ barracks
+        ◦ bungalow
+        ◦ cabin
+        ◦ detached
+        ◦ dormitory
+        ◦ farm
+        ◦ farm_auxiliary
+        ◦ ger
+        ◦ hotel
+        ◦ house
+        ◦ houseboat
+        ◦ residential
+        ◦ semidetached_house
+        ◦ static_caravan
+        ◦ stilt_house
+        ◦ terrace
+        ◦ commercial
+        ◦ industrial
+        ◦ kiosk
+        ◦ office
+        ◦ retail
+        ◦ warehouse
+        ◦ cathedral
+        ◦ chapel
+        ◦ church
+        ◦ kingdom_hall
+        ◦ monastery
+        ◦ mosque
+        ◦ presbytery
+        ◦ religious
+        ◦ shrine
+        ◦ synagogue
+        ◦ temple
+        ◦ bakehouse
+        ◦ bridge
+        ◦ gatehouse
+        ◦ civic
+        ◦ college
+        ◦ fire_station
+        ◦ government
+        ◦ hospital
+        ◦ kindergarten
+        ◦ public
+        ◦ school
+        ◦ toilets
+        ◦ train_station
+        ◦ transportation
+        ◦ residential
+        ◦ barn
+        ◦ conservatory
+        ◦ cowshed
+        ◦ greenhouse
+        ◦ slurry_tank
+        ◦ stable
+        ◦ sty
+        ◦ livestock
+        ◦ grandstand
+        ◦ pavilion
+        ◦ riding_hall
+        ◦ sports_hall
+        ◦ stadium
+        ◦ hangar
+        ◦ hut
+        ◦ shed
+        ◦ carport
+        ◦ garage
+        ◦ garages
+        ◦ parking
+        ◦ digester
+        ◦ service
+        ◦ transformer_tower
+        ◦ water_tower
+        ◦ storage_tank
+        ◦ silo
+        ◦ beach_hut
+        ◦ bunker
+        ◦ castle
+        ◦ construction
+        ◦ container
+        ◦ military
+        ◦ roof
+        ◦ ruins
+        ◦ tent
+        ◦ yes
+        ◦ entrance
+    8. landuse:
+        ◦ commercial
+        ◦ retail
+        ◦ construction
+        ◦ education
+        ◦ fairground
+        ◦ industrial
+        ◦ residential
+        ◦ institutional
+        ◦ aquaculture
+        ◦ allotments
+        ◦ farmland
+        ◦ farmyard
+        ◦ flowerbed
+        ◦ forest
+        ◦ greenhouse_horticulture
+        ◦ meadow
+        ◦ orchard
+        ◦ plant_nursery
+        ◦ vineyard
+        ◦ water
+        ◦ basin
+        ◦ reservoir
+        ◦ salt_pond
+        ◦ brownfield
+        ◦ cemetery
+        ◦ conservation
+        ◦ depot
+        ◦ railway
+        ◦ garages
+        ◦ grass
+        ◦ greenfield
+        ◦ landfill
+        ◦ military
+        ◦ port
+        ◦ quarry
+        ◦ recreation_ground
+        ◦ religious
+        ◦ village_green
+        ◦ winter_sports
+    9. leisure:
+        ◦ adult_gaming_centre
+        ◦ amusement_arcade
+        ◦ beach_resort
+        ◦ bandstand
+        ◦ bird_hide
+        ◦ common
+        ◦ dance
+        ◦ disc_golf_course
+        ◦ dog_park
+        ◦ escape_game
+        ◦ firepit
+        ◦ fishing
+        ◦ fitness_centre
+        ◦ fitness_station
+        ◦ garden
+        ◦ golfcourse
+        ◦ hackerspace
+        ◦ horse_riding
+        ◦ ice_rink
+        ◦ marina
+        ◦ miniature_golf
+        ◦ nature_reserve
+        ◦ park
+        ◦ picnic_table
+        ◦ pitch
+        ◦ playground
+        ◦ slipway
+        ◦ sports_centre
+        ◦ stadium
+        ◦ summer_camp
+        ◦ swimming_area
+        ◦ swimming_pool
+        ◦ track
+        ◦ water_park
+    10. man_made:
+    • adit
+    • beacon
+    • breakwater
+    • bridge
+    • bunker_silo
+    • carpet_hanger
+    • chimney
+    • column
+    • communications_tower
+    • crane
+    • cross
+    • cutline
+    • clearcut
+    • dovecote
+    • embankment
+    • flagpole
+    • gasometer
+    • goods_conveyor
+    • groyne
+    • guard_stone
+    • kiln
+    • lighthouse
+    • mast
+    • mineshaft
+    • monitoring_station
+    • obelisk
+    • observatory
+    • offshore_platform
+    • petroleum_well
+    • pier
+    • pipeline
+    • pump
+    • pumping_station
+    • reservoir_covered
+    • silo
+    • snow_fence
+    • snow_net
+    • storage_tank
+    • street_cabinet
+    • stupa
+    • surveillance
+    • survey_point
+    • tailings_pond
+    • telescope
+    • tower
+    • video_wall
+    • wastewater_plant
+    • watermill
+    • water_tower
+    • water_well
+    • water_tap
+    • water_works
+    • wildlife_crossing
+    • windmill
+    • works
+    • yes
+    11. military:
+    • academy
+    • airfield
+    • base
+    • bunker
+    • barracks
+    • checkpoint
+    • danger_area
+    • nuclear_explosion_site
+    • obstacle_course
+    • office
+    • range
+    • school
+    • training_area
+    • trench
+    12. natural:
+    • fell
+    • moor
+    • grassland
+    • tree_row
+    • scrub
+    • heath
+    • sand
+    • bare_rock
+    • scree
+    • mud
+    • water
+    • glacier
+    • bay
+    • beach
+    • cave_entrance
+    • hot_spring
+    • rock
+    • sinkhole
+    • spring
+    • stone
+    • tree
+    • wood
+    • wood
+    • water
+    • wetland
+    • swamp
+    • marsh
+    • bog
+    • fen
+    • mangrove
+    • saltmarsh
+    • tidalflat
+    • beach
+    13. office:
+    • accounting
+    • administrative
+    • advertising_agency
+    • architects
+    • association
+    • charity
+    • company
+    • consultancy
+    • coworking
+    • embassy
+    • employer
+    • employment_agency
+    • estate_agent
+    • financial
+    • forestry
+    • government
+    • guide
+    • insurance
+    • it
+    • lawyer
+    • notary
+    • ngo
+    • newspaper
+    • political_party
+    • private_investigator
+    • publisher
+    • real_estate_agent
+    • research
+    • surveyor
+    • tax_advisor
+    • tax_authority
+    • telecommunication
+    • travel_agent
+    • water_utility
+    14. place:
+    • borough
+    • city
+    • district
+    • hamlet
+    • locality
+    • municipality
+    • suburb
+    • town
+    • village
+    15. railway:
+    • abandoned
+    • buffer_stop
+    • construction
+    • crossing
+    • disused
+    • level_crossing
+    • miniature
+    • narrow_gauge
+    • platform
+    • preserved
+    • signal_box
+    • station
+    • subway_entrance
+    • switch
+    • tram_stop
+    • turntable
+    • yard
+    16. shop:
+    • alcohol
+    • bakery
+    • beverages
+    • bicycle
+    • books
+    • butcher
+    • car_repair
+    • car_parts
+    • clothes
+    • computer
+    • confectionery
+    • convenience
+    • department_store
+    • electronics
+    • fabric
+    • fishing
+    • florist
+    • furniture
+    • garden_centre
+    • gift
+    • greengrocer
+    • hairdresser
+    • hardware
+    • hearing_aids
+    • jewelry
+    • kiosk
+    • laundry
+    • mall
+    • market
+    • mobile_phone
+    • motorcycle
+    • music
+    • newsagent
+    • optician
+    • outdoor
+    • pet
+    • photo
+    • seafood
+    • shoes
+    • sports
+    • stationery
+    • supermarket
+    • toys
+    • trade
+    • travel_agency
+    • variety_store
+    • video
+    • wine
+    17. tourism:
+    • alpine_hut
+    • apartment
+    • artwork
+    • attraction
+    • camp_site
+    • caravan_site
+    • chalet
+    • guest_house
+    • hostel
+    • hotel
+    • information
+    • motel
+    • museum
+    • picnic_site
+    • theme_park
+    • viewpoint
+    • wilderness_hut
+    • zoo
+    18. waterway:
+    • canal
+    • dam
+    • ditch
+    • drain
+    • fairway
+    • river
+    • dock
+    • drain
+    • moat
+    • pond
+    • reservoir
+    • stream
+    • wadi
+    • waterfall
+    • weir
+    • yes
