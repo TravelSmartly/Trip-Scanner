@@ -1,0 +1,74 @@
+Kategoria: highway
+Podkategorie: footway, service
+
+Kategoria: aerialway
+Podkategorie: cable_car, gondola, mixed_lift, chair_lift, drag_lift, t-bar, j-bar, platter, rope_tow, magic_carpet, zip_line, goods, pylon, station
+
+Kategoria: aeroway
+Podkategorie: aerodrome, aircraft_crossing, apron, gate, hangar, helipad, heliport, navigationaid, runway, spaceport, taxiway, terminal, windsock
+
+Kategoria: amenity
+Podkategorie: bar, pub, biergarten, cafe, restaurant, fast food, food court, ice cream, college, driving school, kindergarten, language school, library, toy library, research institute, training, music school, school, traffic park, university, bicycle parking, bicycle repair station, bicycle rental, boat rental, boat sharing, bus station, car rental, car sharing, car wash, compressed air, vehicle inspection, charging station, driver training, ferry terminal, fuel, grit bin, motorcycle parking, parking, parking entrance, parking space, taxi, atm, bank, bureau de change, baby hatch, clinic, dentist, doctors, hospital, nursing home, social facility, pharmacy, veterinary, arts centre, brothel, casino, cinema, community centre, conference centre, events venue, exhibition centre, fountain, gambling, bookmaker, love hotel, music venue, nightclub, stripclub, planetarium, public bookcase, social centre, studio, swingerclub, theatre, courthouse, fire station, police, post box, post depot, post office, prison, ranger station, townhall, bbq
+
+Kategoria: fuel
+Podkategorie: wood
+
+Kategoria: boundary
+Podkategorie: aboriginal lands, administrative, border zone, forest, forest compartment, hazard, maritime, marker, national park, place, political, postal code, protected area, special economic zone, disputed
+
+Kategoria: building
+Podkategorie: supermarket, apartments, barracks, bungalow, cabin, detached, dormitory, farm, farm auxiliary, ger, hotel, house, houseboat, residential, semidetached house, static caravan, stilt house, terrace, commercial, industrial, kiosk, office, retail, warehouse, cathedral, chapel, church, kingdom hall, monastery, mosque, presbytery, religious, shrine, synagogue, temple, bakehouse, bridge, gatehouse, civic, college, fire station, government, hospital, kindergarten, public, school, toilets, train station, university, barn, conservatory, cowshed, greenhouse, slurry tank, stable, sty, livestock, grandstand, pavilion, riding hall, sports hall, stadium, hangar, hut, shed, carport, garage, garages, parking, digester, service, transformer tower, water tower, storage tank, silo, beach hut, bunker, castle, construction, container, military, roof, ruins, tent, yes
+
+Kategoria: craft
+Podkategorie: agricultural_engines, atelier, bakery, basket_maker, beekeeper, blacksmith, boatbuilder, bookbinder, brewery, builder, cabinet_maker, candlemaker, car_painter, carpenter, carpet_layer, caterer, chimney_sweeper, cleaning, clockmaker, confectionery, cooper, dental_technician, distillery, door_construction, dressmaker, electronics_repair, embroiderer, electrician, engraver, fence_maker, floorer, fruit_press, gardener, glaziery, goldsmith, grinding_mill, handicraft, hvac, insulation, interior_decorator, interior_work, jeweller, joiner, key_cutter, locksmith, metal_construction, mint, musical_instrument, oil_mill, optician, organ_builder, painter, parquet_layer, paver, photographer, photographic_laboratory, piano_tuner, plasterer, plumber, pottery, printer, printmaker, rigger, roofer, saddler, sailmaker, sawmill, scaffolder, sculptor, shoemaker, signmaker, stand_builder, stonemason, stove_fitter, sun_protection, tailor, tiler, tinsmith, toolmaker, turner, upholsterer, watchmaker, water_well_drilling, window_construction, winery
+
+Kategoria: emergency
+Podkategorie: ambulance_station, defibrillator, landing_site, emergency_ward_entrance, fire_service_inlet, fire_alarm_box, fire_extinguisher, fire_hose, fire_hydrant, water_tank, suction_point, lifeguard, life_ring, lifeguard=tower, assembly_point, phone, siren, drinking_water
+
+Kategoria: healthcare
+Podkategorie: alternative, yes, audiologist, hearing aids, birthing centre, blood bank, blood donation, counselling, nutrition counselling, dialysis, hospice, laboratory, midwife, nurse, occupational therapist, optometrist, physiotherapist, podiatrist, psychotherapist, rehabilitation, sample collection, speech therapist, vaccination centre
+
+Kategoria: landuse
+Podkategorie: commercial, retail, construction, education, fairground, industrial, residential, institutional, aquaculture, allotments, farmland, farmyard, flowerbed, forest, greenhouse horticulture, meadow, orchard, plant nursery, vineyard, water, basin, reservoir, salt pond, brownfield, cemetery, conservation, depot, railway, garages, grass, greenfield, landfill, military, port, quarry, recreation ground, religious, village green, winter sports
+
+Kategoria: leisure
+Podkategorie: adult_gaming_centre, amusement_arcade, beach_resort, bandstand, bird_hide, common, dance, disc_golf_course, dog_park, escape_game, firepit, fishing, fitness_centre, fitness_station, garden, golfcourse, hackerspace, horse_riding, ice_rink, marina, miniature_golf, nature_reserve, park, picnic_table, pitch, playground, slipway, sports_centre, stadium, summer_camp, swimming_area, swimming_pool, track, water_park
+
+Kategoria: man_made
+Podkategorie: adit, beacon, breakwater, bridge, bunker_silo, carpet_hanger, chimney, column, communications_tower, crane, cross, cutline, clearcut, dovecote, embankment, flagpole, gasometer, goods_conveyor, groyne, guard_stone, kiln, lighthouse, mast, mineshaft, monitoring_station, obelisk, observatory, offshore_platform, petroleum_well, pier, pipeline, pump, pumping_station, reservoir_covered, silo, snow_fence, snow_net, storage_tank, street_cabinet, stupa, surveillance, survey_point, tailings_pond, telescope, tower, video_wall, wastewater_plant, watermill, water_tower, water_well, water_tap, water_works, wildlife_crossing, windmill, works, yes
+
+Kategoria: military
+Podkategorie: academy, airfield, base, bunker, barracks, checkpoint, danger_area, nuclear_explosion_site, obstacle_course, office, range, school, training_area, trench
+
+Kategoria: natural
+Podkategorie: fell, grassland, heath, moor, scrub, shrubbery, tree, tree_row, tundra, wood, bay, beach, blowhole, cape, coastline, crevasse, geyser, glacier, hot_spring, isthmus, mud, peninsula, reef, shingle, shoal, spring, strait, water, wetland, arch, arete, bare_rock, cave_entrance, cliff, dune, earth_bank, fumarole, hill, peak, ridge, rock, saddle, sand, scree, sinkhole, stone, valley, volcano
+
+Kategoria: office
+Podkategorie: accountant, administrative, advertising_agency, architect, association, chamber, charity, company, construction_company, consulting, courier, coworking, diplomatic, educational_institution, employment_agency, energy_supplier, engineer, estate_agent, financial, financial_advisor, forestry, foundation, geodesist, government, graphic_design, guide, harbour_master, insurance, it, lawyer, logistics, moving_company, newspaper, ngo, notary, politician, political_party, property_management, publisher, quango, religion, research, security, surveyor, tax_advisor, telecommunication, therapist, travel_agent, tutoring, union, visa, water_utility, yes
+
+Kategoria: place
+Podkategorie: country, state, region, province, district, county, municipality, city, borough, suburb, quarter, neighbourhood, city_block, plot, town, village, hamlet, isolated_dwelling, farm, continent, archipelago, island, islet, square, locality, sea, ocean
+
+Kategoria: power
+Podkategorie: cable, catenary_mast, compensator, connection, converter, generator, heliostat, insulator, line, minor_line, plant, pole, portal, substation, switch, switchgear, terminal, tower, transformer
+
+Kategoria: public_transport
+Podkategorie: stop_position, platform, station, stop_area, stop_area_group
+
+Kategoria: railway
+Podkategorie: abandoned, razed, disused, funicular, light rail, miniature, monorail, narrow gauge, preserved, rail, subway, tram, crossover, siding, spur, yard, halt, platform, subway entrance, tram stop, buffer stop, derail, crossing, level crossing, tram level crossing, signal, switch, railway crossing
+
+Kategoria: route
+Podkategorie: bicycle, bus, canoe, detour, ferry, foot, hiking, horse, inline skates, light rail, mtb, piste, railway, road, running, ski, subway, train, tracks, tram, trolleybus
+
+Kategoria: shop
+Podkategorie: alcohol, bakery, beverages, brewing supplies, butcher, cheese, chocolate, coffee, confectionery, convenience, deli, dairy, farm, frozen food, greengrocer, health food, ice cream, pasta, pastry, seafood, spices, tea, wine, department store, mall, general, second hand, pawnbroker, variety store, baby goods, bag, boutique, clothes, fabric, fashion accessories, jewelry, leather, sewing, shoes, tailor, watches, wool, charity, second hand, pawnbroker, pest control, pet, pet grooming, pyrotechnics, religion, storage rental, tobacco, toys, travel agency, weapons, vacant, yes
+
+Kategoria: sport
+Podkategorie: 9pin, 10pin, aerobics, american_football, aikido, archery, athletics, australian_football, badminton, bandy, baseball, basketball, beachvolleyball, billiards, bmx, bobsleigh, bocce, bodybuilding, boules, bowling, boxing, bridge, canoe, cricket, croquet, curling, cycling, dance, darts, discgolf, diving, dog_racing, equestrian, field_hockey, fitness, floorball, football, freediving, frisbee, golf, gymnastics, handball, hockey, horse_racing, ice_hockey, ice_skating, karting, kickboxing, kiteboarding, korfball, martial_arts, mini_golf, motocross, motor, multi, netball, padel, paintball, paragliding, parkour, pelota, racquet, rc_car, roller_skating, rowing, rugby, running, sailing, scuba_diving, shooting, skateboarding, skiing, sled, soccer, sport, sports_centre, stadium, streetball, summer_biathlon, surf, swimming, table_soccer, table_tennis, taekwondo, tai_chi, tennis, tenpin, touch_rugby, track, track_cycling, trampoline, triathlon, tug_of_war, ultimate, volleyball, water_polo, water_ski, weightlifting, wrestling, yoga
+
+Kategoria: tourism
+Podkategorie: alpine_hut, apartment, artwork, attraction, cabin, camp_site, caravan_site, chalet, guest_house, hostel, hotel, information, motel, picnic_site, theme_park, view_point, wilderness_hut, zoo, aquarium, museum, battlefield, castle, fort, historic, memorial, monument, ruins, tomb, archaeological_site, beach_resort, camping, caravan_park, chalet_park, dog_park, garden, golf_course, holiday_park, marina, mini_golf, nature_reserve, park, picnic_area, playground, wildlife_hide, wildlife_park, archaeological_site, city_gate, city_wall, lighthouse, windmill, wayside_cross, wayside_shrine, wayside_chapel, wayside_fountain, wayside_cross, wayside_shrine, wayside_chapel, wayside_fountain, yes
+
+Kategoria: waterway
+Podkategorie: canal, dam, ditch, drain, dock, drain, fish_pass, lock, rapids, river, stream, tidal_channel, wadi, waterfall, weir
