@@ -22,6 +22,7 @@ class Map_data_adapter(Map_place_provider):
         self.places = self.get_places_raw()
 
 
+
     def test_favorite_processing(self): pass
     def get_places_unique(self):
         to_send_places = [place for place in self.places if place['id'] not in self.sent_places]

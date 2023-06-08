@@ -17,6 +17,7 @@ Kivy-Garden==0.1.5
 # mapview
 
 # https://pypi.org/project/plyer/
+# pip install plyer
 plyer==2.1.0
 
 # https://github.com/googlemaps/google-maps-services-python

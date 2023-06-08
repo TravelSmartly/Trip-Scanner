@@ -28,8 +28,8 @@ class Map_place_provider:
         # print(self.arrg_module, hasattr(self.arrg_module, 'provide_objects'))
         if self.arrg_module is None:
             return -1
-        if hasattr(self.arrg_module, 'provide_objects') == 0:
-            return -1
+        # if hasattr(self.arrg_module, 'provide_objects') == 0:
+        #     return -1
         # places = self.arr_module.provide_objects()
         places = [
             {

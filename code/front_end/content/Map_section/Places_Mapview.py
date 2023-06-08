@@ -64,7 +64,7 @@ class Places_Mapview(MapView):
             lat, lon = place["lat"], place["lon"]
             if place_id in self.places_id:
                 continue
-            print(place)
+            # print(place)
             if min_lat < lat and lat < max_lat and min_lon < lon and lon < max_lon:
                 self.add_places(place)
             # self.add_places(place)
