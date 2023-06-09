@@ -117,6 +117,7 @@ class Searching_module:
                     subcategory_list = category_dict["subcategories"]
                     for each_sub in subcategory_list:
                         search_the_area (Location_module.get_current_location(), config_module.proximity, category, each_sub)
+        return self.m_object_list
 
 
 
