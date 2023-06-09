@@ -82,7 +82,7 @@ class Searching_module:
             object = dict {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
             self.m_object_list.append (object)
 
-        return m.m_object_list
+        return self.m_object_list
 
     def prepare_search_result (self, params):
         pass
