@@ -68,13 +68,13 @@ class Searching_module:
         result = api.query(query)
 
         # Wyświetl nazwy i lokalizacje znalezionych miejsc
-        id = 1
+        idd = 1
         for element in result.nodes:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
             object_location = (element.lat, element.lon)
             subj_distance = distance_between_two_latlon (object_location, coordinates)
-            object = {
-                'id': id,
+            object_a = {
+                'id': idd,
                 'name': element.tags.get('name', 'unknown'), 
                 'category': subcategory,
                 'lat': element.lat,
@@ -83,15 +83,15 @@ class Searching_module:
                 'rating': 'no rating'
                 'distance': subj_distance
             }
-            self.m_object_list.append (object)
-            id += 1
+            self.m_object_list.append (object_a)
+            idd += 1
 
         for element in result.ways:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
             object_location = (element.lat, element.lon)
             subj_distance = distance_between_two_latlon (object_location, coordinates)
-            object = {
-                'id': id,
+            object_a = {
+                'id': idd,
                 'name': element.tags.get('name', 'unknown'), 
                 'category': subcategory,
                 'lat': element.lat,
@@ -100,11 +100,26 @@ class Searching_module:
                 'rating': 'no rating'
                 'distance': subj_distance
             }
-            self.m_object_list.append (object)
-            id += 1
+            self.m_object_list.append (object_a)
+            idd += 1
 
         return self.m_object_list
 
     def get_search_result (self, config_module):
-        
+        category_dictionaries = config_module.get_categories_dicts()
+        config_module.find_current_profile()
+        #current_profile = json.loads (config_module.put_selected_profile_to_front())
+        current_profile = config_module.put_selected_profile_to_front()
+        selected_categories_list = current_profile["categories"]
+        for category in selected_categories_list:
+            for category_dict in category_dictionaries:
+                if category_dict["category"] == category:
+                    subcategory_list = category_dict["subcategories"]
+                    for each_sub in subcategory_list:
+                        search_the_area (Location_module.get_current_location(), config_module.proximity, category, each_sub)
+
+
+
+
+
         
