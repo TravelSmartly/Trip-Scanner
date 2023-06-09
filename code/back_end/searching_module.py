@@ -1,5 +1,6 @@
 #import googlemaps
 import overpy
+import math
 
 class Searching_module:
     #search_counter = 0
@@ -9,12 +10,23 @@ class Searching_module:
         self.m_object_list = []
         if current_location:
             self.m_object_list[0] = current_location
+        else:
+            self.m_object_list[0] = (-999, -999)
     
     def convert_miles_to_meters (miles):
         try:
             return miles * 1_609.344
         except:
             return -1
+
+    def distance_between_two_latlon (lat_lon1, lat_lon2):
+        try:
+            return math.sqrt ( pow (lat_lon1[0] * 111320 - lat_lon2[1] * 111320, 2) + 
+            pow ( (40075000 * math.cos(lat_lon1[1]) / 360) - (40075000 * math.cos(lat_lon2[1]) / 360), 2) )  
+        except:
+            return -1
+            
+
 
     def get_m_object_list(self):
         return self.m_object_list
@@ -58,10 +70,18 @@ class Searching_module:
 
         # Wyświetl nazwy i lokalizacje znalezionych miejsc
         for element in result.nodes:
-            print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
+            #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
+            object_location = (element.lat, element.lon)
+            subj_distance = distance_between_two_latlon (object_location, coordinates)
+            object = dict {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
+            self.m_object_list.append (object)
 
         for element in result.ways:
-            print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
+            #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
+            object_location = (element.lat, element.lon)
+            subj_distance = distance_between_two_latlon (object_location, coordinates)
+            object = dict {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
+            self.m_object_list.append (object)
 
     def prepare_search_result (self, params):
         pass
