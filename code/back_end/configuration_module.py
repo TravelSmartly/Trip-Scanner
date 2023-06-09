@@ -20,7 +20,7 @@ class Configuration_module:
 	## Uwaga, tutaj zwracam i bede operowac na profilu bezposrednio pobranego z back-endu,
 	## wszystkie zmiany we front-endzie, czy gdize kolwiek takze od razu beda pojawialy sie w tym obiekcie
 	def put_profiles_to_front (self):
-		return self.profile_object
+		return self.profiles_object
 
 	def put_categories_to_front (self):
 		return self.categories_object
@@ -49,7 +49,7 @@ class Configuration_module:
 
 	def save_profiles (self, profiles = None) -> int:
 		if profiles is None:
-			profiles = self.profile_object
+			profiles = self.profiles_object
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'profiles.json'
 		try:
 			with open(config_folder_path, 'w') as fwd:
