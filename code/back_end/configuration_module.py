@@ -38,6 +38,7 @@ class Configuration_module:
 	## RemXYZ: pobieram wszystkie profile, dalej za pomoca petli szukam ten, ktory ma w selected 1, i przyrownuje go do zmiennej profile_current, zatrzymujac przy tym petle i zwracam 0
 	def find_current_profile(self):
 		profiles = self.put_profiles_to_front()
+		#profiles = json.loads (self.put_profiles_to_front())
 		for profile in profiles:
 			if profile["selected"] == 1:
 				# print(profile)
