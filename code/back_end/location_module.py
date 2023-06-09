@@ -3,11 +3,12 @@
 import math
 from .searching_module import Searching_module
 
+### default location changed to Krakow
 class Location_module:
     lat = 111045 #one degree of latitude is always 69 miles = 111045 meters
     lon = 111045 #one degree of latitude in equator, sea level is 69 miles = 111045 meters
-    center_location = (33.765, -84.45) #last saved location of a user, center of an ellipse
-    current_location = (33.765, -84.45)
+    center_location = (50.05918219735402, 20.003032346862184) #last saved location of a user, center of an ellipse
+    current_location = (50.05918219735402, 20.003032346862184) 
 
     @classmethod
     def on_gps_location(cls, *args, **kwargs)->None:
