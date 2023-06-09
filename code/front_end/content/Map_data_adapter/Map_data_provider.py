@@ -89,6 +89,18 @@ class Map_place_provider:
             },
         ]
 
+        ### wojtek7z -> added this section to try get real places from openstreet map,
+        ### each time to download places, use get_search_result method invoked on object 
+        ### of type 'Searching_module', in the final version of the app, it shouldn't be called
+        ### directly, but only after check_proximity method was called 
+        ### so method to call in cycles would be 'start_location_module', invoked ON CLASS 
+        ### directly, and Location_module would check if proximity condition is still met
+        searcher = Searching_module()
+        places = searcher.get_search_result()
+
+        # END OF THE SECTION
+        ###########################################
+
         if len(places) == 0:
             return -2
 
