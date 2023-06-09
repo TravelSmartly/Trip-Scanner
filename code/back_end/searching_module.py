@@ -84,7 +84,7 @@ class Searching_module:
                 'distance': subj_distance
             }
             self.m_object_list.append (object)
-            i += 1
+            id += 1
 
         for element in result.ways:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
@@ -101,9 +101,10 @@ class Searching_module:
                 'distance': subj_distance
             }
             self.m_object_list.append (object)
-            i += 1
+            id += 1
 
         return self.m_object_list
 
-    def prepare_search_result (self, params):
-        pass
+    def get_search_result (self, config_module):
+        
+        
