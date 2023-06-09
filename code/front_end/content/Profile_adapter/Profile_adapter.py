@@ -36,7 +36,7 @@ class Profile_adapter(Profile_provider):
         ## PROFILE DOWNLOADING
         self.download_profiles()
         profiles = self.get_profiles_raw()
-
+        print (profiles)
         if len(profiles) == 0:
             return -1
         self.profile_refreshed = 1
@@ -170,6 +170,9 @@ class Profile_manipulator(Profile_adapter):
     ## Zwraca, czy zostalo cos zmodyfikowane w kategoriach
     def get_change_status(self):
         return self.is_categories_changed
+
+
+
 
 ## DG: ! I have splited the Profile_adapter into Profile_adapter and Category_adapter, which may help to better understand the code
 class Category_adapter(Profile_provider):

@@ -50,6 +50,7 @@ class Profile_provider:
         # except Exception as e:
         #     self.profiles_raw = []
         self.profiles_raw = self.conf_module.put_profiles_to_front()
+        print(self.profiles_raw)
 
         self.profile_refreshed = 1
 

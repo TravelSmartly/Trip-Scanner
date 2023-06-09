@@ -175,8 +175,12 @@ class Profile_section(Screen):
         self.curr_i_end = len(self.categories)
 
         self.profiles = profile_mnp.get_profiles()
+        ## profile_inst jest zrobione po to, aby kiedy dostane z bck endu slownik, miec bezposrednio we front
+        ## endzie wpisane klucze, ktorych potrzebuje
         self.profile_inst = profile_mnp.get_instraction()
         self.selected_profile = profile_mnp.get_selected()
+        if self.selected_profile == None:
+            return
         # print(self.selected_profile, "selected_profile")
 
         self.selected_categories = self.selected_profile[self.profile_inst["categories"]]

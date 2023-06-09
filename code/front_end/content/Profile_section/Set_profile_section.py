@@ -83,7 +83,7 @@ class Set_profile_section(Screen):
         self.selected_profile = profile_mnp.get_selected()
         self.curr_i_end = len(self.profiles)
         # print(self.selected_profile, "selected_profile w set_profile")
-
+        return
         self.selected_categories = self.selected_profile[self.profile_inst["categories"]]
         self.selected_profile_name = self.selected_profile[self.profile_inst["name"]]
         # print(self.selected_profile_name)
