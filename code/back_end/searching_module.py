@@ -79,8 +79,8 @@ class Searching_module:
                 'category': subcategory,
                 'lat': element.lat,
                 'lon': element.lon,
-                'description': 'a place just for you!'
-                'rating': 'no rating'
+                'description': 'a place just for you!',
+                'rating': 'no rating',
                 'distance': subj_distance
             }
             self.m_object_list.append (object_a)
@@ -96,8 +96,8 @@ class Searching_module:
                 'category': subcategory,
                 'lat': element.lat,
                 'lon': element.lon,
-                'description': 'a place just for you!'
-                'rating': 'no rating'
+                'description': 'a place just for you!',
+                'rating': 'no rating',
                 'distance': subj_distance
             }
             self.m_object_list.append (object_a)
