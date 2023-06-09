@@ -105,7 +105,7 @@ class Configuration_module:
 			return 0
 		return -1
 
-	def_get_categories_dicts (self):
+	def get_categories_dicts (self):
 		return self.categories_dicts
 
 	def save_config_file(self,settings = None):
