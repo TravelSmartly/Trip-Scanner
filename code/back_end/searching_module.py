@@ -8,10 +8,10 @@ class Searching_module:
 
     def __init__(self, current_location = None):
         self.m_object_list = []
-        if current_location:
-            self.m_object_list[0] = current_location
-        else:
-            self.m_object_list[0] = (-999, -999)
+        #if current_location:
+        #    self.m_object_list[0] = current_location
+        #else:
+        #    self.m_object_list[0] = (-999, -999)
     
     def convert_miles_to_meters (miles):
         try:
@@ -68,19 +68,40 @@ class Searching_module:
         result = api.query(query)
 
         # Wyświetl nazwy i lokalizacje znalezionych miejsc
+        id = 1
         for element in result.nodes:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
             object_location = (element.lat, element.lon)
             subj_distance = distance_between_two_latlon (object_location, coordinates)
-            object = {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
+            object = {
+                'id': id,
+                'name': element.tags.get('name', 'unknown'), 
+                'category': subcategory,
+                'lat': element.lat,
+                'lon': element.lon,
+                'description': 'a place just for you!'
+                'rating': 'no rating'
+                'distance': subj_distance
+            }
             self.m_object_list.append (object)
+            i += 1
 
         for element in result.ways:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
             object_location = (element.lat, element.lon)
             subj_distance = distance_between_two_latlon (object_location, coordinates)
-            object = {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
+            object = {
+                'id': id,
+                'name': element.tags.get('name', 'unknown'), 
+                'category': subcategory,
+                'lat': element.lat,
+                'lon': element.lon,
+                'description': 'a place just for you!'
+                'rating': 'no rating'
+                'distance': subj_distance
+            }
             self.m_object_list.append (object)
+            i += 1
 
         return self.m_object_list
 
