@@ -201,7 +201,7 @@ class Category_adapter(Profile_provider):
         ## CATEGORIES DOWNLOADING
         self.download_categories()
         categories = self.get_categories_raw()
-        self.categories = categories["Categories"]
+        self.categories = categories
         return 0
 
     def get_categories(self) -> list:

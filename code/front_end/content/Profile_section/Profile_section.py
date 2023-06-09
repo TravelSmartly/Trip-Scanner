@@ -17,6 +17,7 @@ from kivymd.uix.list import IRightBodyTouch, OneLineAvatarIconListItem
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.icon_definitions import md_icons
 from kivy.uix.checkbox import CheckBox
+import string
 
 
 class Profile_manager(ScreenManager):
@@ -190,30 +191,38 @@ class Profile_section(Screen):
         Clock.schedule_once(self.show_content)
 
     def show_content(self, dt):
+        ## zbieram potrzebne informacje o rozdzialach, do ktorych mozna bedzie sie cofnac
         self.r_but.profile_manager = self.profile_manager
         self.navigation_manager_go_to_previous = self.navigation_manager.go_to_previous_tab
         # print(self.navigation_manager_go_to_previous)
 
         icons = list(md_icons.keys())
+        ## Tojest zrobione po to, zeby jesli kto zmieni nazwe pola w kategorii, to od razu daloby sie
+        ## to zmienic w klasie profile_manipulator
         first_cat = None
         cat_name = self.categories_inst["name"] ## category
         cat_icon = self.categories_inst["icon"] ## icon
         cat_id = self.categories_inst["id"] ## id
+        ## W tym miejscu wypisuje sie lista kategorii!
         for i in range(self.curr_i, self.curr_i_end):
             category = self.categories[i]
             is_active = False
-            # print(self.selected_categories, cat_id)
+            ## Tutaj sprawdzam, czy id tej kategorii jest w liscie wybranych kategorii w profilu
             if category[cat_id] in self.selected_categories:
                 is_active = True
             category_widget = Profile_category(
-                text=category[cat_name],
+                text=category[cat_name].title(),
                 active=is_active,
-                icon=icons[category[cat_icon]],
+                icon=category[cat_icon],
                 category_id=category[cat_id],
                 profile_section=self
             )
+            ## To dodaje element z listy do listy check_boxes do latwiejszego zarządzania wszystkimi
+            ## elementami z listy kategorii
             check_box = category_widget.get_check_box()
             self.check_boxes.append(check_box)
+            ## Tutaj szukam pierwszy element, ktory sie pojawia, potrzebne jest to do listy dynamicznej.
+            ## poniewaz kiedy skroluje do dolu, chcialym wrocic do gory, inaczej robia sie jakies bugi.
             if i == self.curr_i:
                 first_cat = category_widget
             self.ids.panel_container.add_widget(category_widget)
