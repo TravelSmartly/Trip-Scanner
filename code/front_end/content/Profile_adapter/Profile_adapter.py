@@ -36,7 +36,7 @@ class Profile_adapter(Profile_provider):
         ## PROFILE DOWNLOADING
         self.download_profiles()
         profiles = self.get_profiles_raw()
-        print (profiles)
+        # print (profiles)
         if len(profiles) == 0:
             return -1
         self.profile_refreshed = 1
