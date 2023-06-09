@@ -105,6 +105,9 @@ class Configuration_module:
 			return 0
 		return -1
 
+	def_get_categories_dicts (self):
+		return self.categories_dicts
+
 	def save_config_file(self,settings = None):
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
 		with open(config_folder_path, 'w') as fwd:
