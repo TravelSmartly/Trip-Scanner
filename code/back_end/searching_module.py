@@ -50,10 +50,10 @@ class Searching_module:
         lat, lon = coordinates[0], coordinates[1]
         api = overpy.Overpass()
         
-        lat, lon = 50.05918219735402, 20.003032346862184 # Kraków
-        radius = 2000  # w metrach
-        category = "amenity"
-        subcategory = "restaurant"  # typ miejsca
+        #lat, lon = 50.05918219735402, 20.003032346862184 # Kraków
+        #radius = 2000  # w metrach
+        #category = "amenity"
+        #subcategory = "restaurant"  # typ miejsca
 
         # Zapytanie Overpass do znalezienia typów miejsc w określonym promieniu
         query = f"""
