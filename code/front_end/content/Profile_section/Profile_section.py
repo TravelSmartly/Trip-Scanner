@@ -162,6 +162,7 @@ class Profile_section(Screen):
         super(Profile_section, self).__init__(**kwargs)
         ## r_but is for passing it into Section header, to show "Set profile" on the top right
         self.r_but = Section_header_set_profile_button()
+        Clock.schedule_once(self.start_conf)
 
         ##- PROFILE ADAPTER -##
         app = MDApp.get_running_app()
@@ -179,27 +180,27 @@ class Profile_section(Screen):
         ## endzie wpisane klucze, ktorych potrzebuje
         self.profile_inst = profile_mnp.get_instraction()
         self.selected_profile = profile_mnp.get_selected()
-        if self.selected_profile == None:
-            return
-        # print(self.selected_profile, "selected_profile")
+        if self.selected_profile is not None:
+            # print(self.selected_profile, "selected_profile")
 
-        self.selected_categories = self.selected_profile[self.profile_inst["categories"]]
-        self.selected_profile_name = self.selected_profile[self.profile_inst["name"]]
-        # print(self.selected_profile_name)
-        ##- END OF PROFILE ADAPTER -##
+            self.selected_categories = self.selected_profile[self.profile_inst["categories"]]
+            self.selected_profile_name = self.selected_profile[self.profile_inst["name"]]
+            # print(self.selected_profile_name)
+            ##- END OF PROFILE ADAPTER -##
 
-        ## To ma za zadanie wyświetlić content po ladowaniu aplikacji, nie mozna tego robic w init
-        ## poniewaz w show_content UYWAM ids! To jest bardzo wazne, poniewaz w init ids jeszcze nie sa
-        ## znalezione, wiec nalezy poczekac, poki sie pojawia, wiec Clock czeka chwile i pokazuje kontent
-        ## Mozliwe, ze sie da zrobic to inaczej, ale nie umiem
-        Clock.schedule_once(self.show_content)
+            ## To ma za zadanie wyświetlić content po ladowaniu aplikacji, nie mozna tego robic w init
+            ## poniewaz w show_content UYWAM ids! To jest bardzo wazne, poniewaz w init ids jeszcze nie sa
+            ## znalezione, wiec nalezy poczekac, poki sie pojawia, wiec Clock czeka chwile i pokazuje kontent
+            ## Mozliwe, ze sie da zrobic to inaczej, ale nie umiem
+            Clock.schedule_once(self.show_content)
 
-    def show_content(self, dt):
+    ## DG: Dodalem start conf do obslugi poczatkowych ustwien
+    def start_conf(self, dt):
         ## zbieram potrzebne informacje o rozdzialach, do ktorych mozna bedzie sie cofnac
         self.r_but.profile_manager = self.profile_manager
         self.navigation_manager_go_to_previous = self.navigation_manager.go_to_previous_tab
-        # print(self.navigation_manager_go_to_previous)
 
+    def show_content(self, dt):
         icons = list(md_icons.keys())
         ## Tojest zrobione po to, zeby jesli kto zmieni nazwe pola w kategorii, to od razu daloby sie
         ## to zmienic w klasie profile_manipulator

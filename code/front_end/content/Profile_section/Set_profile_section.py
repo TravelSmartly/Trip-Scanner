@@ -70,7 +70,7 @@ class Set_profile_section(Screen):
 
     def __init__(self, **kwargs):
         super(Set_profile_section, self).__init__(**kwargs)
-
+        Clock.schedule_once(self.start_conf)
         ##- PROFILE ADAPTER -##
         app = MDApp.get_running_app()
         profile_mnp = app.profile_manipulator
@@ -83,22 +83,25 @@ class Set_profile_section(Screen):
         self.selected_profile = profile_mnp.get_selected()
         self.curr_i_end = len(self.profiles)
         # print(self.selected_profile, "selected_profile w set_profile")
-        return
-        self.selected_categories = self.selected_profile[self.profile_inst["categories"]]
-        self.selected_profile_name = self.selected_profile[self.profile_inst["name"]]
-        # print(self.selected_profile_name)
-        ##- END OF PROFILE ADAPTER -##
+        if self.selected_profile is not None:
+            self.selected_categories = self.selected_profile[self.profile_inst["categories"]]
+            self.selected_profile_name = self.selected_profile[self.profile_inst["name"]]
+            # print(self.selected_profile_name)
+            ##- END OF PROFILE ADAPTER -##
 
-        ## To ma za zadanie wyświetlić content po ladowaniu aplikacji, nie mozna tego robic w init
-        ## poniewaz w show_content UYWAM ids! To jest bardzo wazne, poniewaz w init ids jeszcze nie sa
-        ## znalezione, wiec nalezy poczekac, poki sie pojawia, wiec Clock czeka chwile i pokazuje kontent
-        ## Mozliwe, ze sie da zrobic to inaczej, ale nie umiem
-        Clock.schedule_once(self.show_content)
+            ## To ma za zadanie wyświetlić content po ladowaniu aplikacji, nie mozna tego robic w init
+            ## poniewaz w show_content UYWAM ids! To jest bardzo wazne, poniewaz w init ids jeszcze nie sa
+            ## znalezione, wiec nalezy poczekac, poki sie pojawia, wiec Clock czeka chwile i pokazuje kontent
+            ## Mozliwe, ze sie da zrobic to inaczej, ale nie umiem
+            Clock.schedule_once(self.show_content)
 
-
-    def show_content(self, dt):
+    ## DG: Dodalem start conf do obslugi poczatkowych ustwien
+    def start_conf(self,dt):
         self.profile_manager = MDApp.get_running_app().root.ids.nav_bar_id.ids.profile_manager_id
         self.profile_manager_go_to_previous = self.profile_manager.go_to_previous_tab
+
+    def show_content(self, dt):
+
         prof_name = self.profile_inst["name"]  ## name
         prof_icon = self.profile_inst["icon"]  ## icon
         prof_id = self.profile_inst["id"]  ## id
