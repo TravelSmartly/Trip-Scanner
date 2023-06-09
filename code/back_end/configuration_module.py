@@ -8,6 +8,7 @@ class Configuration_module:
 	profile_current = [] #blank profile default
 	profiles_object = [] #json object with profiles
 	categories_object = [] #json object with categories
+	categories_dicts = []
 	interval: int = 15 #how often to update location
 	proximity: int = 3 #in kilometers, could be changed in the future
 	first_timer: bool = True
@@ -89,7 +90,20 @@ class Configuration_module:
 		except Exception as e:
 			self.categories_object = []
 			return -1
-
+	
+	def read_categories_txt (self) -> int:
+		config_folder_path = pathlib.Path.cwd() / 'config' / 'generalized_categories_lines.txt'
+		with open (config_folder_path) as frd:
+			txt_file = frd.readlines()
+			for line in txt_file:
+				s_line = line.strip().split(', ')
+				id = s_line[0]
+				category = s_line[1]
+				subcategories = [s_line[i] for i in range(2,len(s_line))]
+				category_dict = {"id": id, "category": category, "subcategories": subcategories}
+				self.categories_dicts.append (category_dict)
+			return 0
+		return -1
 
 	def save_config_file(self,settings = None):
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
