@@ -10,7 +10,7 @@ class Configuration_module:
 	categories_object = [] #json object with categories
 	categories_dicts = []
 	interval: int = 15 #how often to update location
-	proximity: int = 3 #in kilometers, could be changed in the future
+	proximity: int = 3000 #in meters, could be changed in the future
 	first_timer: bool = True
 	notification_system: bool = True 
 	night_mode: bool = False
