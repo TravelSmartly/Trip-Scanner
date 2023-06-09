@@ -66,7 +66,6 @@ class Searching_module:
         """
 
         result = api.query(query)
-        print (result.nodes)
 
         # Wyświetl nazwy i lokalizacje znalezionych miejsc
         for element in result.nodes:
