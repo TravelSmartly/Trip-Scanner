@@ -72,14 +72,14 @@ class Searching_module:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
             object_location = (element.lat, element.lon)
             subj_distance = distance_between_two_latlon (object_location, coordinates)
-            object = dict {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
+            object = {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
             self.m_object_list.append (object)
 
         for element in result.ways:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
             object_location = (element.lat, element.lon)
             subj_distance = distance_between_two_latlon (object_location, coordinates)
-            object = dict {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
+            object = {'name': element.tags.get('name', 'unknown'), 'location': object_location, 'distance': subj_distance}
             self.m_object_list.append (object)
 
         return self.m_object_list
