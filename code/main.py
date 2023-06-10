@@ -63,8 +63,8 @@ class MainApp:
         config_module = Configuration_module()
         config_module.create_config_file()
         profile_import_status = config_module.read_profiles()
-
         categories_import_status = config_module.read_categories()
+        categories_line_import_status = config_module.read_categories_txt()
         # print(categories_import_status, profile_import_status)
         config_module.find_current_profile()
 
