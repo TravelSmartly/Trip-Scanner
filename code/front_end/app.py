@@ -43,6 +43,14 @@ def chk_conn(conn):
     except Exception as ex:
         return False
 
+""" 
+DP: FrontApp używa Wzorca Fasady, dlatego, że, FrontApp, przyjmuje aż 4 obiekty z back-endu 
+i działa na tych obiektach przekazując te obiekty innym obiektom 
+A aby uruchomić tę aplikację wystarczy użyć metody build
+DP: FrontApp używa Wzorca Singleton, ponieważ istnieje tylko jedna instancja FrontApp, w sumie tak samo jak
+i inne rozdziały (sekcje), takie jak Map_Section, Profile_Section i td.
+"""
+
 ## W tym miejscu zaczyna sie caly graficzny interfejsc
 class FrontApp(MDApp):
     connection = None

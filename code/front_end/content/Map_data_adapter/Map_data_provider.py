@@ -1,6 +1,9 @@
 import time
 
 """
+DP: Wzorzec Adapter (Adapter pattern): Map_place_provider jest używany do transformacji interfejsu jednej klasy, 
+takiej jak searching module na interfejs oczekiwany przez inne obiekty. 
+
 Klasa Map_place_provider wykorzystuje metody back_endu, takie jak provide_places(), get_time() i outside_area(). 
 W metodzie download_places() pobierane są miejsca z back_endu i zapisywane w atrybucie klasy. 
 Metoda ta jest również wywoływana co 5 minut oraz gdy użytkownik opuszcza obszar wyszukiwania.

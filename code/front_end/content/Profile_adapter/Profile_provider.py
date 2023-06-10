@@ -1,8 +1,10 @@
 import json
 
+"""
+DP: Wzorzec Adapter (Adapter pattern): Profile_provider jest używany do transformacji interfejsu jednej klasy, 
+takiej jak conif_module na interfejs oczekiwany przez inne obiekty. 
+"""
 ## Zadaniem Profile_provider tylko sciągnąć dane z back_endu
-
-
 class Profile_provider:
     ## DG: usunełem sub_categories, zamiast tego, zrobiłem categories_raw, ktore ma takze inna nazwe, wczesniej bylo categories dict in list
     categories_raw = []

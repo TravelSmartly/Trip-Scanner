@@ -1,11 +1,16 @@
 from .Profile_provider import Profile_provider
 import time
 
+"""
+DP: Wzorzec Adapter (Adapter pattern): Profile_adapter dziedziczy z Profile_provider i przetwarza dane na format, 
+który jest bardziej użyteczny dla pozostałych części systemu. 
+Wzorzec Dekorator (Decorator pattern): Profile_adapter dziedziczy z Profile_provider i rozszerza jego funkcjonalność, 
+dodając metody do powtórnego przetwarzania profilów. Jest to zrobione, aby uniknąć konfliktór i trzymać się
+zasady SOLID, Single-Responsibility Principle, aby każda klasa robiła mał kawałek dla czegoś większego
 
+"""
 ## Zadaniem Profile_adapter jest przetworzyc dane, ktory sciagnal Profile_provider,
 ## poniewaz dane, ktore ma profile_provider sa ogolne, a tu nalezy je uszczegolowic
-
-
 class Profile_adapter(Profile_provider):
     ## DG: profile_refreshed means, that I download profile from phone again
     profile_refreshed = 0
@@ -69,10 +74,20 @@ class Profile_adapter(Profile_provider):
     def set_profiles_instraction(self, pro_inst):
         self.instraction = pro_inst
 
+"""
+DP: Wzorzec Dekorator (Decorator pattern): Profile_manipulator dziedziczy z Profile_adapter i rozszerza jego funkcjonalność, 
+dodając metody do manipulowania profilami. 
+Wzorzec dekoratora jest używany do dynamicznego dodawania nowej funkcjonalności do obiektu bez zmiany implementacji klas, 
+z których ten obiekt pochodzi.
+Podobnie Category_adapter dziedziczy z Profile_provider i adaptuje dane kategorii do formatu używanego w 
+innych częściach systemu.
+DP: Wzorzec Mediator: Profile_manipulator pozwala na komunikacje między front-endem i back-endem,
+aby klient nie musiał znać bezpośrednio configuration_module, a od razu użyć bliższej do niego metody
+z klasy Profile_mnp
 
+"""
 ## DG: ! Dodalem Profile_manipulator, aby zdjac ladunek manipulowania interfejsem profilu, by trzymac sie zasad SOLID, ale mozna bylo tego nie robic
 ## (EN)I added Profile_manipulator to take the load off from Profile_adapter
-
 class Profile_manipulator(Profile_adapter):
     is_categories_changed = 0
     last_changed_categories_id = -1
