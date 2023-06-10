@@ -1,7 +1,9 @@
 #import googlemaps
 import overpy
 import math
+import json
 from .location_module import *
+
 
 class Searching_module:
     #search_counter = 0
@@ -19,13 +21,13 @@ class Searching_module:
     def set_config_module(self, config_module):
         self.config_module = config_module
     
-    def convert_miles_to_meters (miles):
+    def convert_miles_to_meters (self, miles):
         try:
             return miles * 1_609.344
         except:
             return -1
 
-    def distance_between_two_latlon (lat_lon1, lat_lon2):
+    def distance_between_two_latlon (self, lat_lon1, lat_lon2):
         try:
             return math.sqrt ( pow (lat_lon1[0] * 111320 - lat_lon2[1] * 111320, 2) + 
             pow ( (40075000 * math.cos(lat_lon1[1]) / 360) - (40075000 * math.cos(lat_lon2[1]) / 360), 2) )  
@@ -60,18 +62,29 @@ class Searching_module:
         #radius = 2000  # w metrach
         #category = "amenity"
         #subcategory = "restaurant"  # typ miejsca
+        print (f"category : {category}")
+        # ~ print (f"subcategory : {subcategory}")
 
-        # Zapytanie Overpass do znalezienia typów miejsc w określonym promieniu
+        # ~ # Zapytanie Overpass do znalezienia typów miejsc w określonym promieniu
+        # ~ query = f"""
+        # ~ [out:json];
+        # ~ (
+            # ~ node["{category}"="{subcategory}"](around:{radius},{lat},{lon});
+            # ~ way["{category}"="{subcategory}"](around:{radius},{lat},{lon});
+        # ~ );
+        # ~ out center;
+        # ~ """
+        
         query = f"""
         [out:json];
         (
-            node["{category}"="{subcategory}"](around:{radius},{lat},{lon});
-            way["{category}"="{subcategory}"](around:{radius},{lat},{lon});
+            node[{category}](around:{radius},{lat},{lon});
         );
         out center;
         """
 
         result = api.query(query)
+        # ~ print (result.nodes)
 
         # Wyświetl nazwy i lokalizacje znalezionych miejsc
         idd = 1
@@ -82,54 +95,64 @@ class Searching_module:
             object_a = {
                 'id': idd,
                 'name': element.tags.get('name', 'unknown'), 
-                'category': subcategory,
+                'category': category,
                 'lat': element.lat,
                 'lon': element.lon,
                 'description': 'a place just for you!',
                 'rating': 'no rating',
                 'distance': subj_distance
             }
-            self.m_object_list.append (object_a)
+            if object_a['name'] != 'unknown':
+                self.m_object_list.append (object_a)
+            # ~ print ("dis object")
+            # ~ print (object_a)
             idd += 1
 
-        for element in result.ways:
-            #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
-            object_location = (element.lat, element.lon)
-            subj_distance = self.distance_between_two_latlon (object_location, coordinates)
-            object_a = {
-                'id': idd,
-                'name': element.tags.get('name', 'unknown'), 
-                'category': subcategory,
-                'lat': element.lat,
-                'lon': element.lon,
-                'description': 'a place just for you!',
-                'rating': 'no rating',
-                'distance': subj_distance
-            }
-            self.m_object_list.append (object_a)
-            idd += 1
+        # ~ for element in result.ways:
+            # ~ #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
+            # ~ object_location = (element.lat, element.lon)
+            # ~ subj_distance = self.distance_between_two_latlon (object_location, coordinates)
+            # ~ object_a = {
+                # ~ 'id': idd,
+                # ~ 'name': element.tags.get('name', 'unknown'), 
+                # ~ 'category': subcategory,
+                # ~ 'lat': element.lat,
+                # ~ 'lon': element.lon,
+                # ~ 'description': 'a place just for you!',
+                # ~ 'rating': 'no rating',
+                # ~ 'distance': subj_distance
+            # ~ }
+            # ~ self.m_object_list.append (object_a)
+            # ~ idd += 1
 
         return self.m_object_list
 
     def get_search_result (self):
         config_module = self.config_module
+        # ~ print ("a")
         if config_module is None:
             return []
+        # ~ print("b")
         category_dictionaries = config_module.get_categories_dicts()
+        #category_dictonaries contains keys such as: id, category, subcategories (list)
+        # ~ print (category_dictionaries) 
         config_module.find_current_profile()
         #current_profile = json.loads (config_module.put_selected_profile_to_front())
-        current_profile = config_module.put_selected_profile_to_front()
+        current_profile = config_module.put_selected_profile_to_front() 
+        #current profile is a dict, with key 'categories' containing values (id-s) of all selected categories
+        # ~ print (current_profile)
         selected_categories_list = current_profile["categories"]
-        for category in selected_categories_list:
-            for category_dict in category_dictionaries:
-                if category_dict["category"] == category:
-                    subcategory_list = category_dict["subcategories"]
-                    for each_sub in subcategory_list:
-                        self.search_the_area (Location_module.get_current_location(), config_module.proximity, category, each_sub)
-        return self.m_object_list
-
-
-
-
-
+        # ~ print (selected_categories_list)
         
+        chosen_category_dicts = [category_dict for category_dict in category_dictionaries if int(category_dict["id"]) in selected_categories_list]
+        for c_dict in chosen_category_dicts:
+            subcategory_list = c_dict["subcategories"]
+            # ~ print (subcategory_list[0])
+            big_string = ",".join(subcategory_list)
+            self.search_the_area (Location_module.get_current_location(), config_module.proximity, c_dict["category"], big_string)
+            # ~ for each_sub in subcategory_list:
+                # ~ print (each_sub)
+                # ~ self.search_the_area (Location_module.get_current_location(), config_module.proximity, c_dict["category"], each_sub)
+        
+        # ~ print (self.m_object_list)
+        return self.m_object_list
