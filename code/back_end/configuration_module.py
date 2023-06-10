@@ -93,7 +93,7 @@ class Configuration_module:
 			return -1
 	
 	def read_categories_txt (self) -> int:
-		config_folder_path = pathlib.Path.cwd() / 'config' / 'generalized_categories_line.txt'
+		config_folder_path = pathlib.Path.cwd() / 'config' / 'generalized_categories_lines.txt'
 		with open (config_folder_path) as frd:
 			txt_file = frd.readlines()
 			for line in txt_file:
