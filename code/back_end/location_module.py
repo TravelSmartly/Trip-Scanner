@@ -1,7 +1,6 @@
 ## RemXYZ: Bez tego nie dziala
 # from classmethod import classmethod
 import math
-from .searching_module import Searching_module
 
 ### default location changed to Krakow
 class Location_module:
@@ -41,22 +40,22 @@ class Location_module:
             print("gps not working")
         return tmp
 
-    @classmethod
-    def start_location_module(cls, r, center_location):
-        current_location = cls.get_current_location()
-        searcher = None
-        if not (cls.check_proximity(r,current_location,center_location)):#is outside of region
+    #@classmethod
+    #def start_location_module(cls, r, center_location):
+        #current_location = cls.get_current_location()
+        #searcher = None
+        #if not (cls.check_proximity(r,current_location,center_location)):#is outside of region
             #center_location = current_location
             #odpal searching module
-            cls.center_location = current_location
-            searcher = Searching_module(current_location)
-            try:
-               searcher.start_searching_module(current_location)
-               return searcher
-            except TypeError:
-                print("Searcher for some reason didn't get initialised properly...")
-                return -2
-        return 0
+            #cls.center_location = current_location
+            #searcher = Searching_module(current_location)
+            #try:
+              # searcher.start_searching_module(current_location)
+              # return searcher
+           # except TypeError:
+           #     print("Searcher for some reason didn't get initialised properly...")
+          #      return -2
+        #return 0
 
 
 
