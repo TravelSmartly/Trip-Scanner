@@ -96,8 +96,8 @@ class Searching_module:
                 'id': idd,
                 'name': element.tags.get('name', 'unknown'), 
                 'category': category,
-                'lat': element.lat,
-                'lon': element.lon,
+                'lat': float (element.lat),
+                'lon': (element.lon),
                 'description': 'a place just for you!',
                 'rating': 'no rating',
                 'distance': subj_distance
