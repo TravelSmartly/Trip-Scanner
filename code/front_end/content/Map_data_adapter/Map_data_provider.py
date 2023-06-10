@@ -95,8 +95,10 @@ class Map_place_provider:
         ### directly, but only after check_proximity method was called 
         ### so method to call in cycles would be 'start_location_module', invoked ON CLASS 
         ### directly, and Location_module would check if proximity condition is still met
+        ### as an argument, it gets Config_module type object
+        ### returns current list of object places
         searcher = Searching_module()
-        places = searcher.get_search_result()
+        places = searcher.get_search_result(config_module)
 
         # END OF THE SECTION
         ###########################################
