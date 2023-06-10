@@ -49,6 +49,7 @@ class FrontApp(MDApp):
     cursor = None
     conf_module = None
     loc_module = None
+    search_module = None
     def build(self):
 
         ###- ADAPTERTS -###
@@ -61,8 +62,9 @@ class FrontApp(MDApp):
         self.category_adapter = Category_adapter(self.conf_module)
         self.category_adapter.postprocessing()
 
-        self.map_data_adapter = Map_data_adapter(self.arrg_module)
+        self.map_data_adapter = Map_data_adapter(self.search_module)
         self.map_data_adapter.postprocessing()
+
 
         ###- END OF ADAPTERS -###
 
@@ -94,6 +96,9 @@ class FrontApp(MDApp):
 
     def set_arranging_module (self, arrg_module: object):
         self.arrg_module = arrg_module
+
+    def set_search_module(self, search_module: object):
+        self.search_module = search_module
 
     def on_pause(self):
         print("HELLO")

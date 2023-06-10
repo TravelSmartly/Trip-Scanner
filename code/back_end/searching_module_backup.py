@@ -1,12 +1,10 @@
 #import googlemaps
 import overpy
 import math
-from .location_module import *
 
 class Searching_module:
     #search_counter = 0
     API_KEY = 'insert_api_key_here'
-    config_module = None
 
     def __init__(self, current_location = None):
         self.m_object_list = []
@@ -14,10 +12,6 @@ class Searching_module:
         #    self.m_object_list[0] = current_location
         #else:
         #    self.m_object_list[0] = (-999, -999)
-
-
-    def set_config_module(self, config_module):
-        self.config_module = config_module
     
     def convert_miles_to_meters (miles):
         try:
@@ -52,7 +46,7 @@ class Searching_module:
     #    else:
     #        return -2
 
-    def search_the_area(self,coordinates, radius, category, subcategory):
+    def search_the_area(coordinates, radius, category, subcategory):
         lat, lon = coordinates[0], coordinates[1]
         api = overpy.Overpass()
         
@@ -78,7 +72,7 @@ class Searching_module:
         for element in result.nodes:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
             object_location = (element.lat, element.lon)
-            subj_distance = self.distance_between_two_latlon (object_location, coordinates)
+            subj_distance = distance_between_two_latlon (object_location, coordinates)
             object_a = {
                 'id': idd,
                 'name': element.tags.get('name', 'unknown'), 
@@ -95,7 +89,7 @@ class Searching_module:
         for element in result.ways:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
             object_location = (element.lat, element.lon)
-            subj_distance = self.distance_between_two_latlon (object_location, coordinates)
+            subj_distance = distance_between_two_latlon (object_location, coordinates)
             object_a = {
                 'id': idd,
                 'name': element.tags.get('name', 'unknown'), 
@@ -111,10 +105,7 @@ class Searching_module:
 
         return self.m_object_list
 
-    def get_search_result (self):
-        config_module = self.config_module
-        if config_module is None:
-            return []
+    def get_search_result (self, config_module):
         category_dictionaries = config_module.get_categories_dicts()
         config_module.find_current_profile()
         #current_profile = json.loads (config_module.put_selected_profile_to_front())
@@ -125,7 +116,7 @@ class Searching_module:
                 if category_dict["category"] == category:
                     subcategory_list = category_dict["subcategories"]
                     for each_sub in subcategory_list:
-                        self.search_the_area (Location_module.get_current_location(), config_module.proximity, category, each_sub)
+                        search_the_area (Location_module.get_current_location(), config_module.proximity, category, each_sub)
         return self.m_object_list
 
 

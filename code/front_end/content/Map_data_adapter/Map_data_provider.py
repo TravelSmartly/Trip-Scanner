@@ -10,7 +10,7 @@ Metoda get_places() jest zaprojektowana tak, aby zwracać tylko te miejsca, któ
 # DG - dotyczy diagramów
 # DG: self.object swap on self.places
 class Map_place_provider:
-    def __init__(self, arranging_module: object):
+    def __init__(self, backend_module: object):
         # DG object swap on places and getter and setter
         self.places_raw = []
 
@@ -21,14 +21,15 @@ class Map_place_provider:
         self.receiving_time = []
 
         ### INITIALIZATION ###
-        self.arrg_module = arranging_module
+        ## 10.06.23 Here is searching module
+        self.backend_module = backend_module
 
 
     def download_places(self):
-        # print(self.arrg_module, hasattr(self.arrg_module, 'provide_objects'))
-        if self.arrg_module is None:
+        # print(self.backend_module, hasattr(self.backend_module, 'provide_objects'))
+        if self.backend_module is None:
             return -1
-        # if hasattr(self.arrg_module, 'provide_objects') == 0:
+        # if hasattr(self.backend_module, 'provide_objects') == 0:
         #     return -1
         # places = self.arr_module.provide_objects()
         places = [
@@ -95,8 +96,8 @@ class Map_place_provider:
         ### directly, but only after check_proximity method was called 
         ### so method to call in cycles would be 'start_location_module', invoked ON CLASS 
         ### directly, and Location_module would check if proximity condition is still met
-        searcher = Searching_module()
-        places = searcher.get_search_result()
+        places = self.backend_module.get_search_result()
+        print(places)
 
         # END OF THE SECTION
         ###########################################

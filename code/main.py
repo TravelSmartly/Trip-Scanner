@@ -63,11 +63,15 @@ class MainApp:
         config_module = Configuration_module()
         config_module.create_config_file()
         profile_import_status = config_module.read_profiles()
+
         categories_import_status = config_module.read_categories()
         # print(categories_import_status, profile_import_status)
         config_module.find_current_profile()
 
         arranging_module = Arranging_module()
+
+        searcher = Searching_module()
+        searcher.set_config_module(config_module)
         ###-- END OF BACK-END PART --###
 
 
@@ -79,6 +83,7 @@ class MainApp:
         front_end_app.set_conf_module(config_module)
         front_end_app.set_location_module(Location_module)
         front_end_app.set_arranging_module(arranging_module)
+        front_end_app.set_search_module(searcher)
         front_end_app.run()
         ###-- END OF FRON-END PART --###
 

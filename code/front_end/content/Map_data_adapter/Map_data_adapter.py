@@ -1,18 +1,17 @@
 # from content.Providers.Map_place_provider import Map_place_provider
-# from back_end.arranging_module import Arranging_module
 # import unittest
 from .Map_data_provider import Map_place_provider
 
 
 class Map_data_adapter(Map_place_provider):
-    def __init__(self, arranging_module):
+    def __init__(self, backend_module):
         # DG: data swaped on places_data razem z get i set, type from dict swaped on list
         self.places = []
         self.sent_places = set()
 
 
         ### INITIALIZATION ###
-        super().__init__(arranging_module)
+        super().__init__(backend_module)
 
     ## DG: Name changed from data_postprocessing on postprocessing
     def postprocessing(self):

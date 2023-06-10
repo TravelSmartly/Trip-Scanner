@@ -21,7 +21,7 @@ class Configuration_module:
 	## Uwaga, tutaj zwracam i bede operowac na profilu bezposrednio pobranego z back-endu,
 	## wszystkie zmiany we front-endzie, czy gdize kolwiek takze od razu beda pojawialy sie w tym obiekcie
 	def put_profiles_to_front (self):
-		return self.profiles_object
+		return self.profile_object
 
 	def put_categories_to_front (self):
 		return self.categories_object
