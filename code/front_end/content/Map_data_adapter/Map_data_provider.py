@@ -20,7 +20,7 @@ class Map_place_provider:
         self.map_info = {}
         self.date = ""
         self.data_status = 0
-        self.timer = 5
+        self.timer = 10
         self.receiving_time = []
 
         ### INITIALIZATION ###
@@ -35,63 +35,6 @@ class Map_place_provider:
         # if hasattr(self.backend_module, 'provide_objects') == 0:
         #     return -1
         # places = self.arr_module.provide_objects()
-        places = [
-            {
-                "id": 334234,
-                "name": "a Grande Mamma",
-                "category": "Restaurant",
-                "lat": 33.88,
-                "lon": -84.42,
-                "description": "Good place",
-                ## Rating: (rating, how much people rate)
-                "rating": (4.2, 60)
-            },
-            {
-                "id": 43243,
-                "name": "Aparthotel Stare Miasto",
-                "category": None,
-                "lat": 33.85,
-                "lon": -84.42,
-                "description": None,
-                "rating": None
-            },
-            {
-                "id":1,
-                "name": "Hello1",
-                "category":None,
-                "desription":None,
-                "rating": (4,50),
-                "lat": 33.75,
-                "lon": -84.41
-            },
-            {
-                "id":2,
-                "name": "Hello2",
-                "category":None,
-                "desription":None,
-                "rating": (4,50),
-                "lat": 33.75,
-                "lon": -84.43
-            },
-            {
-                "id":3,
-                "name": "Hello3",
-                "category":None,
-                "desription":None,
-                "rating": (4,50),
-                "lat": 33.80,
-                "lon": -84.45
-            },
-            {
-                "id": 4,
-                "name": "Hello3",
-                "category": None,
-                "desription": None,
-                "rating": (4, 50),
-                "lat": 35,
-                "lon": -84.45
-            },
-        ]
 
         ### wojtek7z -> added this section to try get real places from openstreet map,
         ### each time to download places, use get_search_result method invoked on object 
@@ -100,7 +43,7 @@ class Map_place_provider:
         ### so method to call in cycles would be 'start_location_module', invoked ON CLASS 
         ### directly, and Location_module would check if proximity condition is still met
         places = self.backend_module.get_search_result()
-        print(places)
+        # print(places)
 
         # END OF THE SECTION
         ###########################################

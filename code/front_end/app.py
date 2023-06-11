@@ -58,6 +58,8 @@ class FrontApp(MDApp):
     conf_module = None
     loc_module = None
     search_module = None
+
+    places_section = ObjectProperty(None)
     def build(self):
 
         ###- ADAPTERTS -###
@@ -92,6 +94,11 @@ class FrontApp(MDApp):
         # self.root.ids.bottom_navigation.switch_tab('screen 3')
         self.gpshelper = GpsHelper()
         self.gpshelper.run()
+
+
+        self.places_section = self.root.ids.nav_bar_id.ids.places_section_id
+        print(self.places_section)
+        # add_place_to_list
         # if self.gpshelper is not None:
         #     self.gpshelper.run()
         # pass

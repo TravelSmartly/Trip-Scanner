@@ -18,20 +18,23 @@ class Places_Mapview(MapView):
     location = {"lat": 33.75, "lon": -84.4}
     places_id = set()
 
+    app = ObjectProperty(None)
+    places_section = ObjectProperty(None)
+
     def __init__(self, **krawgs):
         super(Places_Mapview, self).__init__(**krawgs)
-        app = MDApp.get_running_app()
-        map_adp = app.map_data_adapter
+        self.app = MDApp.get_running_app()
+        map_adp = self.app.map_data_adapter
         self.map_adp = map_adp
 
         self.places = self.map_adp.get_places()
         timer = self.map_adp.get_timer()
 
+        Clock.schedule_once(self.start_conf)
         Clock.schedule_interval(self.refresh_places, timer)
 
-
-
-
+    def start_conf(self, dt):
+        self.places_section = self.app.places_section
 
     def show_map_place(self): pass
 
@@ -66,8 +69,15 @@ class Places_Mapview(MapView):
                 continue
             # print(place)
             if min_lat < lat and lat < max_lat and min_lon < lon and lon < max_lon:
+                ## !!! W tym miejscu dodaje takze miejsca do listy
                 self.add_places(place)
+                self.put_place_to_places_list(place)
+
             # self.add_places(place)
+
+
+    def put_place_to_places_list(self, place):
+        self.places_section.add_place_to_list(place)
 
 
     def add_places(self, place):

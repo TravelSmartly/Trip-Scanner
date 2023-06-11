@@ -37,22 +37,27 @@ class Places_section(Screen):
         ## Zeby mozna bylo sie cofnac i dzialal przycisk Back
         self.navigation_manager_go_to_previous = self.navigation_manager.go_to_previous_tab
 
-        for place in self.places:
-            if "description" not in place:
-                place["description"] = None
-            description = "Description: "+ str(place["description"])
-            rating = "Rating: " + str(place["rating"])
-            self.ids.box.add_widget(
-                MDExpansionPanel(
-                    icon=os.path.join(images_path, "logo", "kivymd-icon-128.png"),
-                    content=Place_option(description, rating),
-                    panel_cls=MDExpansionPanelThreeLine(
-                        text=str(place["name"]),
-                        secondary_text="{0},{1}".format(place["lat"],place["lon"]),
-                        tertiary_text=str(place["category"])
-                    )
+        ## Dodac WSZYSTKIE MIEJSCA OD RAZU
+        # for place in self.places:
+        #     self.add_place_to_list(place)
+
+
+    def add_place_to_list(self, place):
+        if "description" not in place:
+            place["description"] = None
+        description = "Description: " + str(place["description"])
+        rating = "Rating: " + str(place["rating"])
+        self.ids.box.add_widget(
+            MDExpansionPanel(
+                icon=os.path.join(images_path, "logo", "kivymd-icon-128.png"),
+                content=Place_option(description, rating),
+                panel_cls=MDExpansionPanelThreeLine(
+                    text=str(place["name"]),
+                    secondary_text="{0},{1}".format(place["lat"], place["lon"]),
+                    tertiary_text=str(place["category"])
                 )
             )
+        )
 
     def open_desription(self): pass
     def request_places(self): pass
