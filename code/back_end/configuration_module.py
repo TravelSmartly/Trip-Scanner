@@ -10,10 +10,9 @@ class Configuration_module:
 	categories_object = [] #json object with categories
 	categories_dicts = []
 	interval: int = 15 #how often to update location
-	proximity: int = 600 #in meters, could be changed in the future
-	first_timer: bool = True
-	notification_system: bool = True 
-	night_mode: bool = False
+	proximity: int = 1000 #in meters, could be changed in the future
+	notification_system: int = 1 
+	night_mode: int = 0
 
 	def hi(self):
 		print("HI IT IS Configuration_module")
@@ -30,7 +29,7 @@ class Configuration_module:
 		return self.profile_current
 
 	def get_interval (self):
-		return self.interval
+		return int(self.interval)
 
 	def update_interval (self, interv):
 		self.interval = interv
@@ -74,7 +73,6 @@ class Configuration_module:
 				self.profile_object = profiles
 				return 0
 				# print(self.profile_object)
-		## RemXYZ: Dodałem Try exept, zeby na wszelki wypadek aplikacja sie nie zamknela
 		except Exception as e:
 			self.profile_object = []
 			return -1
@@ -98,10 +96,10 @@ class Configuration_module:
 			txt_file = frd.readlines()
 			for line in txt_file:
 				s_line = line.strip().split(', ')
-				id = s_line[0]
+				ide = int(s_line[0])
 				category = s_line[1]
 				subcategories = [s_line[i] for i in range(2,len(s_line))]
-				category_dict = {"id": id, "category": category, "subcategories": subcategories}
+				category_dict = {"id": ide, "category": category, "subcategories": subcategories}
 				self.categories_dicts.append (category_dict)
 			return 0
 		return -1
@@ -113,10 +111,10 @@ class Configuration_module:
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
 		with open(config_folder_path, 'w') as fwd:
 			fwd.write (self.first_timer + '\n' +
-			self.notification_system + '\n' +
 			self.interval + '\n' +
-			self.night_mode + '\n' +
-			self.profile_current + '\n')
+			self.proximity + '\n' +
+			self.notification_system + '\n' +
+			self.night_mode + '\n')
 			return 0
 		return -1
 
@@ -126,13 +124,15 @@ class Configuration_module:
 			return -1
 		with open(config_folder_path) as frd:
 			conf = list(frd.read().split('\n'))
-			self.notification_system, self.interval, self.night_mode, self.profile_current = conf
+			self.interval = int(conf[0])
+			self.proximity = int(conf[1])
+			self.notification_system = int(conf[2])
+			self.night_mode = int(conf[3])
 		return 0
 			
 	### During first app usage, this method creates 
 	### all needed configuration files 
 	def create_config_file (self):
-		self.first_timer = False
 		working_dir_path = pathlib.Path.cwd() / 'config'
 		if not working_dir_path.is_dir():
 			working_dir_path.mkdir()
@@ -140,11 +140,10 @@ class Configuration_module:
 		if config_folder_path.is_file():
 			return -1
 		with open(config_folder_path, 'a') as fwd:
-			fwd.write (self.first_timer + '\n' +
+			fwd.write (self.interval + '\n' +
+			self.proximity + '\n' +
 			self.notification_system + '\n' +
-			self.interval + '\n' +
-			self.night_mode + '\n' +
-			self.profile_current + '\n')
+			self.night_mode + '\n')
 		profiles_path, gen_cat_path = working_dir_path / 'profiles.json', working_dir_path / 'generalized_categories.json'
 		profiles_path.touch()
 		gen_cat_path.touch()
