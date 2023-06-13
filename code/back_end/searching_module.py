@@ -130,7 +130,7 @@ class Searching_module:
         config_module = self.config_module
         if config_module is None:
             return []
-        if self.m_object_list != [] and Location_module.check_proximity(int(self.config_module.proximity), float(Location_module.current_location), float(Location_module.center_location)):
+        if self.m_object_list != [] and Location_module.check_proximity(int(self.config_module.proximity), Location_module.current_location, Location_module.center_location):
             return self.m_object_list
 
         self.remove_old_objects()
