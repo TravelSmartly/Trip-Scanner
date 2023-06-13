@@ -38,6 +38,7 @@ class Location_module:
         tmp = cls.get_current_location()
         if tmp == (-1, -1):
             print("gps not working")
+        tmp = tuple (map(float, tmp))
         return tmp
 
     #@classmethod
