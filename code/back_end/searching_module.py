@@ -90,7 +90,7 @@ class Searching_module:
         idd = 1
         for element in result.nodes:
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
-            object_location = (element.lat, element.lon)
+            object_location = (float(element.lat), float(element.lon))
             subj_distance = self.distance_between_two_latlon (object_location, coordinates)
             object_a = {
                 'id': idd,
