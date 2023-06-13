@@ -104,7 +104,6 @@ class Searching_module:
             }
             if object_a['name'] != 'unknown':
                 self.m_object_list.append (object_a)
-            # ~ print ("dis object")
             # ~ print (object_a)
             idd += 1
 
@@ -129,10 +128,11 @@ class Searching_module:
 
     def get_search_result (self):
         config_module = self.config_module
-        # ~ print ("a")
         if config_module is None:
             return []
-        # ~ print("b")
+        if self.m_object_list and Location_module.check_proximity(self.config_module.proximity, Location_module.current_location, Location_module.center_location):
+            return self.m_object_list
+
         category_dictionaries = config_module.get_categories_dicts()
         #category_dictonaries contains keys such as: id, category, subcategories (list)
         # ~ print (category_dictionaries) 
