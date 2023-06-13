@@ -43,7 +43,7 @@ class Searching_module:
         self.m_object_list = list
 
     def remove_old_objects(self):
-        self.m_object_list = []
+        self.m_object_list.clear()
 
     #def start_searching_module(self, input_location = None, input_radius = None):
     #    map_client = googlemaps.Client(API_KEY)
@@ -62,7 +62,7 @@ class Searching_module:
         #radius = 2000  # w metrach
         #category = "amenity"
         #subcategory = "restaurant"  # typ miejsca
-        print (f"category : {category}")
+        #print (f"category : {category}")
         # ~ print (f"subcategory : {subcategory}")
 
         # ~ # Zapytanie Overpass do znalezienia typów miejsc w określonym promieniu
@@ -130,8 +130,10 @@ class Searching_module:
         config_module = self.config_module
         if config_module is None:
             return []
-        if self.m_object_list and Location_module.check_proximity(self.config_module.proximity, Location_module.current_location, Location_module.center_location):
+        if self.m_object_list != [] and Location_module.check_proximity(int(self.config_module.proximity), float(Location_module.current_location), float(Location_module.center_location)):
             return self.m_object_list
+
+        self.remove_old_objects()
 
         category_dictionaries = config_module.get_categories_dicts()
         #category_dictonaries contains keys such as: id, category, subcategories (list)
@@ -149,7 +151,7 @@ class Searching_module:
             subcategory_list = c_dict["subcategories"]
             # ~ print (subcategory_list[0])
             big_string = ",".join(subcategory_list)
-            self.search_the_area (Location_module.get_current_location(), config_module.proximity, c_dict["category"], big_string)
+            self.search_the_area (Location_module.get_current_location(), int(config_module.proximity), c_dict["category"], big_string)
             # ~ for each_sub in subcategory_list:
                 # ~ print (each_sub)
                 # ~ self.search_the_area (Location_module.get_current_location(), config_module.proximity, c_dict["category"], each_sub)
