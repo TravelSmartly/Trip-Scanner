@@ -23,8 +23,8 @@ class GpsHelper():
         self.gps_blinker.blink()
         ## Odswierzam lokalizacje
         # self.update_blinker_position(lat=30, lon=30)
-        self.update_blinker_position(5)
-        Clock.schedule_interval(self.update_blinker_position, 5)
+        self.update_blinker_position(1)
+        Clock.schedule_interval(self.update_blinker_position, 1)
 
 
         # Request permissions on Android

@@ -1,4 +1,5 @@
 import time
+from kivymd.app import MDApp
 
 """
 DP: Wzorzec Adapter (Adapter pattern): Map_place_provider jest używany do transformacji interfejsu jednej klasy, 
@@ -20,7 +21,7 @@ class Map_place_provider:
         self.map_info = {}
         self.date = ""
         self.data_status = 0
-        self.timer = 120
+        self.timer = 25
         self.receiving_time = []
 
         ### INITIALIZATION ###
@@ -57,6 +58,15 @@ class Map_place_provider:
         self.data_status = 1
 
         return 0
+
+    ## Tylko ta metoda odwoluje sie bezposrednio do app, poniewaz back_end zrobiony w nie nalepszy sposob :(
+    ## Wystarczy by bylo dodac check_proximity w Searching_module, ale musze sie odwolywac do innego obiektu
+    def outside_area(self):
+        app = MDApp.get_running_app()
+        loc_module = app.get_location_module()
+        print(loc_module)
+        return -1
+
 
     # DG: get_objects swap on get_places
     def get_places_raw(self):

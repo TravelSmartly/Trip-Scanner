@@ -122,6 +122,8 @@ class FrontApp(MDApp):
         # print(self.map_section)
         return self.map_section
 
+    def get_location_module(self):
+        return self.loc_module
     def on_pause(self):
         print("HELLO")
 

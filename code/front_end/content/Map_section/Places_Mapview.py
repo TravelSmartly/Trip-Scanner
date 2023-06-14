@@ -34,11 +34,19 @@ class Places_Mapview(MapView):
         Clock.schedule_once(self.start_conf)
         self.refresh_places(0)
         Clock.schedule_interval(self.refresh_places, timer)
+        ## Sprawdzam, czy nie wyszedlem poza obszar
+        # Clock.schedule_interval(self.check_outside_area, 5)
 
     def start_conf(self, dt):
         self.places_section = self.app.places_section
 
     def show_map_place(self): pass
+
+
+    def check_outside_area(self, dt):
+        is_outside_area = self.map_adp.outside_area()
+        if is_outside_area == 0:
+            self.refresh_places(1)
 
 
     def start_getting_place_in_fov(self):
