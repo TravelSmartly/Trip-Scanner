@@ -54,7 +54,7 @@ class RightCheckbox(IRightBodyTouch, MDCheckbox):
         is_active = self.active  ## or args[1]
 
         if is_active:
-            ## Jesjli uzytkownik wybral kategorie, wylij to do manipulatora
+            ## Jesjli uzytkownik wybral kategorie, wyslij to do manipulatora
             self.profile_mnp.select_category(self.root_id)
             is_changed = self.profile_mnp.get_change_status()
             if is_changed == 1:
@@ -258,10 +258,15 @@ class Profile_section(Screen):
         save_layout.opacity = 0
 
     def send_profile(self):
+        my_map = MDApp.get_running_app().get_map_section()
+        my_map.remove_all_markers()
+        # print(my_map)
         did_send_correctly = self.profile_mnp.prepare_send_profile()
+        ## Jesli wystapil jakis blad
         if did_send_correctly != 0:
             pass
         self.hide_save_layout()
+        self.profile_mnp.set_default_selector()
         # self.reselect()
 
 

@@ -3,6 +3,7 @@ from kivy.app import App
 from kivymd.app import MDApp
 from kivy.uix.button import Button
 from kivy.lang import Builder
+from kivy.properties import ObjectProperty, ListProperty
 from kivy.uix.screenmanager import ScreenManager
 
 ###- END IMPORT KIVY -###
@@ -60,6 +61,7 @@ class FrontApp(MDApp):
     search_module = None
 
     places_section = ObjectProperty(None)
+    map_section = ObjectProperty(None)
     def build(self):
 
         ###- ADAPTERTS -###
@@ -91,13 +93,14 @@ class FrontApp(MDApp):
         return self.sm
 
     def on_start(self):
+        self.places_section = self.root.ids.nav_bar_id.ids.places_section_id
+        self.map_section = self.root.ids.nav_bar_id.ids.map_section_id.ids.mapview
+
         # self.root.ids.bottom_navigation.switch_tab('screen 3')
-        self.gpshelper = GpsHelper()
+        self.gpshelper = GpsHelper(self.map_section)
         self.gpshelper.run()
 
-
-        self.places_section = self.root.ids.nav_bar_id.ids.places_section_id
-        print(self.places_section)
+        # print(self.places_section)
         # add_place_to_list
         # if self.gpshelper is not None:
         #     self.gpshelper.run()
@@ -114,6 +117,10 @@ class FrontApp(MDApp):
 
     def set_search_module(self, search_module: object):
         self.search_module = search_module
+
+    def get_map_section(self):
+        # print(self.map_section)
+        return self.map_section
 
     def on_pause(self):
         print("HELLO")

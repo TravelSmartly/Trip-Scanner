@@ -41,8 +41,8 @@
 #        background_color: (1,1,1,1)
         pos_hint:{'center_x':0.9, 'center_y':.9}
         size_hint: None, None
-        width:25
-        height:25
+        width: root.height*0.045 if root.height*0.045 > root.width*0.045 else root.width*0.045
+        height: root.height*0.045 if root.height*0.045 > root.width*0.045 else root.width*0.045
         on_press:
             root.show_help()
 

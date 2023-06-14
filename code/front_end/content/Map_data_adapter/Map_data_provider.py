@@ -20,7 +20,7 @@ class Map_place_provider:
         self.map_info = {}
         self.date = ""
         self.data_status = 0
-        self.timer = 10
+        self.timer = 120
         self.receiving_time = []
 
         ### INITIALIZATION ###

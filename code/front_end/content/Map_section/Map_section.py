@@ -20,17 +20,18 @@ class Help_popup_menu:
     def __init__(self, menu_data, title):
         # print(menu_data)
         content = Help_popup_menu_content()
-        menu_list = MDList()
-        content.add_widget(menu_list)
-        for [k, v] in menu_data.items():
-            new_widget = None
-            if v[0] == 2:
-                new_widget = TwoLineListItem(text=f"{k}:", secondary_text=f"{v[1]}")
-            else:
-                new_widget = OneLineListItem(text=f"{k}: {v[1]}")
-            menu_list.add_widget(
-                new_widget
-            )
+        content.add_widget(MDLabel(text="To change the places shown on the map, go to the profile tab and select the categories you want and these categories will be displayed on the map"))
+        # menu_list = MDList()
+        # content.add_widget(menu_list)
+        # for [k, v] in menu_data.items():
+        #     new_widget = None
+        #     if v[0] == 2:
+        #         new_widget = TwoLineListItem(text=f"{k}:", secondary_text=f"{v[1]}")
+        #     else:
+        #         new_widget = OneLineListItem(text=f"{k}: {v[1]}")
+        #     menu_list.add_widget(
+        #         new_widget
+        #     )
 
         self.menu = MDDialog(
             title=title,

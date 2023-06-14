@@ -134,6 +134,12 @@ class Profile_manipulator(Profile_adapter):
 
         return 0
 
+
+    def set_default_selector(self):
+        self.is_categories_changed = 0
+        self.last_changed_categories_id = -1
+        self.first_changed_categories_id = -1
+
     def deselect_category(self, id: int) -> int:
         if id is None and type(id) is int:
             return -1

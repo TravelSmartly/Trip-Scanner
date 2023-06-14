@@ -50,7 +50,7 @@ class Configuration_module:
 
 	def save_profiles (self, profiles = None) -> int:
 		if profiles is None:
-			profiles = self.profiles_object
+			profiles = self.profile_object
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'profiles.json'
 		try:
 			with open(config_folder_path, 'w') as fwd:

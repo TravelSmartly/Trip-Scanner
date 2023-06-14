@@ -14,12 +14,14 @@ class Map_object(MapMarkerPopup):
     # display_status: int
     # from_place_list: int
     place_data = []
+    place_id = -1
     menu = None
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         src = os.path.join(os.path.dirname(__file__), 'marker.png')
         self.source = src
     # market_data = []
+
 
     def on_release(self):
         # Open up the LocationPopupMenu
@@ -31,6 +33,14 @@ class Map_object(MapMarkerPopup):
 
     def getCord(self): pass
     def getStatus(self): pass
+
+    def get_place_data(self):
+        return self.place_data
+
+    ## DG: dodalem ustwienie i pobieranie place data
+    def set_place_data(self, place):
+        self.place_data = place
+        self.place_id = place["id"]
 
     def setCord(self): pass
     def setStatus(self): pass

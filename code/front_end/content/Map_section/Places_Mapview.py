@@ -15,8 +15,9 @@ class Places_Mapview(MapView):
     places = ListProperty(0)
     specific_place: dict
     # DG: added location
-    location = {"lat": 33.75, "lon": -84.4}
+    location = {"lat": 50.05918219735402, "lon": 20.003032346862184}
     places_id = set()
+    markers = []
 
     app = ObjectProperty(None)
     places_section = ObjectProperty(None)
@@ -31,6 +32,7 @@ class Places_Mapview(MapView):
         timer = self.map_adp.get_timer()
 
         Clock.schedule_once(self.start_conf)
+        self.refresh_places(0)
         Clock.schedule_interval(self.refresh_places, timer)
 
     def start_conf(self, dt):
@@ -68,7 +70,7 @@ class Places_Mapview(MapView):
             if place_id in self.places_id:
                 continue
             # print(place)
-            if min_lat < lat and lat < max_lat and min_lon < lon and lon < max_lon:
+            if min_lat <= lat and lat <= max_lat and min_lon <= lon and lon <= max_lon:
                 ## !!! W tym miejscu dodaje takze miejsca do listy
                 self.add_places(place)
                 self.put_place_to_places_list(place)
@@ -84,8 +86,10 @@ class Places_Mapview(MapView):
         lat, lon = place["lat"], place["lon"]
         # print(lat, lon)
         marker = Map_object(lat=lat, lon=lon)
-        marker.place_data = place
+        marker.set_place_data(place)
         self.add_widget(marker)
+        self.markers.append(marker)
+        # print(marker.place_id)
 
         # Keep track of the marker's name
         place_id = place["id"]
@@ -95,11 +99,48 @@ class Places_Mapview(MapView):
     # DG: funkcje add_localization wykonuje gpshelper, ktory ciagle aktualizuje lokalizacje
     # def add_localization(self):
 
+    def remove_markers_out_of_screen(self):
+        min_lat, min_lon, max_lat, max_lon = self.get_bbox()
+        for marker_obj in self.markers:
+            marker = marker_obj.get_place_data()
+            lat, lon = marker["lat"], marker["lon"]
+            # print(min_lat, max_lat, min_lon, max_lon, " OK ", lat, lon)
+            if (min_lat > lat or lat > max_lat) or (min_lon > lon or lon > max_lon):
+                self.remove_marker_object(marker_obj)
+
+
+                    # self.places_id.remove(marker["id"])
+                    # self.markers.remove(marker_obj)
+                    # self.remove_widget(marker_obj)
+
+
+    def remove_marker_object(self,marker):
+        m_id = marker.get_place_data()["id"]
+        if m_id in self.places_id:
+            # print(marker)
+            self.places_id.remove(m_id)
+            self.markers.remove(marker)
+            self.remove_widget(marker)
+            return 0
+        return -1
+
+
+    def remove_all_markers(self):
+        for marker_obj in self.markers:
+            self.remove_marker_object(marker_obj)
 
 
     ## Again a download new place
     def refresh_places(self, dt):
+        # print(dt)
+        ## Pobieram dane z back-endu
         self.map_adp.postprocessing()
+        ## Wyczyszczam wszystkie stare obiekty poza obszarem
+        ## dt jet 0, jesli to pierwsza inicjalizacja
+        if dt != 0:
+            self.remove_markers_out_of_screen()
+        ## Odswierzam obiekty na mpie w poblizu
+        # self.start_getting_place_in_fov()
         # print(self.places)
 
 
