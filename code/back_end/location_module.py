@@ -28,7 +28,7 @@ class Location_module:
     ### is inside an elipse with the center in center_location variable
     @classmethod
     def check_proximity(cls,r,current_location,center_location)->bool:
-        return pow(cls.current_location[0]-cls.center_location[0] * cls.lat, 2) + pow(cls.current_location[1] - cls.center_location[1] * cls.lon * math.cos((cls.current_location[0] + cls.center_location[0])/2), 2) < pow(r,2)
+        return pow((cls.current_location[0]-cls.center_location[0]) * cls.lat, 2) + pow((cls.current_location[1] - cls.center_location[1]) * cls.lon * math.cos((cls.current_location[0] + cls.center_location[0])/2), 2) < pow(r,2)
 
 
     ### Method that allows to get user current location
