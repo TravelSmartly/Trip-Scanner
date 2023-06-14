@@ -9,8 +9,8 @@ class Configuration_module:
 	profiles_object = [] #json object with profiles
 	categories_object = [] #json object with categories
 	categories_dicts = []
-	interval: int = 15 #how often to update location
-	proximity: int = 1000 #in meters, could be changed in the future
+	interval: int = 15 #how often to resend notifications
+	proximity: int = 300 #in meters, could be changed in the future
 	notification_system: int = 1 
 	night_mode: int = 0
 
