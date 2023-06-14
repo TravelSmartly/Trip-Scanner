@@ -39,8 +39,8 @@ class Searching_module:
     def get_m_object_list(self):
         return self.m_object_list
         
-    def set_m_object_list(self,list):
-        self.m_object_list = list
+    def set_m_object_list(self,my_list):
+        self.m_object_list = my_list
 
     def remove_old_objects(self):
         self.m_object_list.clear()
