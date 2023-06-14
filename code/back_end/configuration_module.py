@@ -110,11 +110,10 @@ class Configuration_module:
 	def save_config_file(self,settings = None):
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
 		with open(config_folder_path, 'w') as fwd:
-			fwd.write (self.first_timer + '\n' +
-			self.interval + '\n' +
-			self.proximity + '\n' +
-			self.notification_system + '\n' +
-			self.night_mode + '\n')
+			fwd.write (str(self.interval) + '\n' +
+			str(self.proximity) + '\n' +
+			str(self.notification_system) + '\n' +
+			str(self.night_mode) + '\n')
 			return 0
 		return -1
 
@@ -140,10 +139,10 @@ class Configuration_module:
 		if config_folder_path.is_file():
 			return -1
 		with open(config_folder_path, 'a') as fwd:
-			fwd.write (self.interval + '\n' +
-			self.proximity + '\n' +
-			self.notification_system + '\n' +
-			self.night_mode + '\n')
+			fwd.write (str(self.interval) + '\n' +
+			str(self.proximity) + '\n' +
+			str(self.notification_system) + '\n' +
+			(self.night_mode) + '\n')
 		profiles_path, gen_cat_path = working_dir_path / 'profiles.json', working_dir_path / 'generalized_categories.json'
 		profiles_path.touch()
 		gen_cat_path.touch()
