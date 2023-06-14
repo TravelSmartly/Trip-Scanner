@@ -87,13 +87,12 @@ class Searching_module:
         # ~ print (result.nodes)
 
         # Wyświetl nazwy i lokalizacje znalezionych miejsc
-        idd = 1
-        for element in result.nodes:
+        for idd, element in enumerate(result.nodes):
             #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.lat}, {element.lon}")
             object_location = (float(element.lat), float(element.lon))
             subj_distance = self.distance_between_two_latlon (object_location, coordinates)
             object_a = {
-                'id': idd,
+                'id': (idd + 1),
                 'name': element.tags.get('name', 'unknown'), 
                 'category': category,
                 'lat': float (element.lat),
@@ -105,7 +104,6 @@ class Searching_module:
             if object_a['name'] != 'unknown':
                 self.m_object_list.append (object_a)
             # ~ print (object_a)
-            idd += 1
 
         # ~ for element in result.ways:
             # ~ #print(f"Name: {element.tags.get('name', 'unknown')}, Location: {element.center_lat}, {element.center_lon}")
