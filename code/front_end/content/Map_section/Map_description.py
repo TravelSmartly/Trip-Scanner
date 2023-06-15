@@ -28,6 +28,9 @@ class Map_description:
         if "rating" not in place_data:
             place_data["rating"] = None
 
+        if "distance" not in place_data:
+            place_data["distance"] = None
+
         coords = "({0},{1})".format(place_data["lat"], place_data["lon"])
         headers = {
             "Name": [1, place_data["name"]],
@@ -35,6 +38,7 @@ class Map_description:
             "Category": [1, place_data["category"]],
             "Description": [2, place_data["description"]],
             "Rating": [2, place_data["rating"]],
+            "Distance": [2, str(place_data["distance"]) + " m"]
         }
         # print(place_data)
         content = Map_description_content()

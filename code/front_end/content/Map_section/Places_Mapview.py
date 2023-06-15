@@ -148,8 +148,8 @@ class Places_Mapview(MapView):
             # print(marker_obj)
             self.remove_marker_object(marker_obj)
 
-        self.places_memory.clear()
-        self.markers.clear()
+        # self.places_memory.clear()
+        # self.markers.clear()
         # print("after REMOVING\n\n\n")
         # print(self.markers)
 
