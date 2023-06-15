@@ -134,7 +134,6 @@ class Configuration_module:
 			working_dir_path.mkdir()
 		config_folder_path = working_dir_path / 'config_file.cfg'
 		if config_folder_path.is_file():
-			self.save_config_file()
 			return -1
 		with open(config_folder_path, 'a') as fwd:
 			fwd.write (f"{self.interval} \n {self.proximity} \n {self.notification_system} \n {self.night_mode}")
