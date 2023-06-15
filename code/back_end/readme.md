@@ -1,4 +1,4 @@
-Class Arranging_module:
+# Class Arranging_module:
 
     reverse_obs(category_list): This method takes a category_list as input and is intended to be used to reverse-observe map objects. However, the implementation is incomplete, as the actual functionality is commented out. It seems that the goal is to transform the category list into fitting Google categories, but the code inside the method is currently missing.
 
@@ -10,7 +10,7 @@ Class Arranging_module:
 
 	
 
-Class Configuration_module: 
+# Class Configuration_module: 
 Represents a configuration module and contains various methods related to handling profiles, categories, and configuration settings. Here is an overview of the methods and attributes in the class:
 
 Attributes:
@@ -50,7 +50,7 @@ Methods:
 	
 	
 	
-Class Location_module: 
+# Class Location_module: 
 Represents a location module and contains methods and attributes related to handling user locations. Here is an overview of the class:
 
 Attributes:
@@ -77,7 +77,7 @@ Methods:
 
 	
 	
-Class Searching_module: 
+# Class Searching_module: 
 Represents a searching module and contains methods and attributes related to searching for places in a given area. Here is an overview of the class:
 
 Attributes:
