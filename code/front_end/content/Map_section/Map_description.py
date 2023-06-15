@@ -34,11 +34,11 @@ class Map_description:
         coords = "({0},{1})".format(place_data["lat"], place_data["lon"])
         headers = {
             "Name": [1, place_data["name"]],
+            "Distance": [2, str(place_data["distance"]) + " m"],
             "Coordinates": [1, coords],
             "Category": [1, place_data["category"]],
             "Description": [2, place_data["description"]],
-            "Rating": [2, place_data["rating"]],
-            "Distance": [2, str(place_data["distance"]) + " m"]
+            "Rating": [2, place_data["rating"]]
         }
         # print(place_data)
         content = Map_description_content()
