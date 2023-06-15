@@ -107,8 +107,6 @@ class Profile_manipulator(Profile_adapter):
     ## wiec jesli gdzies go zmienie, to zmieni sie on wszedzie,
     ## ale w moim przypadku dbam o dobra hermetycznosc
     def select_category(self, id: int) -> int:
-        if id is None and type(id) is not int:
-            return -1
         sel_cat = self.get_selected_categories()
         if sel_cat == -1:
             return -1

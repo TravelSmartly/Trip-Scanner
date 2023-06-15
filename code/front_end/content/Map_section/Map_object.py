@@ -1,12 +1,12 @@
 # from kivy.garden.mapview import MapMarkerPopup
-from .mapview_build.lib.kivy_garden.mapview import MapMarkerPopup
+from .mapview_build.lib.kivy_garden.mapview import MapMarker
 from .Map_description import Map_description
 import os
 
 """
 Map_object to jest marker miejsca, czyli ikona, ktora pokazuje, gdzie znajduje sie miejsce
 """
-class Map_object(MapMarkerPopup):
+class Map_object(MapMarker):
     # cordX: int
     # cordY: int
     # cord: int

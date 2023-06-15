@@ -1,5 +1,5 @@
 from kivymd.app import MDApp
-from .mapview_build.lib.kivy_garden.mapview import MapView
+from .mapview_build.lib.kivy_garden.mapview import MapView, MapLayer
 from .Map_object import Map_object
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.clock import Clock
@@ -18,9 +18,12 @@ class Places_Mapview(MapView):
     location = {"lat": 50.05918219735402, "lon": 20.003032346862184}
     places_id = set()
     markers = []
+    places_memory = []
+    layer = ObjectProperty(None)
 
     app = ObjectProperty(None)
     places_section = ObjectProperty(None)
+
 
     def __init__(self, **krawgs):
         super(Places_Mapview, self).__init__(**krawgs)
@@ -36,6 +39,9 @@ class Places_Mapview(MapView):
         Clock.schedule_interval(self.refresh_places, timer)
         ## Sprawdzam, czy nie wyszedlem poza obszar
         # Clock.schedule_interval(self.check_outside_area, 5)
+        # self.layer = MapLayer()
+        # self.add_layer(self.layer)
+        self.x = 0
 
     def start_conf(self, dt):
         self.places_section = self.app.places_section
@@ -71,17 +77,20 @@ class Places_Mapview(MapView):
         # app.cursor.execute(sql_statement)
         # markets = app.cursor.fetchall()
         places = self.places
+        # for place in places:
+        #     print(place)
+        # print(self.x ,"XD\n\n\n")
+        # self.x+=1
         # print(places)
+        # print(self.places_memory)
         for place in places:
             place_id = place["id"]
             lat, lon = place["lat"], place["lon"]
-            if place_id in self.places_id:
-                continue
-            # print(place)
-            if min_lat <= lat and lat <= max_lat and min_lon <= lon and lon <= max_lon:
-                ## !!! W tym miejscu dodaje takze miejsca do listy
-                self.add_places(place)
-                self.put_place_to_places_list(place)
+            if place not in self.places_memory:
+                if min_lat <= lat and lat <= max_lat and min_lon <= lon and lon <= max_lon:
+                    ## !!! W tym miejscu dodaje takze miejsca do listy
+                    self.add_places(place)
+                    self.put_place_to_places_list(place)
 
             # self.add_places(place)
 
@@ -91,18 +100,18 @@ class Places_Mapview(MapView):
 
 
     def add_places(self, place):
+        # print(place)
         lat, lon = place["lat"], place["lon"]
         # print(lat, lon)
         marker = Map_object(lat=lat, lon=lon)
         marker.set_place_data(place)
-        self.add_widget(marker)
+        self.add_marker(marker)
         self.markers.append(marker)
+        # print(marker, place)
         # print(marker.place_id)
 
         # Keep track of the marker's name
-        place_id = place["id"]
-        self.places_id.update([place_id])
-        # print(self.places_id)
+        self.places_memory.append(place)
 
     # DG: funkcje add_localization wykonuje gpshelper, ktory ciagle aktualizuje lokalizacje
     # def add_localization(self):
@@ -123,19 +132,26 @@ class Places_Mapview(MapView):
 
 
     def remove_marker_object(self,marker):
-        m_id = marker.get_place_data()["id"]
-        if m_id in self.places_id:
-            # print(marker)
-            self.places_id.remove(m_id)
-            self.markers.remove(marker)
-            self.remove_widget(marker)
-            return 0
-        return -1
+        m_data = marker.get_place_data()
+        self.places_memory.remove(m_data)
+        self.markers.remove(marker)
+        # self.remove_widget(marker)
+        self.remove_marker(marker)
+        return 0
 
 
     def remove_all_markers(self):
+        # print("REMOVING")
+        # print("START\n\n")
+        # marker_layout = self.children[0].chils
         for marker_obj in self.markers:
+            # print(marker_obj)
             self.remove_marker_object(marker_obj)
+
+        self.places_memory.clear()
+        self.markers.clear()
+        # print("after REMOVING\n\n\n")
+        # print(self.markers)
 
 
     ## Again a download new place
@@ -143,6 +159,7 @@ class Places_Mapview(MapView):
         # print(dt)
         ## Pobieram dane z back-endu
         self.map_adp.postprocessing()
+        self.places = self.map_adp.get_places()
         ## Wyczyszczam wszystkie stare obiekty poza obszarem
         ## dt jet 0, jesli to pierwsza inicjalizacja
         if dt != 0:

@@ -21,7 +21,7 @@ class Map_place_provider:
         self.map_info = {}
         self.date = ""
         self.data_status = 0
-        self.timer = 25
+        self.timer = 5
         self.receiving_time = []
 
         ### INITIALIZATION ###
@@ -44,7 +44,8 @@ class Map_place_provider:
         ### so method to call in cycles would be 'start_location_module', invoked ON CLASS 
         ### directly, and Location_module would check if proximity condition is still met
         places = self.backend_module.get_search_result()
-        # print(places)
+        # for place in places:
+        #     print(place)
 
         # END OF THE SECTION
         ###########################################
@@ -64,7 +65,7 @@ class Map_place_provider:
     def outside_area(self):
         app = MDApp.get_running_app()
         loc_module = app.get_location_module()
-        print(loc_module)
+        # print(loc_module)
         return -1
 
 
