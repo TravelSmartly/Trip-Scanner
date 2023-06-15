@@ -22,3 +22,5 @@ plyer==2.1.0
 
 # https://github.com/googlemaps/google-maps-services-python
 googlemaps==4.10.0
+
+overpy==0.6
