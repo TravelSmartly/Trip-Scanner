@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = TripScanner
+title = TripScanner3
 
 # (str) Package name
-package.name = TripScanner
+package.name = TripScanner3
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test.trip_scanner
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,kivymd,plyer,requests,certifi,urllib3,chardet,idna,overpy,pyjnius
+requirements = python3,kivy,kivymd,https://github.com/HyTurtle/plyer/archive/master.zip,requests,certifi,urllib3,chardet,idna,overpy,pyjnius
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -101,7 +101,7 @@ android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE, A
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 31
+android.api = 30
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
