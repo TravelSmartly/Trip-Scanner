@@ -5,10 +5,10 @@ import os
 
 @dataclass
 class Configuration_module:
-	profile_current = [] #blank profile default
+	profile_current = {} #blank profile default
 	profiles_object = [] #json object with profiles
-	categories_object = [] #json object with categories
-	categories_dicts = []
+	categories_object = None #json object with categories
+	categories_dicts = [] #list of dicts with categories
 	interval: int = 15 #how often to resend notifications
 	proximity: int = 500 #in meters, could be changed in the future
 	notification_system: int = 1 
@@ -20,7 +20,7 @@ class Configuration_module:
 	## Uwaga, tutaj zwracam i bede operowac na profilu bezposrednio pobranego z back-endu,
 	## wszystkie zmiany we front-endzie, czy gdize kolwiek takze od razu beda pojawialy sie w tym obiekcie
 	def put_profiles_to_front (self):
-		return self.profile_object
+		return self.profiles_object
 
 	def put_categories_to_front (self):
 		return self.categories_object
@@ -36,11 +36,10 @@ class Configuration_module:
 
 	## RemXYZ: pobieram wszystkie profile, dalej za pomoca petli szukam ten, ktory ma w selected 1, i przyrownuje go do zmiennej profile_current, zatrzymujac przy tym petle i zwracam 0
 	def find_current_profile(self):
-		profiles = self.put_profiles_to_front()
+		profiles = self.profiles_object
 		#profiles = json.loads (self.put_profiles_to_front())
 		for profile in profiles:
 			if profile["selected"] == 1:
-				# print(profile)
 				self.profile_current = profile
 				return 0
 		return -1
@@ -50,7 +49,7 @@ class Configuration_module:
 
 	def save_profiles (self, profiles = None) -> int:
 		if profiles is None:
-			profiles = self.profile_object
+			profiles = self.profiles_object
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'profiles.json'
 		try:
 			with open(config_folder_path, 'w') as fwd:
@@ -70,11 +69,18 @@ class Configuration_module:
 				## i wlasnie ten element "profiles" zawiera w sobie wszystkie profile,
 				##  wiec musze go pobrac na samym poczatku
 				## czyli to wyglada tak {"profiles": {name:"profile0", selected:1,...} ...}
-				self.profile_object = profiles
+				self.profiles_object = profiles
+				print (type(profiles))
+				for profile in profiles:
+					if profile['selected'] == 1:
+						print ("found:", profile)
+						self.profile_current = profile
+						print (self.put_selected_profile_to_front())
+						print (self.put_profiles_to_front())
 				return 0
 				# print(self.profile_object)
 		except Exception as e:
-			self.profile_object = []
+			self.profiles_object = []
 			return -1
 
 
