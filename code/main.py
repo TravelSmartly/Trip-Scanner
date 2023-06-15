@@ -32,7 +32,7 @@ from front_end.__init__ import *
 # from .front_end.content.Map_section.gpshelper import GpsHelper
 ###---- END OF IMPORT FRONT-END AND PACKAGES ----###
 
-Window.size = (360, 640)
+# Window.size = (360, 640)
 
 ###-- END OF FRONT-END ZONE --###
 
