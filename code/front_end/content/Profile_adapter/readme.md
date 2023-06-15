@@ -25,4 +25,14 @@
     get_selected_categories(self): Returns the selected categories.
     get_change_status(self): Returns whether any changes have been made to the categories.
 	
-	
+
+# Class Category_adapter:
+
+    Inherits from Profile_provider and adapts category data to the format used in other parts of the system.
+    __init__(self, conf_module: object): The constructor method for the Category_adapter class. It calls the constructor of the parent class.
+    hi(self): A method that prints "hi categories adapter".
+    postprocessing(self) -> int: Downloads the categories, processes them, and stores them in the categories attribute.
+    get_categories(self) -> list: Returns the processed categories.
+    get_instraction(self) -> dict: Returns the instruction dictionary for reading categories.
+    set_instraction(self, cat_inst: dict): Sets the instruction dictionary for reading categories.
+    set_categories(self): Sets the categories.
