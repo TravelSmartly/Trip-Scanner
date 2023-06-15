@@ -11,7 +11,14 @@ class Location_module:
 
     @classmethod
     def on_gps_location(cls, *args, **kwargs)->None:
-        cls.current_location = tuple((kwargs["lat"], kwargs["lon"])) 
+        cls.current_location = tuple((kwargs["lat"], kwargs["lon"]))
+
+    @classmethod
+    def on_auth_status (cls, general_status, status_message):
+        if general_status == 'provider-enabled':
+            pass
+        else:
+            print ('gps serror')
 
     ### This method should return a tuple 
     ### with current user coordinates
