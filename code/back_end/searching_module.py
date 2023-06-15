@@ -29,8 +29,8 @@ class Searching_module:
 
     def distance_between_two_latlon (self, lat_lon1, lat_lon2):
         try:
-            return math.sqrt ( pow (lat_lon1[0] * 111320 - lat_lon2[1] * 111320, 2) + 
-            pow ( (40075000 * math.cos(lat_lon1[1]) / 360) - (40075000 * math.cos(lat_lon2[1]) / 360), 2) )  
+            return round(math.sqrt ( pow (lat_lon1[0] * 111320 - lat_lon2[0] * 111320, 2) + 
+            pow (111320 * lat_lon1[1] - 111320 * lat_lon2[1], 2)))
         except:
             return -1
             
@@ -56,6 +56,7 @@ class Searching_module:
 
     def search_the_area(self,coordinates, radius, category, subcategory):
         lat, lon = coordinates[0], coordinates[1]
+        print (lat, lon, radius, category)
         api = overpy.Overpass()
         
         #lat, lon = 50.05918219735402, 20.003032346862184 # Kraków
@@ -128,8 +129,8 @@ class Searching_module:
         config_module = self.config_module
         if config_module is None:
             return []
-        if self.m_object_list != [] and Location_module.check_proximity(int(self.config_module.proximity), Location_module.current_location, Location_module.center_location):
-            return self.m_object_list
+        # ~ if self.m_object_list != [] and Location_module.check_proximity(int(self.config_module.proximity), Location_module.current_location, Location_module.center_location):
+            # ~ return self.m_object_list
 
         self.remove_old_objects()
 
@@ -140,7 +141,7 @@ class Searching_module:
         #current_profile = json.loads (config_module.put_selected_profile_to_front())
         current_profile = config_module.put_selected_profile_to_front() 
         #current profile is a dict, with key 'categories' containing values (id-s) of all selected categories
-        # ~ print (current_profile)
+        print (current_profile)
         selected_categories_list = current_profile["categories"]
         # ~ print (selected_categories_list)
         
