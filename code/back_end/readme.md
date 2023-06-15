@@ -13,7 +13,7 @@
 # Class Configuration_module: 
 Represents a configuration module and contains various methods related to handling profiles, categories, and configuration settings. Here is an overview of the methods and attributes in the class:
 
-###Attributes:
+### Attributes:
 
     profile_current: A dictionary representing the current profile.
     profiles_object: A list containing JSON objects representing profiles.
@@ -24,7 +24,7 @@ Represents a configuration module and contains various methods related to handli
     notification_system: An integer representing the notification system.
     night_mode: An integer representing the night mode setting.
 
-###Methods:
+### Methods:
 
     hi(): Prints a simple message to indicate that the configuration module is active.
     put_profiles_to_front(): Returns the profiles_object attribute.
@@ -53,14 +53,14 @@ Represents a configuration module and contains various methods related to handli
 # Class Location_module: 
 Represents a location module and contains methods and attributes related to handling user locations. Here is an overview of the class:
 
-###Attributes:
+### Attributes:
 
     lat: A constant representing the value of one degree of latitude in meters.
     lon: A constant representing the value of one degree of longitude in meters.
     center_location: A tuple representing the last saved location of the user, considered as the center of an ellipse.
     current_location: A tuple representing the current location of the user.
 
-###Methods:
+### Methods:
 
     on_gps_location(*args, **kwargs): A class method that updates the current_location attribute based on the provided latitude (lat) and longitude (lon) values.
     on_auth_status(general_status, status_message): A class method that handles the GPS authorization status. If the general status is "provider-enabled," the method does nothing. Otherwise, it prints "gps error."
@@ -80,12 +80,12 @@ Represents a location module and contains methods and attributes related to hand
 # Class Searching_module: 
 Represents a searching module and contains methods and attributes related to searching for places in a given area. Here is an overview of the class:
 
-###Attributes:
+### Attributes:
 
     API_KEY: A string representing the API key used for accessing the search API.
     config_module: A reference to the configuration module.
 
-###Methods:
+### Methods:
 
     __init__(self, current_location=None): The constructor method for the Searching_module class. It initializes the m_object_list attribute as an empty list.
     set_config_module(self, config_module): Sets the config_module attribute of the searching module to the provided config_module.
