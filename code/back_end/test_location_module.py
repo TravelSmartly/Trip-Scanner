@@ -23,6 +23,50 @@ def test_check_proximity(location_module):
     assert location_module.Check_proximity(r, current_location, real_pos) == False
     #r, current_location, faktycznalokalizacji
 
+    
+    r=50
+    current_location = (69.3682237466593, -24.42319080312447)
+    real_pos = (69.36821391928645, -24.422031815099345)
+    assert location_module.Check_proximity(r,current_location,real_pos) == True #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+
+    current_location = (69.36822702244923, -24.42319080312447)
+    real_pos = (69.36819754032172, -24.42174981533922)
+    assert location_module.Check_proximity(r,current_location,real_pos) == False #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+
+
+    current_location = (4.977345975972701, 21.576657045476846)
+    real_pos = (4.977367633967908, 21.57706401783827)
+    assert location_module.Check_proximity(r,current_location,real_pos) == True #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+
+
+    current_location = (4.977346842292529, 21.576657045476846)
+    real_pos = (4.9773693666075, 21.577157934537063)
+    assert location_module.Check_proximity(r,current_location,real_pos) == False #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+
+
+    r=200
+
+    current_location = (79.84918915447686, 13.305728818397744)
+    real_pos = (79.84916896262257, 13.31498036866999)
+    assert location_module.Check_proximity(r,current_location,real_pos) == True #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+
+
+    current_location = (79.84918158253616, 13.305728818397744)
+    real_pos = (79.84913867476658, 13.3169710273199)
+    assert location_module.Check_proximity(r,current_location,real_pos) == False #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+
+
+    current_location = (4.977347792469449, 21.57665580343438)
+    real_pos = (4.977334178714007, 21.578289781305845)
+    assert location_module.Check_proximity(r,current_location,real_pos) == True #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+
+    current_location = (4.9773439028250746, 21.576659707802055)
+    real_pos = (4.977310840846875, 21.578648983131835)
+    assert location_module.Check_proximity(r,current_location,real_pos) == False #Check proximiy ((current_location[0]-real_pos[0])**2 + (current_location[1]-real_pos[1])**2) < r
+    
+
+
+
     # set fixed location check whats nearbly
     
 
