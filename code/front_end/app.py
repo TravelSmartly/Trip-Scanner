@@ -135,13 +135,14 @@ class FrontApp(MDApp):
 
 
             def print_place(self):
+                print('NOTIFICATIONWORK_background')
                 while not self.stop_printing.is_set():
                     print('Background!')
                     search_module = self.searcher
                     result = search_module.get_search_result()
                     last_result = {"name": "Null", "distance":"Null"}
                     if (len(result) != 0):
-                        last_result = result[len(result)-1]
+                        # last_result = result[len(result)-1]
                         min_dist = result[0]["distance"]
                         min_name = result[0]["name"]
                         for place in result:
@@ -151,7 +152,7 @@ class FrontApp(MDApp):
 
                         notification.notify(
                             title=min_name,
-                            message=str(min_dist) + "m - Cool place",
+                            message=str(min_dist) + "m - You can visits this place",
                             timeout=2
                         )
                     time.sleep(20)
@@ -160,7 +161,10 @@ class FrontApp(MDApp):
                 self.stop_printing.set()
 
         self.printer = HelloWorldPrinter(self.search_module)
-        self.letsgo()
+        if self.notification_go != 1:
+            self.background_thread = threading.Thread(target=self.printer.print_place)
+            self.background_thread.start()
+            self.notification_go = 1
 
 
 
@@ -191,8 +195,8 @@ class FrontApp(MDApp):
     #     print("RESUME")
 
     def on_stop(self):
-        self.dontgo()
-        print("HELLO STOP")
+        # self.dontgo()
+        print("HELLO_STOP")
 
     # def set_gpshelper(self, gpshelper):
     #     self.gpshelper = gpshelper
