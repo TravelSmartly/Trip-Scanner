@@ -27,6 +27,14 @@ from .content.Profile_adapter.Profile_adapter import Profile_manipulator, Catego
 from .content.Map_data_adapter.Map_data_adapter import Map_data_adapter
 ###- END IMPORT NAJWAZNIESZYCH KOMPONENTOW -###
 
+from kivy.utils import platform
+## Powidomienia
+if platform == 'android':
+    pass
+
+from plyer import notification
+import threading
+
 
 ## To jest najwazniejsza klassa, ktora odpowiada za przelaczenie rozdzialow
 class WindowManager(ScreenManager):
@@ -62,6 +70,10 @@ class FrontApp(MDApp):
 
     places_section = ObjectProperty(None)
     map_section = ObjectProperty(None)
+
+    notification_go = 0
+
+
     def build(self):
 
         ###- ADAPTERTS -###
@@ -92,6 +104,22 @@ class FrontApp(MDApp):
         self.sm = WindowManager()
         return self.sm
 
+
+    def letsgo(self):
+        print(self.notification_go)
+        if self.notification_go == 1:
+            return
+        self.notification_go = 1
+        self.background_thread = threading.Thread(target=self.printer.print_place)
+        self.background_thread.start()
+
+    def dontgo(self):
+        if self.notification_go == 1:
+            self.printer.stop()
+            self.notification_go = 0
+
+
+
     def on_start(self):
         self.places_section = self.root.ids.nav_bar_id.ids.places_section_id
         self.map_section = self.root.ids.nav_bar_id.ids.map_section_id.ids.mapview
@@ -100,12 +128,42 @@ class FrontApp(MDApp):
         self.gpshelper = GpsHelper(self.map_section)
         self.gpshelper.run()
 
-        # print(self.places_section)
-        # add_place_to_list
-        # if self.gpshelper is not None:
-        #     self.gpshelper.run()
-        # pass
-        # self.root.ids.nav_bar_id.ids.navigation_manager_id.switch_tab("profile_section")
+        class HelloWorldPrinter:
+            def __init__(self, searcher):
+                self.stop_printing = threading.Event()
+                self.searcher = searcher
+
+
+            def print_place(self):
+                while not self.stop_printing.is_set():
+                    print('Background!')
+                    search_module = self.searcher
+                    result = search_module.get_search_result()
+                    last_result = {"name": "Null", "distance":"Null"}
+                    if (len(result) != 0):
+                        last_result = result[len(result)-1]
+                        min_dist = result[0]["distance"]
+                        min_name = result[0]["name"]
+                        for place in result:
+                            if place["distance"] < min_dist:
+                                min_dist = place["distance"]
+                                min_name = place["name"]
+
+                        notification.notify(
+                            title=min_name,
+                            message=str(min_dist) + "m - Cool place",
+                            timeout=2
+                        )
+                    time.sleep(20)
+
+            def stop(self):
+                self.stop_printing.set()
+
+        self.printer = HelloWorldPrinter(self.search_module)
+        self.letsgo()
+
+
+
     def set_conf_module(self, conf_module: object):
         self.conf_module = conf_module
 
@@ -124,13 +182,16 @@ class FrontApp(MDApp):
 
     def get_location_module(self):
         return self.loc_module
-    def on_pause(self):
-        print("HELLO")
 
-    def on_resume(self):
-        print("RESUME")
+    # def on_pause(self):
+    #     print("HELLO")
+    #     return True
+    #
+    # def on_resume(self):
+    #     print("RESUME")
 
     def on_stop(self):
+        self.dontgo()
         print("HELLO STOP")
 
     # def set_gpshelper(self, gpshelper):

@@ -56,7 +56,7 @@ class Searching_module:
 
     def search_the_area(self,coordinates, radius, category, subcategory):
         lat, lon = coordinates[0], coordinates[1]
-        print (lat, lon, radius, category)
+        # print (lat, lon, radius, category)
         api = overpy.Overpass()
         
         #lat, lon = 50.05918219735402, 20.003032346862184 # Kraków
@@ -141,7 +141,7 @@ class Searching_module:
         #current_profile = json.loads (config_module.put_selected_profile_to_front())
         current_profile = config_module.put_selected_profile_to_front() 
         #current profile is a dict, with key 'categories' containing values (id-s) of all selected categories
-        print (current_profile)
+        # print (current_profile)
         selected_categories_list = current_profile["categories"]
         # ~ print (selected_categories_list)
         
