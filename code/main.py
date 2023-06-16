@@ -51,12 +51,14 @@ class MainApp:
         ### Location_module.get_current_location()
         ### There is no need to create an object of this type
         ### Just operate on class itself
+
         if platform == 'android':
             from android.permissions import request_permissions, Permission
             from plyer import gps
             from plyer import notification
             request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE, Permission.INTERNET, Permission.ACCESS_FINE_LOCATION, Permission.ACCESS_COARSE_LOCATION])
-            gps.configure(on_location=Location_module.on_gps_location)
+            gps.configure(on_location=Location_module.on_gps_location,
+                          on_status=Location_module.on_auth_status)
             gps.start(minTime=1000, minDistance=0)
 
         ###########################################################
