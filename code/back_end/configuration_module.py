@@ -34,7 +34,11 @@ class Configuration_module:
 	def update_interval (self, interv):
 		self.interval = interv
 
-	## RemXYZ: pobieram wszystkie profile, dalej za pomoca petli szukam ten, ktory ma w selected 1, i przyrownuje go do zmiennej profile_current, zatrzymujac przy tym petle i zwracam 0
+	### from json object kept in config object type, this function
+	### finds and set currently selected by user profile
+	### returns 0 on sucess, otherwise -1 if selected profile wasnt found
+	### that usually implies something went wrong earlier, for example
+	### while reading config files
 	def find_current_profile(self):
 		profiles = self.profiles_object
 		#profiles = json.loads (self.put_profiles_to_front())
@@ -47,6 +51,8 @@ class Configuration_module:
 	def set_current_profile (self, current_profile_object):
 		self.profile_current = current_profile_object
 
+	### saves all json profile object to the memory
+	### returns 0 on success, otherwise -1
 	def save_profiles (self, profiles = None) -> int:
 		if profiles is None:
 			profiles = self.profiles_object
@@ -65,10 +71,6 @@ class Configuration_module:
 		try:
 			with open(config_folder_path) as frd:
 				profiles = json.loads(frd.read())
-				## RemXYZ: Uwaga, kiedy odtzytujemy json plik, to pierwszy dotajemy element "profiles"
-				## i wlasnie ten element "profiles" zawiera w sobie wszystkie profile,
-				##  wiec musze go pobrac na samym poczatku
-				## czyli to wyglada tak {"profiles": {name:"profile0", selected:1,...} ...}
 				self.profiles_object = profiles
 				print (type(profiles))
 				for profile in profiles:
@@ -84,10 +86,11 @@ class Configuration_module:
 			return -1
 
 
+	### method to read json file with all available categories
+	### categories could be extended in the future and packed to this file
+	### on sucess, method returns 0, otherwise -1
 	def read_categories(self) -> int:
-		#categories_file_path = "categories/generalized_categories.json"
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'generalized_categories.json'
-		#print(config_folder_path)
 		try:
 			with open(config_folder_path) as frd:
 				self.categories_object = json.load(frd)
@@ -96,6 +99,11 @@ class Configuration_module:
 			self.categories_object = []
 			return -1
 	
+	### this method is a counterpart of simple read_categories method
+	### both should contain the same list with categories, the difference
+	### is just with format -> if for some reason using simple txt file
+	### with each category as line would be more convinient
+	### this method would be used
 	def read_categories_txt (self) -> int:
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'generalized_categories_lines.txt'
 		with open (config_folder_path) as frd:
@@ -113,6 +121,9 @@ class Configuration_module:
 	def get_categories_dicts (self):
 		return self.categories_dicts
 
+	### saving config file on the disk should be done with this method
+	### from all other classes and positions
+	## returns 0 if opening and saving to the file was successful
 	def save_config_file(self,settings = None):
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
 		with open(config_folder_path, 'w') as fwd:
@@ -120,6 +131,10 @@ class Configuration_module:
 			return 0
 		return -1
 
+	### reading file method, returns 0 if read was sucessful
+	### be careful with types when using this method, as python often keeps
+	### data as a string where it can, especially with building on android
+	### that caused some bugs in the past
 	def read_config_file (self):
 		config_folder_path = pathlib.Path.cwd() / 'config' / 'config_file.cfg'
 		if not config_folder_path.is_file():
@@ -134,6 +149,8 @@ class Configuration_module:
 			
 	### During first app usage, this method creates 
 	### all needed configuration files 
+	### returns -1 if config file exists, which should be default behavior
+	### as this file should be provided with package built for android
 	def create_config_file (self):
 		working_dir_path = pathlib.Path.cwd() / 'config'
 		if not working_dir_path.is_dir():
@@ -148,6 +165,7 @@ class Configuration_module:
 		gen_cat_path.touch()
 		return 0
 
+		
 	def put_settings_front(self):
 		pass
 
