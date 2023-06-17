@@ -62,6 +62,7 @@ class MainApp:
             gps.start(minTime=1000, minDistance=0)
 
         ###########################################################
+        ###Initialization of main components begins here
         config_module = Configuration_module()
         config_module.create_config_file()
         profile_import_status = config_module.read_profiles()
@@ -75,7 +76,6 @@ class MainApp:
         searcher = Searching_module()
         searcher.set_config_module(config_module)
         ###-- END OF BACK-END PART --###
-
 
 
         ###-- FRON-END PART --###
