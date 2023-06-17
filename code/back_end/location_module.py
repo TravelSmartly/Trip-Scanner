@@ -1,4 +1,3 @@
-## RemXYZ: Bez tego nie dziala
 # from classmethod import classmethod
 import math
 
@@ -22,10 +21,9 @@ class Location_module:
 
     ### This method should return a tuple 
     ### with current user coordinates
+    ### -1 on failure
     @classmethod
     def get_current_location(cls):
-        # cls.current_location[0] =  cls.current_location[0] + 0.1
-        # cls.current_location[1] += cls.current_location[1] + 0.1
         try:
             return cls.current_location
         except Exception as e:
@@ -48,6 +46,8 @@ class Location_module:
         tmp = tuple (map(float, tmp))
         return tmp
 
+    ###Do not remove!!
+    
     #@classmethod
     #def start_location_module(cls, r, center_location):
         #current_location = cls.get_current_location()
